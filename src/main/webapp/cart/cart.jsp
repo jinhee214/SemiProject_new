@@ -29,7 +29,7 @@ List<CartDto> list = dao.readCart();
 <body>
 	<%
 	//로그인 안되어 있을 경우 '로그인','홈으로 돌아가기' 버튼만 보임
-	if(loginok==null){
+	if(loginok!=null){ //로그인 파트 완성되면 != > == 로 바꾸기
 	%>
 	<div>
 		로그인이 필요한 서비스입니다.
@@ -55,7 +55,6 @@ List<CartDto> list = dao.readCart();
 				<div>
 					<div><%=/*추가) 제품명 */dto.getProduct_id()%></div>
 					<div><%=/*추가) 수량 */dto.getProduct_id()%></div>
-					<div><%=/*추가) 금액 */dto.getProduct_id()%>
 						<select>
 							<option value="1">1</option>
 							<option value="2">2</option>
@@ -68,6 +67,7 @@ List<CartDto> list = dao.readCart();
 							<option value="9">9</option>
 							<option value="10+">10+</option>
 						</select> <span class="rs-quantity-icon form-dropdown-chevron"></span>
+					<div><%=/*추가) 금액 */dto.getProduct_id()%>
 					</div>
 				</div>
 				<div></div>
