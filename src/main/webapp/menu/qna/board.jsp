@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="data.dao.CategoryDao"%>
 <%@page import="data.dto.BoardDto"%>
 <%@page import="java.util.List"%>
 <%@page import="data.dao.BoardDao"%>
@@ -14,7 +16,9 @@
 
 <%
 //db선언
-BoardDao dao = new BoardDao();
+BoardDao bDao = new BoardDao();
+CategoryDao cDao = new CategoryDao();
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 
 /* List<SimpleDto> list = dao.getAllData(); */
 
@@ -29,7 +33,7 @@ int currentPage;	//현재 페이지
 int no;
 
 //총 개수
-totalCount = dao.getTotalCount();
+totalCount = bDao.getTotalCount();
 
 //현재 페이지 번호 읽기
 if(request.getParameter("currentPage")==null){
@@ -58,7 +62,7 @@ if(endPage > totalPage){
 start = (currentPage-1)*perPage;
 
 //각 페이지에서 필요한 게시글 가져오기
-List<BoardDto> list = dao.getList(start, perPage);
+List<BoardDto> list = bDao.getList(start, perPage);
 
 //각 글 앞에 붙일 시작번호 구하기
 no = totalCount-(currentPage-1)*perPage;
@@ -72,6 +76,7 @@ no = totalCount-(currentPage-1)*perPage;
 </head>
 <body>
 
+<button class="btn btn-info" onclick="location.href='index.jsp?main=menu/qna/boardaddform.jsp'">질문하기</button>
 <table class="table table-bordered">
 <tr>
 <td>NO</td>
@@ -85,11 +90,12 @@ for(BoardDto dto : list){
 	%>
 	<tr>
 	<td><%=no-- %></td>
-	<td><% %></td>
+	<td><%=cDao.getNameById(dto.getCategoryId()) %></td>
+	<td><%=dto.getUserId() %></td>
+	<td><%=dto.getSubject() %></td>
+	<td><%=sdf.format(dto.getWriteday())%></td>
 	</tr>
-	
-	<%
-	
+	<%	
 }
 
 
