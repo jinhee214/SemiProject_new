@@ -23,5 +23,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
     <th style="width: 150px;">제품이미지</th>
   </tr>
 </table>
+ <button type="button" class="btn btn-info btn-sm" onclick="#"
+    style="margin-left: 800px;">버튼1</button>
 </body>
 </html>
