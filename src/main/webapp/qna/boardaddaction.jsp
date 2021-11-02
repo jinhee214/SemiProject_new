@@ -14,8 +14,21 @@
 </head>
 <body>
 <%
-String id = (String)session.getAttribute("id");
+request.setCharacterEncoding("utf-8");
 
+//board에 적은 데이터 가져오기
+//String id = (String)session.getAttribute("myid");
+String id = "admin";
+int category = Integer.parseInt(request.getParameter("category"));
+String subject = request.getParameter("subject");
+String content = request.getParameter("content");
+
+//데이터 DB에 저장하기
+BoardDto dto = new BoardDto(id, category,subject,content);
+BoardDao dao = new BoardDao();
+dao.insertBoard(dto);
+
+response.sendRedirect("../index.jsp?main=qna/board.jsp");
 
 
 %>

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 import java.util.Vector;
 
@@ -14,7 +15,7 @@ public class BoardDao {
 	DbConnect db = new DbConnect();
 	
 	//total Count
-		//페이징처리_1. 전체 개수 구하기
+		//페이징처리_1. 전체 개수 구하기(카테고리 없을때)
 		public int getTotalCount() {
 
 			int n = 0;
@@ -23,6 +24,35 @@ public class BoardDao {
 			ResultSet rs = null;
 
 			String sql = "select count(*) from board";
+
+			try {
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+
+				if(rs.next()) {
+					n = rs.getInt(1);				
+				}
+
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				db.dbClose(rs, pstmt, conn);
+			}		
+
+			return n;
+		}
+		
+		//페이징처리_1. 전체 개수 구하기(카테고리 있을때)
+		public int getTotalCount(int category) {
+
+			int n = 0;
+			Connection conn = db.getConnection();
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+
+			String sql = "select count(*) from board where category_id=category";
 
 			try {
 				pstmt = conn.prepareStatement(sql);
@@ -130,12 +160,12 @@ public class BoardDao {
 			return list;
 		}
 
-		//QnA 게시판 글 넣기
+		//QnA 게시판 글 등록하기
 		public void insertBoard(BoardDto dto) {
 			Connection conn = db.getConnection();
 			PreparedStatement pstmt = null;
 
-			String sql = "insert into board values(null,?,?,?,?,,now())";
+			String sql = "insert into board values(null,?,?,?,?,now())";
 
 			try {
 				pstmt = conn.prepareStatement(sql);
@@ -154,6 +184,41 @@ public class BoardDao {
 			}finally {
 				db.dbClose(pstmt, conn);
 			}		
+		}
+		
+		//QnA 특정 게시글 선택하기
+		public BoardDto getOneBoard(int boardId) {
+			BoardDto dto = new BoardDto();
+			
+			Connection conn = db.getConnection();
+			Statement stmt = null;
+			ResultSet rs = null;
+			
+			String sql = "select * from board where board_id="+boardId;
+			
+			try {
+				stmt = conn.createStatement();
+				rs = stmt.executeQuery(sql);
+				
+				if(rs.next()) {
+					
+					dto.setBoardId(rs.getInt("board_id"));
+					dto.setUserId(rs.getString("user_id"));
+					dto.setCategoryId(rs.getInt("category_id"));
+					dto.setSubject(rs.getString("subject"));
+					dto.setContent(rs.getString("content"));
+					dto.setWriteday(rs.getTimestamp("writeday"));
+					
+				}
+				
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			return dto;
 		}
 	
 }

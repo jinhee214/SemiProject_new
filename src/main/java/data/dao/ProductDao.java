@@ -74,5 +74,57 @@ public class ProductDao {
 
 			return list;
 		}
+		
+		// product_id로 제품사진 가져오기
+		public String getProductPhoto(int product_id) {
+			String main_img = "";
+
+			Connection conn = db.getConnection();
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+
+			String sql = "select main_img from product where product_id=?";
+
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, product_id);
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					main_img = rs.getString("main_img");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				db.dbClose(rs, pstmt, conn);
+			}
+			return main_img;
+		}
+		
+		// product_id로 제품명 가져오기
+		public String getProductName(int product_id) {
+			String product_name = "";
+			
+			Connection conn = db.getConnection();
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			String sql = "select product_name from product where product_id=?";
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, product_id);
+				rs = pstmt.executeQuery();
+				
+				if (rs.next()) {
+					product_name = rs.getString("product_name");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				db.dbClose(rs, pstmt, conn);
+			}
+			return product_name;
+		}
 
 }

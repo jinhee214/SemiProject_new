@@ -1,3 +1,5 @@
+<%@page import="data.dao.CommentDao"%>
+<%@page import="data.dto.CommentDto"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="data.dao.CategoryDao"%>
 <%@page import="data.dto.BoardDto"%>
@@ -19,6 +21,8 @@
 BoardDao bDao = new BoardDao();
 CategoryDao cDao = new CategoryDao();
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+CommentDao cmDao = new CommentDao();
+
 
 /* List<SimpleDto> list = dao.getAllData(); */
 
@@ -76,24 +80,27 @@ no = totalCount-(currentPage-1)*perPage;
 </head>
 <body>
 
-<button class="btn btn-info" onclick="location.href='index.jsp?main=menu/qna/boardaddform.jsp'">질문하기</button>
+<button class="btn btn-info" onclick="location.href='index.jsp?main=qna/boardaddform.jsp'">질문하기</button>
 <table class="table table-bordered">
 <tr>
-<td>NO</td>
-<td>분류</td>
-<td>작성자</td>
-<td>제목</td>
-<td>작성일</td>
+<th>NO</th>
+<th>분류</th>
+<th>작성자</th>
+<th>제목</th>
+<th>작성일</th>
+<th>답변상태</th>
 </tr>
 <%
 for(BoardDto dto : list){	
+	String apply = cmDao.getCommentsByBoardId(dto.getBoardId()).size()==0? "미답변":"답변";
 	%>
 	<tr>
 	<td><%=no-- %></td>
 	<td><%=cDao.getNameById(dto.getCategoryId()) %></td>
 	<td><%=dto.getUserId() %></td>
-	<td><%=dto.getSubject() %></td>
+	<td style="width: 700px;"><a href="index.jsp?main=qna/boarddetail.jsp?boardId=<%=dto.getBoardId()%>"><%=dto.getSubject() %></a></td>
 	<td><%=sdf.format(dto.getWriteday())%></td>
+	<td><%=apply %></td>
 	</tr>
 	<%	
 }
