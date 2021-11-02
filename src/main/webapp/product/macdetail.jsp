@@ -13,17 +13,6 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 <title>Insert title here</title>
 </head>
 <body>
-<table  class="table table-bordered" style="width: 800px;">
-  <caption><b>iPad</b>
-  </caption>
-    <tr style="background: lightgray;">
-    <th style="width: 70px;">No.</th>
-    <th style="width: 200px;">제품명</th>
-    <th style="width: 100px;">제품가격</th>
-    <th style="width: 150px;">제품이미지</th>
-  </tr>
-</table>
- <button type="button" class="btn btn-info btn-sm" onclick="#"
-    style="margin-left: 800px;">버튼1</button>
+imac 디테일
 </body>
 </html>
