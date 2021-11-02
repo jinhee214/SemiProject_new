@@ -11,6 +11,17 @@ public class BoardDto {
 	private String content;
 	private Timestamp writeday;
 	
+	public BoardDto() {
+	
+	}
+	
+	public BoardDto(String userId, int categoryId, String subject, String content) {
+		
+		this.userId = userId;
+		this.categoryId = categoryId;
+		this.subject = subject;
+		this.content = content;
+	}
 	
 	public int getBoardId() {
 		return boardId;
