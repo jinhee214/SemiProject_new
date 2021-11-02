@@ -35,9 +35,9 @@ String root = request.getContextPath();
 
 <div class="wrap">
 <ul class="menu-bar">
-<li><a href="<%=root %>/index.jsp?main=">Mac</a></li>
-<li><a href="<%=root %>/index.jsp?main=">iPad</a></li>
-<li><a href="<%=root %>/index.jsp?main=">iPhone</a></li>
+<li><a href="<%=root %>/index.jsp?main=product/maclist.jsp">Mac</a>
+<li><a href="<%=root %>/index.jsp?main=product/iPadlist.jsp">iPad</a></li>
+<li><a href="<%=root %>/index.jsp?main=product/iPhonelist.jsp">iPhone</a></li>
 <li><a href="<%=root %>/index.jsp?main=">액세서리</a></li>
 <li><a href="<%=root %>/index.jsp?main=">고객지원</a></li>
 <li><a href="<%=root %>/index.jsp?main=">개인정보</a></li>
