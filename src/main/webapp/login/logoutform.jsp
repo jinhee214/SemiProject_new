@@ -28,7 +28,7 @@
 			UserDao dao=new UserDao();
 			String name=dao.getName(myid);
 			
-		%>
+	%>
 	<br><br>
 	<b><%=name %>님이 로그인 하셨습니다.</b><br><br><br>
 	<table class="table table-bordered" style="width: 800px;">
