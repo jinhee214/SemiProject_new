@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Vector;
 
-import data.dto.MemberDto;
-import dto.ProductDto;
 import mysql.db.DbConnect;
 
 public class ProductDao {
@@ -44,9 +42,9 @@ public class ProductDao {
 		}
 		
 		//페이지에서 필요한 만큼만 리턴하기(전체출력)
-		public List<ProductDto> getAllMembers()
+		public List<data.dto.ProductDto> getAllMembers()
 		{
-			List<ProductDto> list=new Vector<ProductDto>();
+			List<data.dto.ProductDto> list=new Vector<data.dto.ProductDto>();
 			Connection conn=db.getConnection();
 			PreparedStatement pstmt=null;
 			ResultSet rs=null;
@@ -57,7 +55,7 @@ public class ProductDao {
 				rs=pstmt.executeQuery();
 				while(rs.next())
 				{
-					ProductDto dto=new ProductDto();
+					data.dto.ProductDto dto=new data.dto.ProductDto();
 					dto.setProduct_id(rs.getInt("product_id"));
 					dto.setCategory_id(rs.getInt("category_id"));
 					dto.setProduct_name(rs.getString("product_name"));
