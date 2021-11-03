@@ -163,7 +163,7 @@ public class UserDao {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		
-		String sql="select * from user where useR_id=? and user_pw=?";
+		String sql="select * from user where user_id=? and user_pw=?";
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
@@ -218,6 +218,7 @@ public class UserDao {
 				dto.setUser_name(rs.getString("user_name"));
 				dto.setUser_hp(rs.getString("user_hp"));
 				dto.setUser_addr(rs.getString("user_addr"));
+				dto.setUser_point(rs.getInt("user_point"));
 				dto.setUser_joinday(rs.getTimestamp("user_joinday"));
 				dto.setIs_admin(rs.getString("is_admin"));
 			}

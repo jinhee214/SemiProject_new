@@ -18,8 +18,8 @@ session.removeAttribute("loginok");
 %>
 
 <b>회원을 탈퇴하였습니다. Apple을 이용해 주셔서 감사합니다.</b>
-
-<button type="button" class="btn btn-danger btn-sm" onclick="location.href='index.jsp'">홈으로 이동</button>
+<br><br>
+<button type="button" class="btn btn-default btn-sm" onclick="location.href='index.jsp'">홈으로 이동</button>
 </body>
 </html>
 
