@@ -75,8 +75,9 @@ for(CartDto cdto:clist)
 <%
 	for(CartDto cdto:clist)
 	{%>
-		<img style="margin-left: 400px;" src="#">
-		<b style="margin-left: 300px;"><%=cdto.getCnt() %></b>
+		<img style="margin-left: 400px;" src="../AppleProduct_img/<%=pdao.getProductPhoto(cdto.getProduct_id())%>">
+		<b style="margin-left: 200px;"><%=pdao.getProductName(cdto.getProduct_id()) %></b>
+		<b style="margin-left: 200px;"><%=cdto.getCnt() %></b>
 		<b style="margin-left: 300px;">₩<%=cdto.getPrice() %></b>
 		<br><br>
 		<hr style="border:1px solid #e6eaee; width:1120px;">
