@@ -9,6 +9,16 @@ public class CommentDto {
 	private String content;
 	private Timestamp writeday;
 	
+	public CommentDto() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public CommentDto(int boardId, String userId, String content) {
+		this.boardId = boardId;
+		this.userId = userId;
+		this.content = content;
+	}
+	
 	
 	public int getCommentId() {
 		return commentId;

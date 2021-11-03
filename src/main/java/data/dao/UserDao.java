@@ -219,6 +219,7 @@ public class UserDao {
 				dto.setUser_hp(rs.getString("user_hp"));
 				dto.setUser_addr(rs.getString("user_addr"));
 				dto.setUser_joinday(rs.getTimestamp("user_joinday"));
+				dto.setIs_admin(rs.getString("is_admin"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
