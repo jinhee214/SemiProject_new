@@ -24,8 +24,7 @@ String myid=(String)session.getAttribute("myid");
 
 //db로부터 가입한 이름 얻기
 UserDao dao=new UserDao();
-String name=dao.getName(myid);
-UserDto dto=dao.getUser(name);
+UserDto dto=dao.getUser(myid);
 
 //title 표시
 if(loginok==null){
@@ -36,7 +35,7 @@ if(loginok==null){
 <%}
 
 else{%>
-	<b style="font-size:10pt;">Apple ID:<%=name %>님 / Point:<%=dto.getUser_point() %>pt </b>
+	<b style="font-size:10pt;"><%=dto.getUser_name() %>님 환영합니다. / Point:<%=dto.getUser_point() %>pt </b>
 	<button type="button" class="btn btn-danger btn-sm"
 	style="width:100px;" 
 	onclick="location.href='login/logoutaction.jsp'">로그아웃</button>
