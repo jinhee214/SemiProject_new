@@ -13,10 +13,10 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 <title>Insert title here</title>
 </head>
 <body>
-<img alt="" src="AppleProduct_img/MacBook_AirDeM1.PNG" class="mainimg">
-<img alt="" src="AppleProduct_img/MacBook_AirDeM2.PNG" class="mainimg">
+<img alt="" src="AppleProduct_img/iPhone12_De.PNG" class="mainimg">
+
 <button class="glyphicon glyphicon-chevron-left btn btn-secondary btn-lg"
-onclick="location.href='index.jsp?main=product/maclist.jsp'" style="margin-top: 700px;">뒤로가기</button>
+onclick="location.href='index.jsp?main=product/iPhonelist.jsp'" style="margin-top: 700px;">뒤로가기</button>
 <button class="glyphicon glyphicon-shopping-cart btn btn-success btn-lg"
  onclick="#" style="margin-top: 700px;">장바구니</button>
 </body>

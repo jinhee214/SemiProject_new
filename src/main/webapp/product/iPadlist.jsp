@@ -9,21 +9,49 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  
-<title>Insert title here</title>
+<style type="text/css">
+	 img.mainimg{
+		width: 250px;
+		height: 200px;	
+		border: 1px solid #aaa;	
+		margin: 10px 10px 10px 10px;
+	}
+	
+	 img.mainimg:hover{
+		cursor: pointer;
+		width: 300px;
+		height:250px;
+		border: 3px solid lightgray; 		
+	} 
+	
+	/* table.maintb{
+		width: 700px;
+	}
+	table.maintb tr{
+		height: 180px;
+	} 
+	
+</style>  
+<title>Apple Project</title>
 </head>
+
 <body>
-<table  class="table table-bordered" style="width: 800px;">
-  <caption><b>iPad</b>
-  </caption>
-    <tr style="background: lightgray;">
-    <th style="width: 70px;">No.</th>
-    <th style="width: 200px;">제품명</th>
-    <th style="width: 100px;">제품가격</th>
-    <th style="width: 150px;">제품이미지</th>
-  </tr>
-</table>
- <button type="button" class="btn btn-info btn-sm" onclick="#"
-    style="margin-left: 800px;">버튼1</button>
+
+<table class="maintb">
+	<tr>
+		  <td>
+		     <a href="index.jsp?main=product/iPaddetail.jsp">
+		     <img alt="" src="AppleProduct_img/iPad.PNG" class="mainimg">
+		   	 </a>
+		    <a href="index.jsp?main=product/iPadminidetail.jsp">
+		    <img alt="" src="AppleProduct_img/iPad_mini.PNG" class="mainimg">
+		    </a>
+		     <a href="index.jsp?main=product/iPadProdetail.jsp">
+		    <img alt="" src="AppleProduct_img/iPadPro.PNG" class="mainimg">
+		    </a>
+		  </td>
+	</tr>
+</table> 
+
 </body>
 </html>
