@@ -43,7 +43,7 @@ padding: 20px 20px;
 <td align="center"><input type="text" name="subject" style="width: 1000px;" class="form-control" required="required"></td>
 </tr>
 <tr>
-<td colspan="2"><textarea rows="10" cols="100" name="content" class="form-control" placeholder="문의하실 내용을 입력하세요"></textarea></td>
+<td colspan="2"><textarea rows="10" cols="100" name="content" class="form-control" placeholder="문의하실 내용을 입력하세요" required="required"></textarea></td>
 </tr>
 </table>
 

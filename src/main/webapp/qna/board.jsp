@@ -1,3 +1,4 @@
+<%@page import="data.dto.BoardPage"%>
 <%@page import="data.dao.CommentDao"%>
 <%@page import="data.dto.CommentDto"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -26,89 +27,108 @@ margin-top : 50px;
 </style>
 
 <script type="text/javascript">
-function showCategory(){
-	var c = $("#selCategory").val();
-	
-	$("#categoryVal").text(c);
-	
-	console.log($("#categoryVal").text(c));
+//선택한 카테고리 value를 넘기기
+function sendCategory(){
+	var category = $("#selCategory").val();
+	location.href="index.jsp?main=qna/board.jsp?categoryIndex="+category;
 }
 
+function sendMyBoard(){
+	var myBoard = $("#selMyBoard").attr("name");
+	alert("아직 구현 안됨");
+	//location.href="index.jsp?main=qna/board.jsp?myBoard="+myBoard;
+	
+}
 </script>
 
-
 <%
+//현재 로그인 한 id
+String id = (String)session.getAttribute("myid");
+
+//카테고리를 따로 안 정해주면 전체로 보여짐
+String categoryIndex = request.getParameter("categoryIndex")==null? "0":request.getParameter("categoryIndex");
+
 //게시판 리스트 뿌려주기 위한 객체 선언
 BoardDao bDao = new BoardDao();
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-String[] category = {"","mac", "iPhone", "iPad", "accessory", "기타문의"};
+String[] category = {"전체","Mac", "iPad", "iPhone", "Accessory", "기타문의"};
 
 //답변 상태 확인을 위한 객체 선언
 CommentDao cmDao = new CommentDao();
-/* List<SimpleDto> list = dao.getAllData(); */
 
-int totalCount;		//총 개수
-int totalPage;		//총 페이지 수
-int startPage;		//각 블럭의 시작페이지
-int endPage;		//각 블럭의 끝페이지
-int start; 			//각 페이지의 시작번호
-int perPage=3;		//한 페이지에 보여질 글의 개수
-int perBlock=3;		//한 페이지에 보여지는 페이지 개수
-int currentPage;	//현재 페이지
-int no;
+//카테고리별 리스트를 받아 오기 때문에 선언만
+List<BoardDto> list;	
 
-//총 개수
-totalCount = bDao.getTotalCount();
+//페이징 처리가 너무 길어서 data.dto.BoardPage class로 만듬
+BoardPage bp = new BoardPage(bDao.getTotalCount(),request.getParameter("currentPage"));
 
-//현재 페이지 번호 읽기
-if(request.getParameter("currentPage")==null){
-	currentPage = 1;
+/* 카테고리가 전체일때 */
+if(categoryIndex.equals("0")){
+
+	//전체 게시글 리스트에 넣어주기
+	list = bDao.getList(bp.start, bp.perPage);
+
 }
+/* 카테고리가 일부일때 */
 else{
 	
-	currentPage = Integer.parseInt(request.getParameter("currentPage"));
+	//카테고리가 달라지면 total 개수가 달라지므로 새로 객체 생성
+	bp = new BoardPage(bDao.getTotalCount(Integer.parseInt(categoryIndex)),request.getParameter("currentPage"));
+	
+	//카테고리에 해당하는 게시글 리스트에 넣어주기
+	list = bDao.getList(bp.start, bp.perPage, Integer.parseInt(categoryIndex));
+	
 }
-
-//총 페이지 개수 구하기
-totalPage = totalCount/perPage + (totalCount%perPage==0?0:1);
-
-//각 블럭의 시작 페이지
-//예 : 현재 페이지:3 startPage:1, endpage:3
-//예 : 현재 페이지:5 startPage:4, endpage:6
-
-startPage = (currentPage-1)/perBlock*perBlock+1;
-endPage = startPage+perBlock-1;
-
-if(endPage > totalPage){
-	endPage = totalPage;
-}
-
-//각 페이지에서 불러올 시작 번호
-start = (currentPage-1)*perPage;
-
-//각 글 앞에 붙일 시작번호 구하기
-no = totalCount-(currentPage-1)*perPage;
-
 %>
-
 
 </head>
 <body>
-<div id="categoryVal" hidden=""></div>
 <!-- 메인 화면 부분 -->
-<button class="btn btn-info" onclick="location.href='index.jsp?main=qna/boardaddform.jsp'">질문하기</button>
-<select id="selCategory" onchange="showCategory()">
-<option value="0">전체</option>
-<option value="1">Mac</option>
-<option value="2">iPad</option>
-<option value="3">iPhone</option>
-<option value="4">액세서리</option>
-<option value="5">기타</option>
-</select>
+
+<!-- 카테고리 선택 부분 -->
+<select id="selCategory" onchange="sendCategory()">
 <%
+for(int i = 0; i < category.length; i++){ 
+	//카테고리 선택된 값을 보여지게 하기
+	if(categoryIndex.equals(String.valueOf(i))){
+		%>
+		<option value="<%=i %>" selected="selected"><%=category[i] %></option>
+		<%
+	}else{
+		%>
+		<option value="<%=i %>"><%=category[i] %></option>
+		<%		
+	}
+%>
+
+<!--  
+	<option value="0">전체</option>
+	<option value="1">Mac</option>
+	<option value="2">iPad</option>
+	<option value="3">iPhone</option>
+	<option value="4">액세서리</option>
+	<option value="5">기타</option> 
+-->
+
+
+<%
+} %>
+</select>
+
+<!-- 내 게시글 확인 부분 -->
+<button type="button" onclick="sendMyBoard()" id="selMyBoard" class="btn btn-default" name="<%=id%>">내 게시글</button>
+
+<!-- 게시글 추가 -->
+<%
+//회원이 아닐 때는 게시글을 쓰지 못하게
+if(id != null){
+%>
+	<button class="btn btn-info" onclick="location.href='index.jsp?main=qna/boardaddform.jsp'">질문하기</button>
+<%
+}
 
 //게시글이 1개 이상일 경우
-if(no>0){
+if(bp.no>0){
 	%>
 <table class="table table-bordered">
 <tr>
@@ -120,15 +140,14 @@ if(no>0){
 <th>답변상태</th>
 </tr>
 <%
-//각 페이지에서 필요한 게시글 가져오기
-List<BoardDto> list = bDao.getList(start, perPage);
+
 
 // 리스트 뿌려주는 부분
 for(BoardDto dto : list){	
 	String apply = cmDao.getCommentsByBoardId(dto.getBoardId()).size()==0? "미답변":"답변";
 	%>
 	<tr>
-	<td><%=no-- %></td>
+	<td><%=bp.no-- %></td>
 	<td><%=category[dto.getCategoryId()] %></td>
 	<td><%=dto.getUserId() %></td>
 	<td style="width: 700px;"><a href="index.jsp?main=qna/boarddetail.jsp?boardId=<%=dto.getBoardId()%>"><%=dto.getSubject() %></a></td>
@@ -157,15 +176,15 @@ else{
 <%
 
 //이전
-if(startPage > 1){
+if(bp.startPage > 1){
 	%>
 	<li>
-	<a href="index.jsp?main=qna/board.jsp?currentPage=<%=startPage-1%>">이전</a>
+	<a href="index.jsp?main=qna/board.jsp?currentPage=<%=bp.startPage-1%>">이전</a>
 	</li>
 	<%
 }
-for(int p = startPage; p <= endPage; p++){
-	if(p == currentPage){
+for(int p = bp.startPage; p <= bp.endPage; p++){
+	if(p == bp.currentPage){
 		%>
 		<li class="active">
 		<a href="index.jsp?main=qna/board.jsp?currentPage=<%=p %>"><%=p %></a>
@@ -182,10 +201,10 @@ for(int p = startPage; p <= endPage; p++){
 	
 }
 
-if(endPage < totalPage){
+if(bp.endPage < bp.totalPage){
 	%>
 	<li>
-	<a href="index.jsp?main=qna/board.jsp?currentPage=<%=endPage+1%>">다음</a>
+	<a href="index.jsp?main=qna/board.jsp?currentPage=<%=bp.endPage+1%>">다음</a>
 	</li>
 	<%
 }
