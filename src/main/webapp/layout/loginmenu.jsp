@@ -40,6 +40,9 @@ else{%>
 	<button type="button" class="btn btn-danger btn-sm"
 	style="width:100px;" 
 	onclick="location.href='login/logoutaction.jsp'">로그아웃</button>
+	<button type="button" class="btn btn-info btn-sm"
+	style="width:100px;" 
+	onclick="location.href='index.jsp?main=cart/cart.jsp'">장바구니</button>
 <%}
 
 %>
