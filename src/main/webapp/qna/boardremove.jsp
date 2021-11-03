@@ -1,5 +1,4 @@
 <%@page import="data.dao.BoardDao"%>
-<%@page import="data.dto.BoardDto"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -14,23 +13,17 @@
 </head>
 <body>
 <%
-request.setCharacterEncoding("utf-8");
 
-//board에 적은 데이터 가져오기 (userid, 카테고리, 제목, 내용)
-//String id = (String)session.getAttribute("myid");			//수정 필요
-String id = "admin";										//수정 필요
-int category = Integer.parseInt(request.getParameter("category"));
-String subject = request.getParameter("subject");
-String content = request.getParameter("content");
+//게시글 id를 받아서 삭제
+String boardId = request.getParameter("boardId");
 
-//데이터 DB에 저장하기
-BoardDto dto = new BoardDto(id, category,subject,content);
 BoardDao dao = new BoardDao();
-dao.insertBoard(dto);
+dao.deleteBoard(boardId);
 
+//게시판으로 이동
 response.sendRedirect("../index.jsp?main=qna/board.jsp");
 
-
 %>
+
 </body>
 </html>
