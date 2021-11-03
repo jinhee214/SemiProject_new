@@ -43,7 +43,8 @@ $(function() {
 			success : function(data) {
 				selectTag.prev().text(cnt);
 				cntXprice.text(productPrice*cnt+" 원");
-				totalCart.text(totalPrice+" 원");				
+				totalCart.text(totalPrice+" 원");
+				$("#totalCart").load(location.href + " #totalCart");
 				//console.log("product_id: "+product_id+" / cnt: "+cnt); //콘솔에 product_id와 cnt 출력해서 확인
 			}
 		});
@@ -99,7 +100,7 @@ ProductDao pdao = new ProductDao();
 	<form action="cartToOrderAction.jsp" method="post" class="">
 		<div>
 			<h2>
-				장바구니에 들어있는 제품입니다. <i id="totalCart"><%=dao.totalCart()%> 원</i>
+				장바구니에 들어있는 제품입니다. <i id="totalCart"> 원</i>
 			</h2>
 		</div>
 		<ol>
