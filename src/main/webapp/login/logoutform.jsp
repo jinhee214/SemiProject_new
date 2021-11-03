@@ -23,17 +23,16 @@
 	<%
 		//세션으로 아이디를 얻는다
 			String myid=(String)session.getAttribute("myid");
-			
+
 			//db로부터 아이디에 해당하는 이름을 얻는다.
 			UserDao dao=new UserDao();
-			String name=dao.getName(myid);
-			UserDto dto=dao.getUser(name);
+			UserDto dto=dao.getUser(myid);
 			SimpleDateFormat sdf=new SimpleDateFormat("yyyy년 MM월 dd일");
 	
 	%>
 	<br><br>
 	<table class="table table-bordered" style="width: 800px;">
-	<caption><b><%=name %>님 회원 정보</b></caption>
+	<caption><b><%=dto.getUser_name() %>님 회원 정보</b></caption>
 	<tr>
 		<th width="100"  bgcolor="skyblue">아이디</th>
 			<td><%=dto.getUser_id()%></td>
@@ -41,7 +40,7 @@
 
 	<tr>
 		<th width="100"  bgcolor="skyblue">이름</th>
-			<td><%=name%></td>
+			<td><%=dto.getUser_name()%></td>
 	</tr>
 	
 	<tr>
