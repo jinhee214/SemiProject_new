@@ -1,3 +1,8 @@
+<%@page import="data.dto.OrderDto"%>
+<%@page import="data.dao.CartDao"%>
+<%@page import="java.util.Vector"%>
+<%@page import="data.dto.CartDto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -12,18 +17,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-infoaction
 <%
+request.setCharacterEncoding("utf-8");
+String paysel=request.getParameter("paysel");
+String addr=request.getParameter("addr1")+"-"+request.getParameter("addr2");
+
+CartDao cdao=new CartDao();
+
+List<CartDto>list=cdao.readCart();
 
 
-
-
-
-
-
-
-
-response.sendRedirect("../index.jsp?main=order/orderform.jsp");
+response.sendRedirect("../index.jsp?main=order/orderform.jsp?paysel="+paysel+"&addr="+addr);
 %>
 
 

@@ -21,11 +21,13 @@ int boardId = Integer.parseInt(request.getParameter("boardId"));
 String userId = (String)session.getAttribute("myid");
 String comment = request.getParameter("comment");
 
+//데이터 db에 추가
 CommentDao dao = new CommentDao();
 CommentDto dto = new CommentDto(boardId, userId, comment);
 
 dao.insertComment(dto);
 
+//해당 게시글 다시 보여주기
 response.sendRedirect("../index.jsp?main=qna/boarddetail.jsp?boardId="+boardId);
 
 %>

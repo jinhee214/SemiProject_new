@@ -16,6 +16,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 <title>iMac</title>
 </head>
 <body>
+
 <%
 //Mac 카테고리번호(=1)에 해당하는 리스트 가져오기
 ProductDao dao=new ProductDao();
@@ -49,6 +50,7 @@ List<ProductDto> list=dao.getAllMembers();
 </table>
 		<button class="glyphicon glyphicon-chevron-left btn btn-secondary btn-lg"
 		onclick="location.href='index.jsp?main=product/maclist.jsp'" style="margin-left: 1000px;">뒤로가기</button>
+
 
 </body>
 </html>

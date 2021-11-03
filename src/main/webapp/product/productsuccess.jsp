@@ -13,7 +13,26 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+request.setCharacterEncoding("utf-8");
+//id를 읽는다
+String id=request.getParameter("product_id");
 
+//dao선언
+ProductDao dao=new ProductDao();
+//아이디에 대한 이름을 얻는다
+
+
+%>
+
+<div style="margin: 0 auto; width: 100%">
+    <img alt="" src="image2/03.png">
+      <b><%=%>이 장바구니에 추가되었습니다.</b>
+      <br><br>
+    
+    <button type="button" class="btn btn-info" onclick="location.href='index.jsp'">쇼핑하기</button>
+    <button type="button" class="btn btn-info" onclick="location.href='cart/cart.jsp'">장바구니로 가기</button>  
+</div>
 
 </body>
 </html>

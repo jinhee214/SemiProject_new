@@ -44,6 +44,16 @@ onsubmit="return check(this)">
 		<caption><b>회원정보 수정</b></caption>
 		
 			<tr>
+				<th width="100" bgcolor="#aaa">아이디</th>
+				<td>
+					<input type="text" name="id" maxlength="8" class="form-control"
+					required="required" style="width: 120px;" readonly="readonly"
+					value="<%=id%>">
+				
+				</td>
+			</tr>
+		
+			<tr>
 				<th width="100" bgcolor="#aaa">비밀번호</th>
 				<td>
 					<input type="password" name="pass" class="form-control"
@@ -71,7 +81,7 @@ onsubmit="return check(this)">
 				<th width="100" bgcolor="#aaa">핸드폰</th>
 				<td>
 					<input type="text" name="hp" class="form-control"
-					required="required" style="width: 200px;"
+					required="required" style="width: 200px;" 
 					value="<%=dto.getUser_hp()%>">
 				</td>
 			</tr>

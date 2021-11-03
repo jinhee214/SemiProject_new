@@ -16,6 +16,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 <title>MacBook Pro</title>
 </head>
 <body>
+
 <%
 //MacBook_Pro 카테고리번호(=2)에 해당하는 리스트 가져오기
 ProductDao dao=new ProductDao();

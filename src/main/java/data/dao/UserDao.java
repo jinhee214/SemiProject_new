@@ -90,7 +90,7 @@ public class UserDao {
 		Connection conn=db.getConnection();
 		PreparedStatement pstmt=null;
 		
-		String sql="insert into user (user_name,user_id,user_pw,user_hp,user_addr,user_joinday) values (?,?,?,?,?,now())";
+		String sql="insert into user (user_name,user_id,user_pw,user_hp,user_addr,user_point,user_joinday) values (?,?,?,?,?,?,now())";
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
@@ -101,6 +101,7 @@ public class UserDao {
 			pstmt.setString(3, dto.getUser_pw());
 			pstmt.setString(4, dto.getUser_hp());
 			pstmt.setString(5, dto.getUser_addr());
+			pstmt.setInt(6, dto.getUser_point());
 			
 			//½ÇÇà
 			pstmt.execute();
@@ -162,7 +163,7 @@ public class UserDao {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		
-		String sql="select * from user where useR_id=? and user_pw=?";
+		String sql="select * from user where user_id=? and user_pw=?";
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
@@ -217,6 +218,7 @@ public class UserDao {
 				dto.setUser_name(rs.getString("user_name"));
 				dto.setUser_hp(rs.getString("user_hp"));
 				dto.setUser_addr(rs.getString("user_addr"));
+				dto.setUser_point(rs.getInt("user_point"));
 				dto.setUser_joinday(rs.getTimestamp("user_joinday"));
 				dto.setIs_admin(rs.getString("is_admin"));
 			}

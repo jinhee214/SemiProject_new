@@ -23,59 +23,53 @@
 	<%
 		//세션으로 아이디를 얻는다
 			String myid=(String)session.getAttribute("myid");
-			
+
 			//db로부터 아이디에 해당하는 이름을 얻는다.
 			UserDao dao=new UserDao();
-			String name=dao.getName(myid);
-			
-		%>
+			UserDto dto=dao.getUser(myid);
+			SimpleDateFormat sdf=new SimpleDateFormat("yyyy년 MM월 dd일");
+	
+	%>
 	<br><br>
-	<b><%=name %>님이 로그인 하셨습니다.</b><br><br><br>
 	<table class="table table-bordered" style="width: 800px;">
-	<caption><b>전체 회원 목록</b></caption>
+	<caption><b><%=dto.getUser_name() %>님 회원 정보</b></caption>
 	<tr>
 		<th width="100"  bgcolor="skyblue">아이디</th>
-			<td>아이디</td>
+			<td><%=dto.getUser_id()%></td>
 	</tr>
 
 	<tr>
 		<th width="100"  bgcolor="skyblue">이름</th>
-			<td><%=name %></td>
+			<td><%=dto.getUser_name()%></td>
 	</tr>
 	
-		<tr>
+	<tr>
 		<th width="100"  bgcolor="skyblue">전화번호</th>
-			<td>전화번호</td>
+			<td><%=dto.getUser_hp()%></td>
 	</tr>
 	
-		<tr>
+	<tr>
 		<th width="100"  bgcolor="skyblue">주소</th>
-			<td>주소</td>
+			<td><%=dto.getUser_addr()%></td>
 	</tr>
 	
-		<tr>
+	<tr>
 		<th width="100"  bgcolor="skyblue">가입일자</th>
-			<td>가입일자</td>
+			<td><%=sdf.format(dto.getUser_joinday())%></td>
+	</tr>
+	
+	<tr>
+		<th width="100"  bgcolor="skyblue">포인트</th>
+			<td><%=dto.getUser_point()%> pt</td>
 	</tr>
 
 </table>
 
-<%
-//전체 멤버정보 가져오기
-
-	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-	int no=1;
-%>
-
 	
 	<button type="button" class="btn btn-info" style="width:100px;" 
-	onclick="location.href='index.jsp?main=user/updatecheckpass.jsp?id=<%=myid%>'">회원정보</button>
+	onclick="location.href='index.jsp?main=user/updatecheckpass.jsp?id=<%=myid%>'">정보수정</button>
 	<br><br>
-	
-	<button type="button" class="btn btn-danger" style="width:100px;"
-	onclick="location.href='login/logoutaction.jsp'">로그아웃</button>
-	<br><br>
-	
+
 	<button type="button" class="btn btn-danger btn-xs" style="width:50px;"
 	onclick="delfunc(<%=myid%>)">탈퇴</button>	
 	

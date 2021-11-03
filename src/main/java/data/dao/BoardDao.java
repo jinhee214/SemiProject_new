@@ -220,5 +220,26 @@ public class BoardDao {
 			
 			return dto;
 		}
+		
+		//게시글 삭제
+		public void deleteBoard(String boardId) {
+			
+			Connection conn = db.getConnection();
+			Statement stmt = null;
+			
+			String sql = "delete from board where board_id="+boardId;
+			
+			try {
+				stmt = conn.createStatement();
+				stmt.execute(sql);
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				db.dbClose(stmt, conn);
+			}
+			
+		}
 	
 }

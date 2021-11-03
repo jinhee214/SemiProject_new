@@ -1,5 +1,4 @@
-<%@page import="data.dto.UserDto"%>
-<%@page import="data.dao.UserDao"%>
+<%@page import="data.dao.BoardDao"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -12,13 +11,19 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 </head>
-<%
-String root = request.getContextPath();
-%>
 <body>
+<%
 
-<a href="<%=root%>/index.jsp">
-<h2>Apple Store</h2></a>
+//게시글 id를 받아서 삭제
+String boardId = request.getParameter("boardId");
+
+BoardDao dao = new BoardDao();
+dao.deleteBoard(boardId);
+
+//게시판으로 이동
+response.sendRedirect("../index.jsp?main=qna/board.jsp");
+
+%>
 
 </body>
 </html>

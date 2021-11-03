@@ -40,7 +40,7 @@ String root = request.getContextPath();
 <li><a href="<%=root %>/index.jsp?main=product/iPhonelist.jsp">iPhone</a></li>
 <li><a href="<%=root %>/index.jsp?main=product/accessorylist.jsp">액세서리</a></li>
 <li><a href="<%=root %>/index.jsp?main=qna/board.jsp">고객지원</a></li>
-<li><a href="<%=root %>/index.jsp?main=">개인정보</a></li>
+<li><a href="<%=root %>/index.jsp?main=login/loginmain.jsp">개인정보</a></li>
 </ul>
 </div>
 

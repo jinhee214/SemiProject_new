@@ -50,5 +50,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 		  </td>
 	</tr>
 </table>
+ <button type="button" class="btn btn-info btn-sm" onclick="#"
+    style="margin-left: 800px;">버튼1</button>
 </body>
 </html>
