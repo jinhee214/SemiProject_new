@@ -117,4 +117,28 @@ public class CartDao {
 			db.dbClose(pstmt, conn);
 		}
 	}
+
+	// 장바구니 제품 총액 구하기
+	public int totalCart() {
+		int total = 0;
+		Connection conn = db.getConnection();
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		String sql = "select sum(price*cnt) from cart";
+
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+
+			if (rs.next())
+				total = rs.getInt(1);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, stmt, conn);
+		}
+		return total;
+	}
 }
