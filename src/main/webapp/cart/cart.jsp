@@ -77,10 +77,11 @@ $(function() {
 <%
 //로그인 상태 확인 후 장바구니 페이지 나타내기 위해 loginok 만듦
 String loginok = (String) session.getAttribute("loginok");
+String user_id = (String) session.getAttribute("myid");
 
 //CartDto에서 장바구니 리스트 출력하는 메소드 호출
 CartDao dao = new CartDao();
-List<CartDto> list = dao.readCart();
+List<CartDto> list = dao.readCart(user_id);
 
 //ProductDao 선언. product_id로 제품이미지와 제품명 받아오기 위해
 ProductDao pdao = new ProductDao();
@@ -91,9 +92,9 @@ ProductDao pdao = new ProductDao();
 	if (loginok == null) {
 	%>
 	<div>
-		로그인이 필요한 서비스입니다.
-		<button onclick="#">로그인</button>
-		<button onclick="#">홈으로 돌아가기</button>
+		로그인이 필요한 서비스입니다. <br> <br>
+		<button onclick="location.href='index.jsp?main=login/loginform.jsp'">로그인</button>
+		<button onclick="location.href='index.jsp'">홈으로 돌아가기</button>
 	</div>
 	<%
 	
@@ -103,7 +104,7 @@ ProductDao pdao = new ProductDao();
 	<form action="cartToOrderAction.jsp" method="post" class="">
 		<div>
 			<h2>
-				장바구니에 들어있는 제품입니다. <font id="totalCart"></font>
+				(아이디: <%=user_id%>)장바구니에 들어있는 제품입니다. <font id="totalCart"></font>
 			</h2>
 		</div>
 		<table class="table" style="width: 650px;">
@@ -117,7 +118,7 @@ ProductDao pdao = new ProductDao();
 					<a href="#"><img src="AppleProduct_img/<%=pdao.getProductPhoto(dto.getProduct_id())%>"></a>
 				</td>
 				<td id="name"><a href="#"><%=pdao.getProductName(dto.getProduct_id())%>
-				<span id="color">(색상: <%=dto.getColor()%>)</span></a>
+				<span id="color">(색상: <%=dto.getColor()%>) (아이디: <%=dto.getUser_id()%>)</span></a>
 				</td>
 				<td><span><%=dto.getCnt()%></span>&nbsp;
 					<select name="cnt">
