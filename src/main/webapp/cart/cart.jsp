@@ -17,7 +17,7 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+<!-- 11/03 3:24 -->
 <title>Insert title here</title>
 <style type="text/css">
 ol li {
@@ -41,7 +41,7 @@ $(function() {
 		$.ajax({
 			type : "get",
 			dataType : "html",
-			url : "updateCart.jsp",
+			url : "cart/updateCart.jsp",
 			data : {"cnt" : cnt, "product_id" : product_id},
 			success : function(data) {
 				selectTag.prev().text(cnt);
@@ -61,7 +61,7 @@ $(function() {
 		$.ajax({
 			type : "get",
 			dataType : "html",
-			url : "deleteCart.jsp",
+			url : "cart/deleteCart.jsp",
 			data : {"product_id" : product_id},
 			success : function() {
 				//새로고침
@@ -88,7 +88,7 @@ ProductDao pdao = new ProductDao();
 <body>
 	<%
 	//로그인 안되어 있을 경우 '로그인','홈으로 돌아가기' 버튼만 보임
-	if (loginok != null) { //로그인 파트 완성되면 != > == 로 바꾸기
+	if (loginok == null) {
 	%>
 	<div>
 		로그인이 필요한 서비스입니다.
@@ -114,7 +114,7 @@ ProductDao pdao = new ProductDao();
 			<tr>
 				<!-- 제품사진 -->
 				<td rowspan="2">
-					<a href="#"><img src="../AppleProduct_img/<%=pdao.getProductPhoto(dto.getProduct_id())%>"></a>
+					<a href="#"><img src="AppleProduct_img/<%=pdao.getProductPhoto(dto.getProduct_id())%>"></a>
 				</td>
 				<td id="name"><a href="#"><%=pdao.getProductName(dto.getProduct_id())%>
 				<span id="color">(색상: <%=dto.getColor()%>)</span></a>
