@@ -12,8 +12,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+
+//결제완료 db에저장
+
+//주문번호 제품번호 상세정보 detail db에 저장
 
 
+
+%>
 
 
 </body>
