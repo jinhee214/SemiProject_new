@@ -20,7 +20,5 @@ String root = request.getContextPath();
 <a href="<%=root%>/index.jsp">
 <h2>Apple Store</h2></a>
 
-
-
 </body>
 </html>

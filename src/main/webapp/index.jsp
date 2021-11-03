@@ -22,6 +22,14 @@ font-size: 30pt;
 font-family: "바탕체";
 text-align: center;
 }
+
+.login{
+width:100%;
+line-height:80px;
+text-align: center;
+top:50px;
+}
+
 .menu{
 width:100%;
 height:80px;
@@ -70,10 +78,6 @@ if(request.getParameter("main")!=null){
 <jsp:include page="layout/title.jsp"></jsp:include>
 </div>
 
-<div class="layout title"> <!-- 로그인메뉴 -->
-<jsp:include page="layout/loginmenu.jsp"></jsp:include>
-</div>
-
 <div class="layout menu">
 <jsp:include page="layout/menu.jsp"></jsp:include>
 </div>
@@ -82,9 +86,14 @@ if(request.getParameter("main")!=null){
 <jsp:include page="layout/info.jsp"></jsp:include>
 </div>
 
+<div class="layout login"> <!-- 로그인메뉴 -->
+<jsp:include page="layout/loginmenu.jsp"></jsp:include>
+</div>
+
 <div class="layout main">
 <jsp:include page="<%=mainPage %>"></jsp:include>
 </div>
+
 
 </body>
 </html>
