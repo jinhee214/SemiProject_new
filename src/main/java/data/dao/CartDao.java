@@ -12,7 +12,7 @@ import data.dto.CartDto;
 import mysql.db.DbConnect;
 
 public class CartDao {
-
+//(아린 메모) 11/04 12:43
 	DbConnect db = new DbConnect();
 
 	// 장바구니에 담기1 - 사용자아이디&제품&제품색상&보험유무가 같은 제품이 장바구니에 이미 있을 경우 수량만 +1

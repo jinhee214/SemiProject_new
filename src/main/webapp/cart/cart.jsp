@@ -17,7 +17,7 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<!-- 11/03 3:24 -->
+<!-- (아린 메모) 11/04 12:43 -->
 <title>Insert title here</title>
 <style type="text/css">
 ol li {
