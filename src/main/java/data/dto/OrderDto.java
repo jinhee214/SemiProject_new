@@ -4,16 +4,16 @@ import java.sql.Timestamp;
 
 public class OrderDto {
 	
-	private String order_id;
+	private int order_id;
 	private String user_id;
 	private Timestamp order_date;
 	private String order_addr;
 	
 	
-	public String getOrder_id() {
+	public int getOrder_id() {
 		return order_id;
 	}
-	public void setOrder_id(String order_id) {
+	public void setOrder_id(int order_id) {
 		this.order_id = order_id;
 	}
 	public String getUser_id() {
