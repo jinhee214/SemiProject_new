@@ -1,3 +1,5 @@
+<%@page import="data.dto.UserDto"%>
+<%@page import="data.dao.UserDao"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -14,8 +16,11 @@
 String root = request.getContextPath();
 %>
 <body>
+
 <a href="<%=root%>/index.jsp">
-<h2>Apple Store</h2>
+<h2>Apple Store</h2></a>
+
+
 
 </body>
 </html>

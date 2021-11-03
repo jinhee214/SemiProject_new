@@ -70,6 +70,10 @@ if(request.getParameter("main")!=null){
 <jsp:include page="layout/title.jsp"></jsp:include>
 </div>
 
+<div class="layout title"> <!-- 로그인메뉴 -->
+<jsp:include page="layout/loginmenu.jsp"></jsp:include>
+</div>
+
 <div class="layout menu">
 <jsp:include page="layout/menu.jsp"></jsp:include>
 </div>

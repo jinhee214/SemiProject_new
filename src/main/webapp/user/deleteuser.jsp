@@ -27,7 +27,7 @@
     if(b)
     {
   	  dao.deleteUser(id);
-  	  response.sendRedirect("../index.jsp?main=login/loginmain.jsp");
+  	  response.sendRedirect("../index.jsp?main=user/deleteaction.jsp");
     }else
     {
   %>
