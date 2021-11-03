@@ -34,7 +34,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 </style>  
 <title>Apple Project</title>
 </head>
-<body>
+
 <body>
 
 <table class="maintb">
@@ -52,5 +52,6 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 		  </td>
 	</tr>
 </table> 
+
 </body>
 </html>
