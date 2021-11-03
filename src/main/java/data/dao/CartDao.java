@@ -12,10 +12,31 @@ import data.dto.CartDto;
 import mysql.db.DbConnect;
 
 public class CartDao {
-
+//(아린 메모) 11/04 12:43
 	DbConnect db = new DbConnect();
 
-	// 장바구니에 담기
+	// 장바구니에 담기1 - 사용자아이디&제품&제품색상&보험유무가 같은 제품이 장바구니에 이미 있을 경우 수량만 +1
+	public void updateCntCart(String user_id, int product_id, String color, String insurance) {
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+
+		String sql = "update cart set cnt=cnt+1 where user_id=? and product_id=? and color=? and insurance=?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			pstmt.setInt(2, product_id);
+			pstmt.setString(3, color);
+			pstmt.setString(4, insurance);
+			pstmt.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.dbClose(pstmt, conn);
+		}
+	}
+
+	// 장바구니에 담기2 - 기존에 장바구니에 없는 제품을 담을 때 cart db에 insert
 	public void insertCart(CartDto dto) {
 
 		Connection conn = db.getConnection();
@@ -43,7 +64,7 @@ public class CartDao {
 	}
 
 	// 장바구니 제품 목록 보여주기. (페이징 처리 안 함)
-	public List<CartDto> readCart() {
+	public List<CartDto> readCart(String user_id) {
 
 		List<CartDto> list = new Vector<CartDto>();
 
@@ -51,7 +72,7 @@ public class CartDao {
 		Statement stmt = null;
 		ResultSet rs = null;
 
-		String sql = "select * from cart order by cart_id";
+		String sql = "select * from cart where user_id = '" + user_id + "'";
 
 		try {
 			stmt = conn.createStatement();
@@ -141,4 +162,5 @@ public class CartDao {
 		}
 		return total;
 	}
+
 }
