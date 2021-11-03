@@ -23,7 +23,7 @@ if(saveok!=null)
 <div style="margin-left: 130px;">
   <form action="login/loginaction.jsp" method="post" class="form-inline">
     <table class="table table-bordered" style="width: 300px;">
-       <caption><b>세션 로그인</b></caption>
+       <caption><b>Apple ID 로그인</b></caption>
          <tr>
            <td colspan="2" align="center">
              <input type="checkbox" name="cbsave"
