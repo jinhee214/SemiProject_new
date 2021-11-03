@@ -51,7 +51,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 <div align="right">
 <!-- 관리자 이거나 해당 게시글 회원이면 삭제하기 버튼 보이게 하기 -->
 <%
-if(isAdmin || dto.getUserId()=="id"){							//수정 필요
+if(isAdmin || dto.getUserId().equals(id)){							//수정 필요
 	%>
 	<button type="button" class="btn btn-danger" onclick="location.href='qna/boardremove.jsp?boardId=<%=boardId%>'">삭제하기</button>
 	<%
