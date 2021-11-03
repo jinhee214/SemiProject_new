@@ -11,27 +11,32 @@
  <style type="text/css">
 select{
 	font-weight: bold;	
-} 
+}  
  
- </style>
+ </style>  
  
 <title>Insert title here</title>
 </head>
 <body> 
 <%
+request.setCharacterEncoding("utf-8");
 String root=request.getContextPath();
-String delckb=(request.getParameter("delckb")==null?null:"on");
+
+//userdao udao=new userdao(); 포인트얻기
 
 %>
+
 <!-- 결제 방법  -->
 <h3 style="margin-left: 400px;">결제</h3>
 <hr style="border:1px solid #e6eaee; width:1120px;">
 <br><br>
 
+
 <!-- 결제 종류  -->
 <h1 style="margin-left: 400px;"><b>어떻게 결제하시겠습니까?</b></h1>
 <br><br>
-<form action="orderinfoaction.jsp" method="post">
+
+<form action="orderform.jsp" method="post">
 <div style="margin-left: 400px; border: 2px solid #0080ff; border-radius: 15px; width: 600px; height: 90px;">
 
 <div class="form-group"> 
@@ -44,7 +49,7 @@ String delckb=(request.getParameter("delckb")==null?null:"on");
   </select>
 </div>
 
-<img src="<%=root %>/orderimg/info.PNG" style="position:absolute; top:250px; left: 1050px; max-width:400px;">
+<img src="<%=root %>/AppleProduct_img/order.PNG" style="position:absolute; top:250px; left: 1050px; max-width:400px;">
 </div>
 
 <!-- 포인트선택>포인트 표시 -->
@@ -55,19 +60,13 @@ String delckb=(request.getParameter("delckb")==null?null:"on");
 <br><br>
 
 <!-- 주소출력 -->
-<input type="checkbox" id="delckb" style="margin-left: 400px; margin-right: 5px;">내 배송 주소를 사용합니다
+<input type="checkbox" name="delckb" id="delckb" checked="checked" style="margin-left: 400px; margin-right: 5px;">내 배송 주소를 사용합니다
+
 <br><br>
 
-<% if(delckb==null)
-{%>
-<input type="text" name="abbr1" class="form-control" required="required" placeholder="시/도" style="width: 400px; margin-left: 400px;">
-<input type="text" name="abbr2" class="form-control" required="required" placeholder="상세주소" style="width: 400px;
- margin-left: 400px; margin-top: 10px;">	
-<%}else
-{%>
-	
-<%}
-%>	
+<input type="text" name="addr1" class="form-control" required="required" placeholder="시/도" style="width: 400px; margin-left: 400px;">
+<input type="text" name="addr2" class="form-control" required="required" placeholder="상세주소" style="width: 400px;
+ margin-left: 400px; margin-top: 10px;">
 
 <br><br><br>
 <hr style="border:1px solid #e6eaee; width:1120px;">
@@ -84,5 +83,7 @@ String delckb=(request.getParameter("delckb")==null?null:"on");
 
 
 </form>
+
+
 </body>
 </html>
