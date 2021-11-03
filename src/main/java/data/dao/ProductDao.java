@@ -74,7 +74,7 @@ public class ProductDao {
 
 			return list;
 		}
-		
+			
 		// product_id로 제품사진 가져오기
 		public String getProductPhoto(int product_id) {
 			String main_img = "";
