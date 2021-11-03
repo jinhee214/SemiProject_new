@@ -31,6 +31,7 @@ dto.setUser_pw(pass);
 dto.setUser_name(name);
 dto.setUser_hp(hp);
 dto.setUser_addr(addr);
+dto.setUser_point(5000000);
 
 //dao 선언 후 insert 호출
 UserDao dao=new UserDao();

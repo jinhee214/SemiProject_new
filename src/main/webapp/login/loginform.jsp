@@ -23,7 +23,7 @@ if(saveok!=null)
 <div style="margin-left: 130px;">
   <form action="login/loginaction.jsp" method="post" class="form-inline">
     <table class="table table-bordered" style="width: 300px;">
-       <caption><b>세션 로그인</b></caption>
+       <caption><b>Apple ID 로그인</b></caption>
          <tr>
            <td colspan="2" align="center">
              <input type="checkbox" name="cbsave"
@@ -31,14 +31,14 @@ if(saveok!=null)
            </td>
          </tr>
          <tr>
-           <th width="100" bgcolor="#fcc">아이디</th>
+           <th width="100" bordercolor="black">아이디</th>
            <td>
              <input type="text" name="id" class="form-control" autofocus="autofocus"
              required="required" style="width: 120px;" value="<%=myid%>">
            </td>
          </tr>
          <tr>
-           <th width="100" bgcolor="#fcc">비밀번호</th>
+           <th width="100" bordercolor="black">비밀번호</th>
            <td>
              <input type="password" name="pass" class="form-control" 
              required="required" style="width: 120px;">
@@ -46,8 +46,8 @@ if(saveok!=null)
          </tr>
          <tr>
            <td colspan="2" align="center">
-             <button type="submit" class="btn btn-success" style="width: 100px;">로그인</button>
-             <button type="button" class="btn btn-success" style="width: 100px;"
+             <button type="submit" class="btn btn-default" style="width: 100px;">로그인</button>
+             <button type="button" class="btn btn-info" style="width: 100px;"
 			 onclick="location.href='index.jsp?main=user/userform.jsp'">회원가입</button>
            </td>
          </tr>

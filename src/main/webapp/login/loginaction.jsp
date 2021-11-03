@@ -30,17 +30,16 @@ if(b){
 		아이디저장체크시  myid  로그인한아이디
 		체크값 saveok  yes
  */
-	session.setMaxInactiveInterval(20);
+//	session.setMaxInactiveInterval(100);
 	session.setAttribute("loginok", "yes");
 	session.setAttribute("myid", id);
 	session.setAttribute("saveok", cbsave==null?null:"yes");
-	
-	//로그인메인으로 이동
-	response.sendRedirect("../index.jsp?main=login/loginmain.jsp");
+		
+	response.sendRedirect("../index.jsp"); //로그인 완료되었으니 홈으로 이동시킴
 }else{
 %>
 	<script type="text/javascript">
-	  alert("아이디 또는 비밀번호가 맞지 않네요~~");
+	  alert("아이디 또는 비밀번호가 일치하지 않습니다.");
 	  history.back();
 	</script>
 <%}
