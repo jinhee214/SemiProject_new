@@ -22,6 +22,7 @@ padding: 20px 20px;
 </head>
 <body>
 
+<!-- 게시글 추가 폼 -->
 <div class="alert alert-info" align="center"><h3><b>상품 Q&A</b></h3></div>
 <form action="qna/boardaddaction.jsp" method="post">
 <table class="table">
@@ -39,13 +40,14 @@ padding: 20px 20px;
 </tr>
 <tr>
 <th>문의 제목</th>
-<td align="center"><input type="text" name="subject" style="width: 1000px;" class="form-control"></td>
+<td align="center"><input type="text" name="subject" style="width: 1000px;" class="form-control" required="required"></td>
 </tr>
 <tr>
 <td colspan="2"><textarea rows="10" cols="100" name="content" class="form-control" placeholder="문의하실 내용을 입력하세요"></textarea></td>
 </tr>
 </table>
 
+<!-- 버튼 구역 -->
 <table class="table">
 <tr >
 <td><input type="button" value="취소" class="btn btn-default btn-block" onclick="history.back()"></td>
@@ -53,6 +55,8 @@ padding: 20px 20px;
 </tr>
 </table>
 </form>
+
+<!-- 안내사항 구역 -->
 <p><span class="glyphicon glyphicon-alert"></span> 문의하신 내용에 대한 답변은 <a href="index.jsp?main=qna/board.jsp" style="text-decoration: underline;">'메뉴 > 고객지원'</a>에서 확인하실 수 있습니다.</p>
 <div class="notice">
 상품 Q&A는 상품 및 상품 구매 과정에 대해 판매자에게 문의하는 게시판 입니다.<br><br>

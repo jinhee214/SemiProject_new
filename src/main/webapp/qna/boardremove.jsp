@@ -1,4 +1,4 @@
-<%@page import="data.dao.CommentDao"%>
+<%@page import="data.dao.BoardDao"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -14,16 +14,16 @@
 <body>
 <%
 
-//댓글 id를 받아서 삭제
-String commentId = request.getParameter("commentId");
+//게시글 id를 받아서 삭제
 String boardId = request.getParameter("boardId");
 
-CommentDao dao = new CommentDao();
-dao.deleteComment(commentId);
+BoardDao dao = new BoardDao();
+dao.deleteBoard(boardId);
 
-//해당 게시글을 다시 보여주기
-response.sendRedirect("../index.jsp?main=qna/boarddetail.jsp?boardId="+boardId);
+//게시판으로 이동
+response.sendRedirect("../index.jsp?main=qna/board.jsp");
 
 %>
+
 </body>
 </html>
