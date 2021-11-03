@@ -48,7 +48,7 @@ public class CommentDao {
 		Statement stmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select user_id, content, writeday from comment where board_id="+boardId+" order by comment_id";
+		String sql = "select * from comment where board_id="+boardId+" order by comment_id desc";
 		
 		try {
 			stmt = conn.createStatement();
@@ -56,10 +56,11 @@ public class CommentDao {
 			
 			while(rs.next()) {
 				CommentDto dto = new CommentDto();
-				
-				dto.setUserId(rs.getString(1));
-				dto.setContent(rs.getString(2));
-				dto.setWriteday(rs.getTimestamp(3));
+				dto.setCommentId(rs.getInt("comment_id"));
+				dto.setBoardId(rs.getInt("board_id"));
+				dto.setUserId(rs.getString("user_id"));
+				dto.setContent(rs.getString("content"));
+				dto.setWriteday(rs.getTimestamp("writeday"));
 				
 				list.add(dto);
 				
@@ -73,4 +74,26 @@ public class CommentDao {
 		
 		return list;		
 	}
+	
+	//¥Ò±€ ªË¡¶
+	public void deleteComment(String commentId) {
+		
+		Connection conn = db.getConnection();
+		Statement stmt = null;
+		
+		String sql = "delete from comment where comment_id="+commentId;
+		
+		try {
+			stmt = conn.createStatement();
+			stmt.execute(sql);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(stmt, conn);
+		}
+		
+	}
+	
 }
