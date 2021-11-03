@@ -23,7 +23,7 @@
 //선택한 게시글 id
 int boardId = Integer.parseInt(request.getParameter("boardId"));
 //현재 로그인 한 id
-//String id = (String)session.getAttribute("myid");		// 수정 필요
+String id = (String)session.getAttribute("myid");		// 수정 필요
 
 BoardDao dao = new BoardDao();
 BoardDto dto = dao.getOneBoard(boardId);
@@ -34,7 +34,7 @@ category = category.equals("etc")?"기타문의":category;
 
 //로그인 한 계정이 관리자 인지
 UserDao uDao = new UserDao();
-String answer = uDao.getUser("admin").getIs_admin();				//수정 필요
+String answer = uDao.getUser(id).getIs_admin();				//수정 필요
 boolean isAdmin = answer.equalsIgnoreCase("Y")? true:false;
 
 //해당 게시글 댓글 얻기
@@ -112,7 +112,13 @@ if(list != null){
 		<div style="margin: 20px 100px; width: 1000px;">
 		<div><span class="glyphicon glyphicon-user"></span> <%=uDao.getName(cDto.getUserId())%>&nbsp;&nbsp;&nbsp;
 		<span style="font-size: 10pt;"><%=sdf.format(cDto.getWriteday()) %></span>
-		 <a style="text-decoration: none" href="qna/commentremove.jsp?commentId=<%=cDto.getCommentId() %>&boardId=<%=boardId%>"><span class="glyphicon glyphicon-remove"></span></a>
+		<%
+		 if(isAdmin || dto.getUserId()=="id"){
+		%> 
+		<a style="text-decoration: none" href="qna/commentremove.jsp?commentId=<%=cDto.getCommentId() %>&boardId=<%=boardId%>"><span class="glyphicon glyphicon-remove"></span></a>
+		<%
+		}
+		%>
 		</div>
 	
 		<div><%=cDto.getContent().replace("\n", "<br>") %></div>

@@ -17,8 +17,8 @@
 request.setCharacterEncoding("utf-8");
 
 //board에 적은 데이터 가져오기 (userid, 카테고리, 제목, 내용)
-//String id = (String)session.getAttribute("myid");			//수정 필요
-String id = "admin";										//수정 필요
+String id = (String)session.getAttribute("myid");			//수정 필요
+//String id = "admin";										//수정 필요
 int category = Integer.parseInt(request.getParameter("category"));
 String subject = request.getParameter("subject");
 String content = request.getParameter("content");
