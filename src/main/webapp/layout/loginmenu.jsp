@@ -35,7 +35,7 @@ if(loginok==null){
 <%}
 
 else{%>
-	<b style="font-size:10pt;">Apple ID:<%=dto.getUser_id() %>님 / Point:<%=dto.getUser_point() %>pt </b>
+	<b style="font-size:10pt;"><%=dto.getUser_name() %>님 환영합니다. / Point:<%=dto.getUser_point() %>pt </b>
 	<button type="button" class="btn btn-danger btn-sm"
 	style="width:100px;" 
 	onclick="location.href='login/logoutaction.jsp'">로그아웃</button>
