@@ -60,7 +60,7 @@ $(function() {
 				cntXprice.text("￦"+numberFormat(productPrice*cnt));
 				location.reload();
 				
-				console.log(cnt+", "+user_id+", "+product_id+", "+color+", "+insurance); //콘솔에 출력해서 확인
+				alert("cnt:"+cnt+", user_id:"+user_id+", product_id"+product_id+", color:"+color+", insurance:"+insurance); //콘솔에 출력해서 확인
 				//console.log("product_id: "+product_id+" / cnt: "+cnt+" / productPrice: "+productPrice); //콘솔에 출력해서 확인
 			}
 		});
@@ -81,7 +81,7 @@ $(function() {
 			data : {"user_id" : user_id, "product_id" : product_id,
 				"color" : color, "insurance" : insurance},
 			success : function() {
-				console.log(user_id+", "+product_id+", "+color+", "+insurance); //콘솔에 출력해서 확인
+				alert("user_id:"+user_id+", product_id"+product_id+", color:"+color+", insurance:"+insurance); //콘솔에 출력해서 확인
 				//새로고침
 				location.reload();
 			}
@@ -137,10 +137,11 @@ DecimalFormat df = new DecimalFormat("###,###");
 					<a href="index.jsp?main=product/#.jsp"><img src="AppleProduct_img/<%=pdao.getProductPhoto(dto.getProduct_id())%>"></a>
 				</td>
 				<td id="name"><a href="index.jsp?main=product/#.jsp"><%=pdao.getProductName(dto.getProduct_id())%>
-				<span id="color">(색상: <%=dto.getColor()%>) <i style="font-size: 4pt;">(product_id(삭제예정): <%=dto.getProduct_id()%>)</i></span></a>
+				<span id="color">(색상: <%=dto.getColor()%>) <i style="font-size: 2pt;">(product_id(삭제예정): <%=dto.getProduct_id()%>)</i></span></a>
 				</td>
-				<td><span><%=dto.getCnt()%></span>&nbsp;
+				<td><span><%=dto.getCnt()%></span>
 					<select name="cnt" user_id="<%=user_id%>" color="<%=dto.getColor()%>" insurance="<%=dto.getInsurance()%>">
+						<option value="" selected disabled hidden></option>
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
