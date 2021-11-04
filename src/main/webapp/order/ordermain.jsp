@@ -12,12 +12,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+String loginok=(String)session.getAttribute("loginok");
 
+if(loginok!=null)
+{%>
  <jsp:include page="orderinfoform.jsp"/>
 
-<!--  -->
-
-
+<%}
+%>
 
 </body>
 </html>

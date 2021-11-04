@@ -12,6 +12,7 @@ public class orderDao {
 	
 	DbConnect db=new DbConnect();
 	
+	//주문번호로 결제목록 가져오기
 	public OrderDto getOder(String order_id)
 	{
 		OrderDto dto=new OrderDto();
@@ -44,6 +45,30 @@ public class orderDao {
 			db.dbClose(rs, pstmt, conn);
 		}				
 		return dto;
+	}
+	
+	//결제목록 추가
+	public void insertOrder(OrderDto dto)
+	{
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		
+		String sql="insert into orders values(null,?,now(),?)";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getUser_id());
+			pstmt.setString(2, dto.getOrder_addr());
+			
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
 	}
 	
 	

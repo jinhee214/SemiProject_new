@@ -1,3 +1,5 @@
+<%@page import="data.dto.UserDto"%>
+<%@page import="data.dao.UserDao"%>
 <%@page import="data.dao.ProductDao"%>
 <%@page import="data.dto.CartDto"%>
 <%@page import="java.util.List"%>
@@ -31,10 +33,25 @@ String root=request.getContextPath();
 String paysel=request.getParameter("paysel");
 String addr1=request.getParameter("addr1");
 String addr2=request.getParameter("addr2");
+
+String myid=(String)session.getAttribute("myid");
+
+String delckb=request.getParameter("delckb");
+//System.out.println(delckb);
+
+UserDao udao=new UserDao();
+UserDto udto=udao.getUser(myid);
+String User_addr=udto.getUser_addr();
+
+String []tokens=User_addr.split(" ");
+
+
+String addr=request.getParameter("addr1")+"-"+request.getParameter("addr2");
+
 /* 장바구니에서 제품 정보 리스트로 받아오기  */
 CartDao cdao=new CartDao();
 
-List<CartDto>clist=cdao.readCart();
+List<CartDto>clist=cdao.readCart(myid);
 
 //필요한 값 구매날짜 이미지이름(dao생성) 수량 주소 회원정보 
 //유저dao
@@ -44,11 +61,13 @@ List<data.dto.ProductDto>plist=pdao.getAllMembers();
 
 /* 총 결제금액 구하기 */
 int total=0;
+int vat=0;
 for(CartDto cdto:clist)
 {	
 	int cnt=cdto.getCnt();
 	int price=cdto.getPrice();
 	total+=cnt*price;	
+	vat=total/11;
 }
 //System.out.println(total);
 
@@ -59,6 +78,9 @@ for(CartDto cdto:clist)
 <br><br>
 
 <form action="orderaction.jsp" method="post">
+
+<input type="hidden" name="addr"  value="<%=addr%>">
+
 <h2 style="margin-left: 400px; font-weight: bold;">주문하시겠습니까?<br>
 입력하신 사항이 모두 정확한지 확인해주십시오.
 </h2>
@@ -94,8 +116,21 @@ for(CartDto cdto:clist)
 <b style="margin-left: 100px; float: left;">배송지:
 <br>
 <span>이름<br>
-<%=addr1%><br>
-<%=addr2%>
+<%
+if(delckb==null)
+{%>
+	<%=addr1 %><br>
+	<%=addr2 %>
+	
+<%}else
+{	
+	for(int i=0;i<tokens.length;i++){%>
+		<%=tokens[i] %><br>
+	<%}	
+}	
+%>
+
+
 </span></b>
 <b style="margin-left: 100px; float: left;">결제방법:
 <br>
@@ -130,6 +165,7 @@ for(CartDto cdto:clist)
 
 <b style="color:black; margin-left: 730px; font-weight: bold; font-size: 1.5em;">총계</b>
 <b style="color:black; margin-left: 240px; font-weight: bold; font-size: 1.5em;">￦<%=total %></b>
+<b style="font-size: 0.9em; margin-left: 1000px;">￦<%=vat %>의 VAT 포함</b>
 <br><br>
 <button type="submit" style="margin-left: 740px; width: 400px; height: 50px; border-radius: 15px; background-color: #0080ff;"
  class="btn btn-primary" >결제 하기</button>

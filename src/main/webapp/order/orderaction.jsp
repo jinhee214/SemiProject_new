@@ -1,3 +1,5 @@
+<%@page import="data.dao.orderDao"%>
+<%@page import="data.dto.OrderDto"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -13,13 +15,24 @@
 </head>
 <body>
 <%
+String id=(String)session.getAttribute("myid");
+String addr=request.getParameter("addr");
 
+
+//유저아이디 구매날짜 주소
 //결제완료 db에저장
+OrderDto odto=new OrderDto();
+odto.setUser_id(id);
+odto.setOrder_addr(addr);
+
+//System.out.println(addr);
+//System.out.println(id);
 
 //주문번호 제품번호 상세정보 detail db에 저장
+//orderDao odao=new orderDao();
+//odao.insertOrder(odto);
 
-
-
+response.sendRedirect("../index.jsp?main=order/ordersuccform.jsp");
 %>
 
 
