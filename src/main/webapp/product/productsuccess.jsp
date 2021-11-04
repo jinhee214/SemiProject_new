@@ -15,11 +15,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<%
-
-%>
-
 <b>상품이 담겼습니다</b>
 <button type="button" class="#" onclick="location.href='index.jsp?main=cart/cart.jsp'">장바구니 보기</button>
 <button type="button" class="#" onclick="location.href='index.jsp'">계속 쇼핑하기</button>

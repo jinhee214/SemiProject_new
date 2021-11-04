@@ -25,17 +25,19 @@ dao.getUser(user_id);
 
 %>
 	<form action="product/macadd.jsp" method="post">
-	테스트페이지!!!! <br>
+	상품담기 <br>
 		<select name="product_id">
-			<option value="12321" selected="selected">iMac</option>
-			<option value="22324">MacBook_Pro</option>
-			<option value="32326">MacBook_Air</option>
-		</select> cnt <input type="text" name="cnt"> <select name="color">
-			<option value="실버" selected="selected">실버</option>
-			<option value="골드">골드</option>
-			<option value="그레이">그레이</option>
-		</select> <input type="radio" name="insurance" value="Y">Y <input
-			type="radio" name="insurance" value="N" checked="checked">N
+			<option value="12321" selected="selected">iMacM1</option>
+			<option value="12325" selected="selected">iMacM2</option>
+			</select> <br>
+			수량 <input type="text" name="cnt"> 
+			<select name="color">
+				<option value="실버" selected="selected">실버</option>
+				<option value="골드">골드</option>
+				<option value="그레이">그레이</option>
+			</select> 
+			<input type="radio" name="insurance" value="Y">Y 
+			<input type="radio" name="insurance" value="N" checked="checked">N
 		
 		<!-- hidden -->	
 		<input type="hidden" value="<%=user_id %>" name="user_id">
