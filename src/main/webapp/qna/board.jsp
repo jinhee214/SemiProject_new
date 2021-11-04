@@ -49,6 +49,9 @@ function sendMyBoard(){
 </script>
 
 <%
+
+//로그인 상태 확인
+String loginok = (String)session.getAttribute("loginok");
 //현재 로그인 한 id
 String id = (String)session.getAttribute("myid");
 
@@ -135,8 +138,8 @@ for(int i = 0; i < category.length; i++){
 
 <!-- 게시글 추가 -->
 <%
-//회원이 아닐 때는 내 게시글 확인 부분 없으며, 게시글을 쓰지 못하게
-if(id != null){
+//로그인을 안 했을시 내 게시글 확인 부분 없으며, 게시글을 쓰지 못하게
+if(loginok != null){
 %>
 	<button type="button" onclick="sendMyBoard()" id="selMyBoard" class="btn btn-default" name="<%=id%>"><%=btnName %></button>
 	<button class="btn btn-info" onclick="location.href='index.jsp?main=qna/boardaddform.jsp'">질문하기</button>

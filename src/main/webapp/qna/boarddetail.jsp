@@ -18,16 +18,39 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
+
+/* 댓글 삭제 이벤트 */
+function removeComment(remove){
+	var commentId=$(remove).attr("commentId");
+	$.ajax({
+		type:"get",
+		dataType:"html",
+		url:"qna/commentremove.jsp",
+		data:{"commentId":commentId},
+		success:function(){
+			//새로고침
+			location.reload();
+		}
+	});
+}
+
+
 </script>
 <%
+
 //선택한 게시글 id
 int boardId = Integer.parseInt(request.getParameter("boardId"));
+
+//로그인 상태 확인
+String loginok = (String)session.getAttribute("loginok");
 //현재 로그인 한 id
 String id = (String)session.getAttribute("myid");
 
+
 //로그인 한 계정이 관리자 인지(로그인 안했을 경우도 N)
 UserDao uDao = new UserDao();
-String answer = (id==null)?"N":uDao.getUser(id).getIs_admin();	
+String answer = (loginok==null)?"N":uDao.getUser(id).getIs_admin();	
+
 boolean isAdmin = answer.equalsIgnoreCase("Y")? true:false;
 
 BoardDao dao = new BoardDao();
@@ -53,10 +76,12 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 <div align="right">
 <!-- 관리자 이거나 해당 게시글 회원이면 삭제하기 버튼 보이게 하기 -->
 <%
-if(isAdmin || dto.getUserId().equals(id)){							//수정 필요
-	%>
-	<button type="button" class="btn btn-danger" onclick="location.href='qna/boardremove.jsp?boardId=<%=boardId%>'">삭제하기</button>
-	<%
+if(loginok != null){
+	if(isAdmin || dto.getUserId().equals(id)){							//수정 필요
+		%>
+		<button type="button" class="btn btn-danger" onclick="location.href='qna/boardremove.jsp?boardId=<%=boardId%>'">삭제하기</button>
+		<%
+	}
 }
 %>
 <button type="button" class="btn btn-default" onclick="location.href='index.jsp?main=qna/board.jsp'">뒤로가기</button>
@@ -117,7 +142,7 @@ if(list != null){
 		<%
 		 if(isAdmin){
 		%> 
-		<a style="text-decoration: none" href="qna/commentremove.jsp?commentId=<%=cDto.getCommentId() %>&boardId=<%=boardId%>"><span class="glyphicon glyphicon-remove"></span></a>
+		<a style="text-decoration: none" onclick="removeComment(this)" commentId="<%=cDto.getCommentId() %>"><span class="glyphicon glyphicon-remove"></span></a>
 		<%
 		}
 		%>
