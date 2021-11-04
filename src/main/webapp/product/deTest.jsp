@@ -1,3 +1,7 @@
+<%@page import="data.dao.ProductDao"%>
+<%@page import="data.dao.UserDao"%>
+<%@page import="data.dto.ProductDto"%>
+<%@page import="data.dto.UserDto"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -12,6 +16,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+String user_id = (String) session.getAttribute("myid");
+
+UserDto dto=new UserDto();
+UserDao dao=new UserDao();
+dao.getUser(user_id);
+
+%>
 	<form action="product/macadd.jsp" method="post">
 	테스트페이지!!!! <br>
 		<select name="product_id">
@@ -24,9 +36,10 @@
 			<option value="그레이">그레이</option>
 		</select> <input type="radio" name="insurance" value="Y">Y <input
 			type="radio" name="insurance" value="N" checked="checked">N
-			
-		<input type="hidden" value="17elarg" name="user_id"> <!-- 임의value -->
-		<input type="hidden" value="10" name="price"> <!-- 임의value -->
+		
+		<!-- hidden -->	
+		<input type="hidden" value="<%=user_id %>" name="user_id">
+		<input type="hidden" value="1690000" name="price">
 
 		<button type="submit">장바구니담기</button>
 	</form>

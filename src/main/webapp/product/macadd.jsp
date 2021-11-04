@@ -19,6 +19,9 @@
 <%
 request.setCharacterEncoding("utf-8");
 
+String loginok = (String) session.getAttribute("loginok");
+String user_id = (String) session.getAttribute("myid");
+
 //데이터 읽어서 dto에 넣기
 CartDto dto = new CartDto();
 dto.setProduct_id(Integer.parseInt(request.getParameter("product_id")));
@@ -36,7 +39,7 @@ if(dao.checkCart(dto)){
 	dao.insertCart(dto);
 }
 
-//gaipsuccess로 이동
+//success로 이동
 response.sendRedirect("../index.jsp?main=product/productsuccess.jsp");
 %>
 </body>
