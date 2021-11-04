@@ -28,7 +28,7 @@ if(key==null){
 	        <td>        
 	          <b>아이디를 입력해 주세요(영문,숫자)</b><br>
 	          <input type="text" name="id" class="form-control" style="width: 100px;"
-	          autofocus="autofocus" required="required" maxlength="8" id="userid"><br>
+	          autofocus="autofocus" required="required" maxlength="8"><br>
 	         
 	          <button type="submit" class="btn btn-info btn-sm">중복체크</button>
 	        </td>
@@ -68,11 +68,6 @@ if(key==null){
 %>
 <script type="text/javascript">
 
-	document.getElementById("userid").onkeyup = function(e){
-	  var v = this.value;
-	  this.value = v.replace(/[^a-z0-9]/gi, '');
-	}
-	
 	
   $("#btnuse").click(function(){
 	  
