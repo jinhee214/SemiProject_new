@@ -51,13 +51,13 @@ String []tokens=User_addr.split(" ");
 <h1 style="margin-left: 400px;"><b>어떻게 결제하시겠습니까?</b></h1>
 <br><br>
 
-<form action="orderform.jsp" method="post">
+<form action="<%=root %>/index.jsp?main=order/orderform.jsp" method="post">
 <div style="margin-left: 400px; border: 2px solid #0080ff; border-radius: 15px; width: 600px; height: 90px;">
 
 <div class="form-group"> 
   <select  class="form-control" name="paysel" style="width:593.9px; height: 84.2px; border:0px; border-radius:10px; 
   margin-left: 0.7px; margin-top:0.4px; font-size: 1.3em;">
-    <option selected="selected" value="결제 포인트" >포인트</option>
+    <option selected="selected" value="결제 포인트" >결제 포인트</option>
     <option value="신용 카드 또는 직불 카드">신용 카드 또는 직불 카드</option>
     <option value="카카오 페이" >카카오 페이</option>
     <option value="토스" >토스</option>  
