@@ -104,7 +104,7 @@ ProductDao pdao = new ProductDao();
 	<form action="cartToOrderAction.jsp" method="post" class="">
 		<div>
 			<h2>
-				(아이디: <%=user_id%>)장바구니에 들어있는 제품입니다. <font id="totalCart"></font>
+				장바구니에 들어있는 제품입니다. <font id="totalCart"></font>
 			</h2>
 		</div>
 		<table class="table" style="width: 650px;">
@@ -118,7 +118,7 @@ ProductDao pdao = new ProductDao();
 					<a href="#"><img src="AppleProduct_img/<%=pdao.getProductPhoto(dto.getProduct_id())%>"></a>
 				</td>
 				<td id="name"><a href="#"><%=pdao.getProductName(dto.getProduct_id())%>
-				<span id="color">(색상: <%=dto.getColor()%>) (아이디: <%=dto.getUser_id()%>)</span></a>
+				<span id="color">(색상: <%=dto.getColor()%>)</span></a>
 				</td>
 				<td><span><%=dto.getCnt()%></span>&nbsp;
 					<select name="cnt">

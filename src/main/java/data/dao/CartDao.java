@@ -14,9 +14,41 @@ import mysql.db.DbConnect;
 public class CartDao {
 //(아린 메모) 11/04 12:43
 	DbConnect db = new DbConnect();
+	
+	// 장바구니 담을 때 사용자아이디&제품&제품색상&보험유무가 같은 제품이 장바구니에 이미 있는지 확인
+	public boolean checkCart(CartDto dto) {
+		
+		boolean b =false;
+
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "select * from cart where user_id=? and product_id=? and color=? and insurance=?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getUser_id());
+			pstmt.setInt(2, dto.getProduct_id());
+			pstmt.setString(3, dto.getColor());
+			pstmt.setString(4, dto.getInsurance());
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				b = true;
+			}			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return b;
+	}
 
 	// 장바구니에 담기1 - 사용자아이디&제품&제품색상&보험유무가 같은 제품이 장바구니에 이미 있을 경우 수량만 +1
-	public void updateCntCart(String user_id, int product_id, String color, String insurance) {
+	public void updateCntCart(CartDto dto) {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 
@@ -24,10 +56,10 @@ public class CartDao {
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, user_id);
-			pstmt.setInt(2, product_id);
-			pstmt.setString(3, color);
-			pstmt.setString(4, insurance);
+			pstmt.setString(1, dto.getUser_id());
+			pstmt.setInt(2, dto.getProduct_id());
+			pstmt.setString(3, dto.getColor());
+			pstmt.setString(4, dto.getInsurance());
 			pstmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -99,16 +131,19 @@ public class CartDao {
 	}
 
 	// 장바구니에서 제품 삭제
-	public void deleteCart(String idx) {
+	public void deleteCart(String user_id, int product_id, String color, String insurance) {
 
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 
-		String sql = "delete from cart where product_id=?";
+		String sql = "delete from cart where user_id=? and product_id=? and color=? and insurance=?";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, idx);
+			pstmt.setString(1, user_id);
+			pstmt.setInt(1, product_id);
+			pstmt.setString(1, color);
+			pstmt.setString(1, insurance);
 			pstmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
