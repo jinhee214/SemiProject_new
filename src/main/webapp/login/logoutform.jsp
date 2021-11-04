@@ -96,7 +96,7 @@
       </div>
       
       <div class="modal-footer">
-        <button type="button" class="btn btn-default delbtn" data-dismiss="modal">탈퇴</button>
+        <button type="button" class="btn btn-default delbtn" data-dismiss="modal" onclick="delfunc(this)" id="<%=myid%>">탈퇴</button>
       </div>
     </div>
 
@@ -109,14 +109,15 @@
 
 function delfunc(id) {
 	
-	$("#delid").val(id);
-	$("#myModal").modal();
-	
+	$("#delid").val(id); //id값
+	$("#myModal").modal(); //mymodal
+
 	
 	//모달삭제버튼이벤트
 	$("button.delbtn").click(function(){
 		
-		var id=$("#delid").val();
+		$(this).attr("id")
+		var id=$(this).attr("id")
 		var pass=$("#delpass").val();
 		//삭제파일 호출
 		location.href="user/deleteuser.jsp?id="+id+"&pass="+pass;
