@@ -144,7 +144,6 @@ public class CartDao {
 			pstmt.setInt(2, product_id);
 			pstmt.setString(3, color);
 			pstmt.setString(4, insurance);
-			System.out.println(sql);
 			pstmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
