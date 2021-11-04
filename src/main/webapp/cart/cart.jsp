@@ -120,7 +120,7 @@ DecimalFormat df = new DecimalFormat("###,###");
 	//로그인 되어 있을 경우 장바구니 목록 띄움
 	} else {
 	%>
-	<form action="cartToOrderAction.jsp" method="post" class="">
+	<form action="cart/cartToOrderAction.jsp" method="post" class="">
 		<div>
 			<h2>
 				장바구니에 들어있는 제품입니다. <font id="totalCart"></font>

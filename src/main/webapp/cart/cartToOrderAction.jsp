@@ -1,3 +1,4 @@
+<%@page import="data.dto.CartDto"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -12,6 +13,18 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+request.setCharacterEncoding("utf-8");
 
+/* OrderDto dto = new OrderDto();
+dto.setUser_id(request.getParameter("user_id")); */
+
+/* OrderDao dao = new OrderDao();
+dao.insert(dto); */
+
+//주문 페이지로 이동
+response.sendRedirect("../index.jsp?main=order/orderform.jsp");
+
+%>
 </body>
 </html>
