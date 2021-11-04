@@ -30,7 +30,7 @@ if(b){
 		아이디저장체크시  myid  로그인한아이디
 		체크값 saveok  yes
  */
-	session.setMaxInactiveInterval(100);
+	session.setMaxInactiveInterval(30*60);
 	session.setAttribute("loginok", "yes");
 	session.setAttribute("myid", id);
 	session.setAttribute("saveok", cbsave==null?null:"yes");
