@@ -31,27 +31,36 @@ margin-top : 50px;
 //선택한 카테고리 value를 넘기기
 function sendCategory(){
 	var category = $("#selCategory").val();
-	location.href="index.jsp?main=qna/board.jsp?categoryIndex="+category;
+	location.href="index.jsp?main=qna/boardUser.jsp?categoryIndex="+category;
 }
 
+//내 게시물 선택시 id값 넘기기 
+function sendMyBoard(){
+	var userId = $("#selMyBoard").attr("name");
+	var myBoardBtnName = $("#selMyBoard").text(); 
+	
+	if (myBoardBtnName == "내 게시글") {
+		location.href= "index.jsp?main=qna/boardUser.jsp?userId="+userId;	
+	} 
+	else {
+		location.href = "index.jsp?main=qna/boardUser.jsp"
+	}
+
+}
 </script>
 
 <%
 
-/* //로그인 상태 확인
-String loginok = (String)session.getAttribute("loginok");
 //현재 로그인 한 id
 String id = (String)session.getAttribute("myid");
 
-
+//카테고리를 따로 안 정해주면 전체로 보여짐
+String categoryIndex = request.getParameter("categoryIndex")==null? "0":request.getParameter("categoryIndex");
 
 //내 게시글 보기
 String userId = request.getParameter("userId");		
-String btnName = (userId == null)? "내 게시글":"전체 게시글"; */
+String btnName = (userId == null)? "내 게시글":"전체 게시글";
 
-
-//카테고리를 따로 안 정해주면 전체로 보여짐
-String categoryIndex = request.getParameter("categoryIndex")==null? "0":request.getParameter("categoryIndex");
 
 //게시판 리스트 뿌려주기 위한 객체 선언
 BoardDao bDao = new BoardDao();
@@ -69,9 +78,14 @@ List<BoardDto> list;
 //페이징 처리가 너무 길어서 data.dto.BoardPage class로 만듬
 BoardPage bp = new BoardPage(bDao.getTotalCount(),request.getParameter("currentPage"));
 
-
+/* 내 게시글을 선택했을 때 */
+if(userId != null){
+	bp = new BoardPage(bDao.getTotalCount(userId),request.getParameter("currentPage"));
+	
+	list = bDao.getList(bp.start, bp.perPage, userId);
+}
 /* 카테고리가 전체일때 */
-if(categoryIndex.equals("0")){
+else if(categoryIndex.equals("0")){
 
 	//전체 게시글 리스트에 넣어주기
 	list = bDao.getList(bp.start, bp.perPage);
@@ -124,7 +138,14 @@ for(int i = 0; i < category.length; i++){
 
 
 <!-- 게시글 추가 -->
+
+
+<button type="button" onclick="sendMyBoard()" id="selMyBoard" class="btn btn-default" name="<%=id%>"><%=btnName %></button>
+<button class="btn btn-info" onclick="location.href='index.jsp?main=qna/boardaddform.jsp'">질문하기</button>
+
 <%
+
+
 //게시글이 1개 이상일 경우
 if(bp.no>0){
 	%>
@@ -143,6 +164,7 @@ if(bp.no>0){
 // 리스트 뿌려주는 부분
 for(BoardDto dto : list){	
 	String apply = cmDao.getCommentsByBoardId(dto.getBoardId()).size()==0? "미답변":"답변";
+	//String name = 
 	%>
 	<tr>
 	<%-- <td><%=bp.no-- %></td> --%>
@@ -177,7 +199,7 @@ else{
 if(bp.startPage > 1){
 	%>
 	<li>
-	<a href="index.jsp?main=qna/board.jsp?currentPage=<%=bp.startPage-1%>">이전</a>
+	<a href="index.jsp?main=qna/boardUser.jsp?currentPage=<%=bp.startPage-1%>">이전</a>
 	</li>
 	<%
 }
@@ -185,14 +207,14 @@ for(int p = bp.startPage; p <= bp.endPage; p++){
 	if(p == bp.currentPage){
 		%>
 		<li class="active">
-		<a href="index.jsp?main=qna/board.jsp?currentPage=<%=p %>"><%=p %></a>
+		<a href="index.jsp?main=qna/boardUser.jsp?currentPage=<%=p %>"><%=p %></a>
 		</li>
 		<%
 	}
 	else{
 		%>
 		<li>
-		<a href="index.jsp?main=qna/board.jsp?currentPage=<%=p %>"><%=p %></a>
+		<a href="index.jsp?main=qna/boardUser.jsp?currentPage=<%=p %>"><%=p %></a>
 		</li>
 		<%
 	}
@@ -202,7 +224,7 @@ for(int p = bp.startPage; p <= bp.endPage; p++){
 if(bp.endPage < bp.totalPage){
 	%>
 	<li>
-	<a href="index.jsp?main=qna/board.jsp?currentPage=<%=bp.endPage+1%>">다음</a>
+	<a href="index.jsp?main=qna/boardUser.jsp?currentPage=<%=bp.endPage+1%>">다음</a>
 	</li>
 	<%
 }

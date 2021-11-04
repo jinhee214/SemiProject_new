@@ -84,7 +84,7 @@ if(loginok != null){
 	}
 }
 %>
-<button type="button" class="btn btn-default" onclick="location.href='index.jsp?main=qna/board.jsp'">뒤로가기</button>
+<button type="button" class="btn btn-default" onclick="history.back()">뒤로가기</button>
 </div>
 
 <!-- 문의 상세 내용 보이는 폼 -->
@@ -93,7 +93,7 @@ if(loginok != null){
 <table class="table">
 <tr>
 <th>작성자</th>
-<td align="left"><%=dto.getUserId() %></td>
+<td align="left"><%=uDao.getName(dto.getUserId()) %></td>
 </tr>
 <tr>
 <th width="120px;">카테고리</th>

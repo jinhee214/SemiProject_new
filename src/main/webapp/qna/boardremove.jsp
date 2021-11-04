@@ -21,7 +21,7 @@ BoardDao dao = new BoardDao();
 dao.deleteBoard(boardId);
 
 //게시판으로 이동
-response.sendRedirect("../index.jsp?main=qna/board.jsp");
+response.sendRedirect("../index.jsp?main=qna/boardUser.jsp");
 
 %>
 

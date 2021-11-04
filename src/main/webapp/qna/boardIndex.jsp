@@ -8,10 +8,23 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<style type="text/css">
-</style>
+
 </head>
 <body>
-<h3>좌측섹션</h3>
+<%
+String loginok = (String)session.getAttribute("loginok");
+
+if(loginok == null){
+%>
+<jsp:include page="board.jsp"></jsp:include>
+<%
+}
+else{
+%>
+	<jsp:include page="boardUser.jsp"></jsp:include>
+<%
+}
+%>
+
 </body>
 </html>
