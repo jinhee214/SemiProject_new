@@ -1,27 +1,19 @@
 <%@page import="data.dao.CartDao"%>
+<%@page import="org.json.simple.JSONObject"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<link href="https://fonts.googleapis.com/css2?family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-<title>Insert title here</title>
-</head>
-<body>
 <%
 //(아린 메모) 11/04 15:04
+//장바구니 수량드롭박스로 수정할 때 Cart DB의 cnt도 수정하는 메소드 실행
+
+//product_id,cnt 읽어오기
+int cnt = Integer.parseInt(request.getParameter("cnt"));
 String user_id = request.getParameter("user_id");
 int product_id = Integer.parseInt(request.getParameter("product_id"));
 String color = request.getParameter("color");
 String insurance = request.getParameter("insurance");
+ 
+//CartDao의 장바구니 제품 수량 수정하는 메소드에 값 넣기
 CartDao dao = new CartDao();
-dao.deleteCart(user_id, product_id, color, insurance);
+dao.updateCart(cnt, user_id, product_id, color, insurance);
 %>
-
-</body>
-</html>
