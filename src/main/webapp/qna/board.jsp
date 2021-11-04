@@ -33,11 +33,18 @@ function sendCategory(){
 	location.href="index.jsp?main=qna/board.jsp?categoryIndex="+category;
 }
 
+//내 게시물 선택시 id값 넘기기 
 function sendMyBoard(){
-	var myBoard = $("#selMyBoard").attr("name");
-	alert("아직 구현 안됨");
-	//location.href="index.jsp?main=qna/board.jsp?myBoard="+myBoard;
+	var userId = $("#selMyBoard").attr("name");
+	var myBoardBtnName = $("#selMyBoard").text(); 
 	
+	if (myBoardBtnName == "내 게시글") {
+		location.href= "index.jsp?main=qna/board.jsp?userId="+userId;	
+	} 
+	else {
+		location.href = "index.jsp?main=qna/board.jsp"
+	}
+
 }
 </script>
 
@@ -47,6 +54,11 @@ String id = (String)session.getAttribute("myid");
 
 //카테고리를 따로 안 정해주면 전체로 보여짐
 String categoryIndex = request.getParameter("categoryIndex")==null? "0":request.getParameter("categoryIndex");
+
+//내 게시글 보기
+String userId = request.getParameter("userId");		
+String btnName = (userId == null)? "내 게시글":"전체 게시글";
+
 
 //게시판 리스트 뿌려주기 위한 객체 선언
 BoardDao bDao = new BoardDao();
@@ -62,8 +74,14 @@ List<BoardDto> list;
 //페이징 처리가 너무 길어서 data.dto.BoardPage class로 만듬
 BoardPage bp = new BoardPage(bDao.getTotalCount(),request.getParameter("currentPage"));
 
+/* 내 게시글을 선택했을 때 */
+if(userId != null){
+	bp = new BoardPage(bDao.getTotalCount(userId),request.getParameter("currentPage"));
+	
+	list = bDao.getList(bp.start, bp.perPage, userId);
+}
 /* 카테고리가 전체일때 */
-if(categoryIndex.equals("0")){
+else if(categoryIndex.equals("0")){
 
 	//전체 게시글 리스트에 넣어주기
 	list = bDao.getList(bp.start, bp.perPage);
@@ -85,6 +103,14 @@ else{
 <body>
 <!-- 메인 화면 부분 -->
 
+<!-- 알림 부분 -->
+<h3>Q&A</h3>
+<div class="alert alert-default" style="background-color: #dfe6e9">
+구매하시려는 상품에 대해 궁금하신 점이 있으신 경우 문의해주세요.<br>
+- 평일 9:00 ~ 18:00(점심 12:00 ~ 13:00)<br>
+- 토, 일, 공휴일 휴무<br>
+</div>
+
 <!-- 카테고리 선택 부분 -->
 <select id="selCategory" onchange="sendCategory()">
 <%
@@ -101,28 +127,18 @@ for(int i = 0; i < category.length; i++){
 	}
 %>
 
-<!--  
-	<option value="0">전체</option>
-	<option value="1">Mac</option>
-	<option value="2">iPad</option>
-	<option value="3">iPhone</option>
-	<option value="4">액세서리</option>
-	<option value="5">기타</option> 
--->
-
-
 <%
 } %>
 </select>
 
-<!-- 내 게시글 확인 부분 -->
-<button type="button" onclick="sendMyBoard()" id="selMyBoard" class="btn btn-default" name="<%=id%>">내 게시글</button>
+
 
 <!-- 게시글 추가 -->
 <%
-//회원이 아닐 때는 게시글을 쓰지 못하게
+//회원이 아닐 때는 내 게시글 확인 부분 없으며, 게시글을 쓰지 못하게
 if(id != null){
 %>
+	<button type="button" onclick="sendMyBoard()" id="selMyBoard" class="btn btn-default" name="<%=id%>"><%=btnName %></button>
 	<button class="btn btn-info" onclick="location.href='index.jsp?main=qna/boardaddform.jsp'">질문하기</button>
 <%
 }

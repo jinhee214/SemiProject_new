@@ -49,14 +49,14 @@ public class BoardDao {
 
 		int n = 0;
 		Connection conn = db.getConnection();
-		PreparedStatement pstmt = null;
+		Statement stmt = null;
 		ResultSet rs = null;
 
 		String sql = "select count(*) from board where category_id="+category;
 
 		try {
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
 
 			if(rs.next()) {
 				n = rs.getInt(1);				
@@ -67,7 +67,7 @@ public class BoardDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
-			db.dbClose(rs, pstmt, conn);
+			db.dbClose(rs, stmt, conn);
 		}		
 
 		return n;
@@ -78,14 +78,14 @@ public class BoardDao {
 
 		int n = 0;
 		Connection conn = db.getConnection();
-		PreparedStatement pstmt = null;
+		Statement stmt = null;
 		ResultSet rs = null;
 
-		String sql = "select count(*) from board where user_id="+userId;
+		String sql = "select count(*) from board where user_id='"+userId+"'";
 
 		try {
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
 
 			if(rs.next()) {
 				n = rs.getInt(1);				
@@ -96,7 +96,7 @@ public class BoardDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
-			db.dbClose(rs, pstmt, conn);
+			db.dbClose(rs, stmt, conn);
 		}		
 
 		return n;
@@ -149,7 +149,7 @@ public class BoardDao {
 		return list;
 	}
 	
-	//리스트 뽑기 - 카테고리 선택을 했을경우
+	//리스트 뽑기 - 내 게시글을 선택 했을경우
 		public List<BoardDto> getList(int start, int perpage, String userId){
 
 			List<BoardDto> list = new Vector<>();
