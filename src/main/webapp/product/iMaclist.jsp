@@ -80,7 +80,7 @@ if(loginok==null)
 			<td><img alt="" src="AppleProduct_img/<%=dto.getDetail_img()%>"></td>
 			<td>
 				<button type="submit" class="glyphicon glyphicon-shopping-cart btn btn-success btn-lg"
-				onclick="location.href='index.jsp?main=product/deTest.jsp'">제품상세</button>
+				onclick="location.href='index.jsp?main=product/iMac_M1De.jsp'">제품상세</button>
 			</td>						
 		</tr>
 	<%}
