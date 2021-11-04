@@ -18,8 +18,10 @@ String loginok=(String)session.getAttribute("loginok");
 if(loginok!=null)
 {%>
  <jsp:include page="orderinfoform.jsp"/>
-
-<%}
+<%}else
+{
+	response.sendRedirect("로그인화면");
+}
 %>
 
 </body>

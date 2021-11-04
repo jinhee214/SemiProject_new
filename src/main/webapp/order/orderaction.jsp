@@ -1,3 +1,6 @@
+<%@page import="data.dto.UserDto"%>
+<%@page import="com.sun.security.auth.UnixNumericUserPrincipal"%>
+<%@page import="data.dao.UserDao"%>
 <%@page import="data.dao.orderDao"%>
 <%@page import="data.dto.OrderDto"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
@@ -15,24 +18,32 @@
 </head>
 <body>
 <%
-String id=(String)session.getAttribute("myid");
+request.setCharacterEncoding("utf-8");
+String root=request.getContextPath();
+String myid=(String)session.getAttribute("myid");
 String addr=request.getParameter("addr");
-
+int total=Integer.parseInt(request.getParameter("total"));
+String delday=request.getParameter("delday1")+" - "+request.getParameter("delday2");
 
 //유저아이디 구매날짜 주소
 //결제완료 db에저장
 OrderDto odto=new OrderDto();
-odto.setUser_id(id);
+odto.setUser_id(myid);
 odto.setOrder_addr(addr);
 
-//System.out.println(addr);
-//System.out.println(id);
+orderDao odao=new orderDao();
+odao.insertOrder(odto);
 
-//주문번호 제품번호 상세정보 detail db에 저장
-//orderDao odao=new orderDao();
-//odao.insertOrder(odto);
+/* 남은포인트 */
+UserDao udao=new UserDao();
+UserDto udto=udao.getUser(myid);
 
-response.sendRedirect("../index.jsp?main=order/ordersuccform.jsp");
+int point=udto.getUser_point();
+
+int rem=point-total;
+
+
+response.sendRedirect("../index.jsp?main=order/ordersuccform.jsp?rem="+rem+"&delday="+delday);
 %>
 
 

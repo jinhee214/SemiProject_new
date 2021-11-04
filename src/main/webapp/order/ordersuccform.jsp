@@ -1,3 +1,5 @@
+<%@page import="data.dto.OrderDto"%>
+<%@page import="data.dao.orderDao"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -10,21 +12,24 @@
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
  
 <title>Insert title here</title>
-<style type="text/css">
-body {
-  height: 100vh;
-  margin: 0;
-  background: linear-gradient(#fcfcfc 50%, #ffffff 50%);
-}
-</style>
+
 </head>
 <body>
 <%
+int rem=Integer.parseInt(request.getParameter("rem"));  
+String delday=request.getParameter("delday");
+String myid=(String)session.getAttribute("myid");
 //연락처 
 //주문번호
+orderDao odao=new orderDao();
+int num=odao.getNowOrder(myid);
 //카트 리스트받기
 //제품 정보 받기
 //이미지 받기
+
+//남은포인트
+
+
 %>
 
 <!-- 주문성공 메세지 밑에 주문 번호  -->
@@ -35,6 +40,7 @@ body {
 <!-- 연락처  -->
 <br>
 <!-- 주문번호 -->
+<h3 style="color: #0080ff;">주문번호 <%=num%></h3>
 </div >
 
 <div align="center" style="position: relative; top: 500px;">
@@ -42,6 +48,10 @@ body {
 <b>출고날짜</b>
 <br>
 <b>제품 상세설명</b>
+
+<!-- 남은 포인트 -->
+
+
 
 <!--  상품이미지 > 이미지 클릭시 제품 상세설명 창-->
 <!-- 반복문  -->
