@@ -22,9 +22,12 @@ request.setCharacterEncoding("utf-8");
 String paysel=request.getParameter("paysel");
 String addr=request.getParameter("addr1")+"-"+request.getParameter("addr2");
 
+String delckb=request.getParameter("delckb");
+System.out.println(delckb);
+
+
 CartDao cdao=new CartDao();
 
-List<CartDto>list=cdao.readCart();
 
 
 response.sendRedirect("../index.jsp?main=order/orderform.jsp?paysel="+paysel+"&addr="+addr);

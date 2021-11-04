@@ -205,7 +205,7 @@ public class UserDao {
 		
 		String sql="select * from user where user_id=?";
 		
-		try {
+		try { 
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, user_id);
 			
