@@ -37,9 +37,8 @@ ProductDao dao=new ProductDao();
 List<ProductDto> list=dao.getAllMembers();
 if(loginok==null)
 {%>
-	<div>
 	<table class="table" style="width: 1200px;">
-	<caption><b>iMac</b></caption>
+	<caption><b>iPad</b></caption>
 	<tr align="center">
 		<th width="400px;">제품주문</th>
 		<th width="400px;">제품소개</th>
@@ -47,7 +46,7 @@ if(loginok==null)
 	<%
 	for(ProductDto dto:list)
 		//iMac=1인경우만 출력
-		if(dto.getProduct_id()==12321)
+		if(dto.getProduct_id()==77778)
 		{%>
 		<tr align="center">
 			<td>
@@ -60,23 +59,20 @@ if(loginok==null)
 	<%}
 %>
 </table>
-</div>
 <%}else{
 
 %>
-
 <table class="table" style="width: 1200px;">
-	<caption><b>iMac</b></caption>
-
+	<caption><b>iPad</b></caption>
 	<tr>
 		<th width="400">제품주문</th>
 		<th width="400">제품소개</th>
-	</tr>
 
+	</tr>
 	<%
 	for(ProductDto dto:list)
 		//iMac=1인경우만 출력
-		if(dto.getProduct_id()==12321)
+		if(dto.getProduct_id()==77778)
 	{%>
 		<tr>
 			<td>
@@ -92,7 +88,7 @@ if(loginok==null)
 						<th width="100">제품이름</th>
 							<td>
 								<select name="product_id">
-								<option value="12321" selected="selected">iMacM1</option>
+								<option value="77778" selected="selected">iPhone13_De</option>
 								</select>
 							</td>
 					</tr>
@@ -134,7 +130,7 @@ if(loginok==null)
 			<td align="center" colspan="2">
 				<!-- hidden -->	
 				<input type="hidden" value="<%=user_id %>" name="user_id">
-				<input type="hidden" value="1690000" name="price">
+				<input type="hidden" value="950000" name="price">
 				<button type="submit" class="btn btn-primary btn-block">장바구니담기</button>
 			</td>
 		</tr>
@@ -148,6 +144,5 @@ if(loginok==null)
 }
 %>
 </table>
-
 </body>
 </html>

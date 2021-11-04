@@ -35,20 +35,25 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 <title>Apple Project</title>
 </head>
 <body>
+<div>
 <table class="maintb">
 	<tr>
-		  <td>
-		     <a href="index.jsp?main=product/iMaclist.jsp">
+		<td align="center" style="font-size: 1.3em;">MAC</td>
+	</tr>
+	<tr>
+		  <td><br>
+		     <a href="index.jsp?main=product/iMac_M1De.jsp">
 		     <img alt="" src="AppleProduct_img/iMac.PNG" class="mainimg">
 		   	 </a>
-		    <a href="index.jsp?main=product/macbookprodetail.jsp">
+		    <a href="index.jsp?main=product/MacBook_ProM1.jsp">
 		    <img alt="" src="AppleProduct_img/MacBook_Pro.PNG" class="mainimg">
 		    </a>
-		     <a href="index.jsp?main=product/macbookairdetail.jsp">
+		     <a href="index.jsp?main=product/MacBook_AirDeM1.jsp">
 		    <img alt="" src="AppleProduct_img/MacBook_Air.PNG" class="mainimg">
 		    </a>
 		  </td>
 	</tr>
 </table> 
+</div>
 </body>
 </html>
