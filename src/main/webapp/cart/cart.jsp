@@ -56,14 +56,19 @@ $(function() {
 	//장바구니에서 제품 삭제
 	$("button.deleteCart").click(function(){
 		
+		var user_id = $(this).attr("user_id");
 		var product_id = $(this).attr("product_id");
+		var color = $("#hiddencolor").val();
+		var insurance = $("#hiddeninsurance").val();
 		
 		$.ajax({
 			type : "get",
 			dataType : "html",
 			url : "cart/deleteCart.jsp",
-			data : {"product_id" : product_id},
+			data : {"user_id" : user_id, "product_id" : product_id,
+				"color" : color, "insurance" : insurance},
 			success : function() {
+				console.log(user_id+", "+product_id+", "+color+", "+insurance); //콘솔에 출력해서 확인
 				//새로고침
 				location.reload();
 			}
@@ -118,7 +123,7 @@ ProductDao pdao = new ProductDao();
 					<a href="#"><img src="AppleProduct_img/<%=pdao.getProductPhoto(dto.getProduct_id())%>"></a>
 				</td>
 				<td id="name"><a href="#"><%=pdao.getProductName(dto.getProduct_id())%>
-				<span id="color">(색상: <%=dto.getColor()%>)</span></a>
+				<span id="color">(색상: <%=dto.getColor()%>) (product_id: <%=dto.getProduct_id()%>)</span></a>
 				</td>
 				<td><span><%=dto.getCnt()%></span>&nbsp;
 					<select name="cnt">
@@ -139,12 +144,23 @@ ProductDao pdao = new ProductDao();
 				<td><span id="cntXprice">￦<%=dto.getCnt()*dto.getPrice()%></span></td>
 			</tr>
 			<tr>
-				<td colspan="3" align="right">
-					<button type="button" class="deleteCart" product_id="<%=dto.getProduct_id()%>">삭제</button>
+				<td>
+					<%
+					if (dto.getInsurance().equals("Y")) {
+					%> AppleCare+ 포함
+					<%} else {
+					%>
+					AppleCare+ 미포함
+					<%
+					}
+					%>
+				</td>
+				<td colspan="2" align="right">
+					<button type="button" class="deleteCart" product_id="<%=dto.getProduct_id()%>" user_id="<%=user_id%>">삭제</button>
 					<!-- hidden -->
 					<input type="hidden" name="productName" value="<%=pdao.getProductName(dto.getProduct_id())%>">
-					<input type="hidden" name="productPhoto" value="<%=pdao.getProductName(dto.getProduct_id())%>">
-					<input type="hidden" name="productCnt" value="<%=pdao.getProductName(dto.getProduct_id())%>">
+					<input type="hidden" id="hiddencolor" value="<%=dto.getColor()%>">
+					<input type="hidden" id="hiddeninsurance" value="<%=dto.getInsurance()%>">
 				</td>
 			</tr>
 			<%
