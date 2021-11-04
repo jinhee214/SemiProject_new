@@ -1,3 +1,5 @@
+<%@page import="data.dto.UserDto"%>
+<%@page import="data.dao.UserDao"%>
 <%@page import="data.dto.ProductDto"%>
 <%@page import="java.util.List"%>
 <%@page import="data.dao.ProductDao"%>
@@ -16,13 +18,49 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 <title>iMac</title>
 </head>
 <body>
+<%
+//세션받기
+String loginok = (String) session.getAttribute("loginok");
+
+//유저 id받기
+String myid=(String)session.getAttribute("myid");
+
+//db선언
+UserDao udao=new UserDao();
+UserDto udto=udao.getUser(myid);
+
+%>
 
 <%
 //Mac 카테고리번호(=1)에 해당하는 리스트 가져오기
 ProductDao dao=new ProductDao();
 List<ProductDto> list=dao.getAllMembers();
+if(loginok==null)
+{%>
+	<table class="table table-bordered" style="width: 1200px;">
+	<caption><b>iMac</b></caption>
+	<tr>
+		<th width="30">제품번호</th>
+		<th width="50">제품가격</th>
+		<th width="100">제품사진</th>
+	</tr>
+	<%
+	for(ProductDto dto:list)
+		//iMac=1인경우만 출력
+		if(dto.getCategory_id()==1)
+		{%>
+		<tr align="center">
+			<td><%=dto.getProduct_id()%>
+			<td><%=dto.getProduct_price()%></td>
+			<td><img alt="" src="AppleProduct_img/<%=dto.getDetail_img()%>"></td>
+			
+		</tr>
+	<%}
 %>
-<body>
+</table>
+<%}else{
+
+%>
 <table class="table table-bordered" style="width: 1200px;">
 	<caption><b>iMac</b></caption>
 	<tr>
@@ -42,15 +80,14 @@ List<ProductDto> list=dao.getAllMembers();
 			<td><img alt="" src="AppleProduct_img/<%=dto.getDetail_img()%>"></td>
 			<td>
 				<button type="submit" class="glyphicon glyphicon-shopping-cart btn btn-success btn-lg"
-				onclick="#">장바구니</button>
+				onclick="location.href='index.jsp?main=product/deTest.jsp'">제품상세</button>
 			</td>						
 		</tr>
 	<%}
-	%>
+}
+%>
 </table>
 		<button class="glyphicon glyphicon-chevron-left btn btn-secondary btn-lg"
 		onclick="location.href='index.jsp?main=product/maclist.jsp'" style="margin-left: 1000px;">뒤로가기</button>
-
-
 </body>
 </html>

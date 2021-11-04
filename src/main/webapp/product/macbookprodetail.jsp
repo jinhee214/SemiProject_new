@@ -42,7 +42,7 @@ List<ProductDto> list=dao.getAllMembers();
 			<td><img alt="" src="AppleProduct_img/<%=dto.getDetail_img()%>"></td>
 			<td>
 				<button type="button" class="glyphicon glyphicon-shopping-cart btn btn-success btn-lg"
-				onclick="#">장바구니</button>
+				onclick="location.href='index.jsp?main=product/macadd.jsp'">장바구니</button>
 			</td>						
 		</tr>
 	<%}
