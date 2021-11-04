@@ -14,9 +14,12 @@
 </head>
 <body>
 <%
-String product_id = request.getParameter("product_id");
+String user_id = request.getParameter("user_id");
+int product_id = Integer.parseInt(request.getParameter("product_id"));
+String color = request.getParameter("color");
+String insurance = request.getParameter("insurance");
 CartDao dao = new CartDao();
-dao.deleteCart(product_id);
+dao.deleteCart(user_id, product_id, color, insurance);
 %>
 
 </body>

@@ -1,3 +1,6 @@
+
+<%@page import="data.dto.UserDto"%>
+<%@page import="data.dao.UserDao"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -22,7 +25,19 @@ select{
 request.setCharacterEncoding("utf-8");
 String root=request.getContextPath();
 
+
+String myid=(String)session.getAttribute("myid");
+
 //userdao udao=new userdao(); 포인트얻기
+UserDao udao=new UserDao();
+
+UserDto udto=udao.getUser(myid);
+
+String User_addr=udto.getUser_addr();
+
+String []tokens=User_addr.split(" ");
+
+
 
 %>
 
@@ -53,20 +68,32 @@ String root=request.getContextPath();
 </div>
 
 <!-- 포인트선택>포인트 표시 -->
+<div name="point" style="margin:30px 0 0 400px;">
+<b style="font-size: 1.3em;"><%=udto.getUser_point() %>포인트 사용 가능</b>
+</div>
 
 
-<br><br><br><br>
 <hr style="border:1px solid #e6eaee; width:600px; margin-left: 400px;">
 <br><br>
 
 <!-- 주소출력 -->
 <input type="checkbox" name="delckb" id="delckb" checked="checked" style="margin-left: 400px; margin-right: 5px;">내 배송 주소를 사용합니다
+ 
+<div id="uaddr_div" style="margin: 20px 0 0 400px; height: 50px;">
+<%
+for(int i=0;i<tokens.length;i++)
+{%>
+	<p><%=tokens[i] %></p>
+<%}
+%>
+</div>
 
-<br><br>
 
-<input type="text" name="addr1" class="form-control" required="required" placeholder="시/도" style="width: 400px; margin-left: 400px;">
-<input type="text" name="addr2" class="form-control" required="required" placeholder="상세주소" style="width: 400px;
- margin-left: 400px; margin-top: 10px;">
+<div id="addr_div" style="margin: 50px 0 0 400px;">
+<input type="text" name="addr1" class="form-control" placeholder="시/도" style="width: 400px;">
+<input type="text" name="addr2" class="form-control" placeholder="상세주소" 
+style="width: 400px; margin-top: 10px;">
+ </div>
 
 <br><br><br>
 <hr style="border:1px solid #e6eaee; width:1120px;">
@@ -75,15 +102,37 @@ String root=request.getContextPath();
  class="btn btn-primary" >주문 검토</button>
  
  <br><br><br><br>
+  
 <hr style="border:1px solid #e6eaee; width:1800px;">
 <b style="margin-left: 400px; font-size: 1.1em;">도움이 더 필요하신가요?</b> <b style="font-size: 1.1em; color: #0080ff;">지금 채팅하기
 </b> <b style="font-size: 1.1em;">또는 080-330-8877 번호로 문의하세요.</b>
 <br>
 <hr style="border:1px solid #e6eaee; width:1800px;">
 
-
 </form>
 
+<script type="text/javascript">
+
+/* 체크박스 이용 주소 등록 */
+$(document).ready(function(){
+	
+	 $("#addr_div").hide();
+	 $("#uaddr_div").show();
+	 
+    $("#delckb").change(function(){
+        if($("#delckb").is(":checked")){        	
+        	
+            $("#uaddr_div").show();
+            $("#addr_div").hide();
+            
+        }else{
+        	  $("#uaddr_div").hide();
+              $("#addr_div").show();
+        }
+    });
+});
+
+</script>
 
 </body>
 </html>
