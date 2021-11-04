@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="data.dao.ProductDao"%>
 <%@page import="data.dto.ProductDto"%>
 <%@page import="data.dto.CartDto"%>
@@ -17,7 +18,7 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<!-- (아린 메모) 11/04 12:43 -->
+<!-- (아린 메모) 11/04 15:04 -->
 <title>Insert title here</title>
 <style type="text/css">
 ol li {
@@ -25,11 +26,16 @@ ol li {
 }
 </style>
 <script type="text/javascript">
+
+function numberFormat(inputNumber) {
+	   return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+	
 $(function() {	
 
 	var totalCart = $("#totalCart");
 	var totalPrice = $("#totalPrice").val();
-	totalCart.text("￦"+totalPrice);
+	totalCart.text("￦"+numberFormat(totalPrice));
 	
 	//드롭박스에서 수량 변경할 때마다 CartDao의 장바구니제품 수량 수정하는 메소드 updateCart() 실행됨.
 	$("select[name=cnt]").change(function() {
@@ -38,16 +44,23 @@ $(function() {
 		var product_id = $(this).parent().find("#productId").val();
 		var productPrice = $(this).parent().find("#productPrice").val();
 		var cntXprice = $(this).parent().siblings().find("#cntXprice");
+		
+		var user_id = $(this).attr("user_id");
+		var color = $(this).attr("color");
+		var insurance = $(this).attr("insurance");
+		
 		$.ajax({
 			type : "get",
 			dataType : "html",
 			url : "cart/updateCart.jsp",
-			data : {"cnt" : cnt, "product_id" : product_id},
-			success : function(data) {
+			data : {"cnt" : cnt, "user_id" : user_id, "product_id" : product_id,
+				"color" : color, "insurance" : insurance},
+			success : function() {
 				selectTag.prev().text(cnt);
-				cntXprice.text("￦"+productPrice*cnt);
+				cntXprice.text("￦"+numberFormat(productPrice*cnt));
 				location.reload();
 				
+				console.log(cnt+", "+user_id+", "+product_id+", "+color+", "+insurance); //콘솔에 출력해서 확인
 				//console.log("product_id: "+product_id+" / cnt: "+cnt+" / productPrice: "+productPrice); //콘솔에 출력해서 확인
 			}
 		});
@@ -76,7 +89,6 @@ $(function() {
 		});
 	});
 });
-
 </script>
 </head>
 <%
@@ -90,6 +102,8 @@ List<CartDto> list = dao.readCart(user_id);
 
 //ProductDao 선언. product_id로 제품이미지와 제품명 받아오기 위해
 ProductDao pdao = new ProductDao();
+
+DecimalFormat df = new DecimalFormat("###,###");
 %>
 <body>
 	<%
@@ -120,13 +134,13 @@ ProductDao pdao = new ProductDao();
 			<tr>
 				<!-- 제품사진 -->
 				<td rowspan="2">
-					<a href="#"><img src="AppleProduct_img/<%=pdao.getProductPhoto(dto.getProduct_id())%>"></a>
+					<a href="index.jsp?main=product/#.jsp"><img src="AppleProduct_img/<%=pdao.getProductPhoto(dto.getProduct_id())%>"></a>
 				</td>
-				<td id="name"><a href="#"><%=pdao.getProductName(dto.getProduct_id())%>
-				<span id="color">(색상: <%=dto.getColor()%>) (product_id: <%=dto.getProduct_id()%>)</span></a>
+				<td id="name"><a href="index.jsp?main=product/#.jsp"><%=pdao.getProductName(dto.getProduct_id())%>
+				<span id="color">(색상: <%=dto.getColor()%>) <i style="font-size: 4pt;">(product_id(삭제예정): <%=dto.getProduct_id()%>)</i></span></a>
 				</td>
 				<td><span><%=dto.getCnt()%></span>&nbsp;
-					<select name="cnt">
+					<select name="cnt" user_id="<%=user_id%>" color="<%=dto.getColor()%>" insurance="<%=dto.getInsurance()%>">
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -141,7 +155,7 @@ ProductDao pdao = new ProductDao();
 					<input type="hidden" name="productId" id="productId" value="<%=dto.getProduct_id()%>">
 					<input type="hidden" name="productPrice" id="productPrice" value="<%=dto.getPrice()%>">
 				</td>
-				<td><span id="cntXprice">￦<%=dto.getCnt()*dto.getPrice()%></span></td>
+				<td><span id="cntXprice">￦<%=df.format(dto.getCnt()*dto.getPrice())%></span></td>
 			</tr>
 			<tr>
 				<td>
@@ -150,7 +164,7 @@ ProductDao pdao = new ProductDao();
 					%> AppleCare+ 포함
 					<%} else {
 					%>
-					AppleCare+ 미포함
+					<font color="lightgray">AppleCare+ 미포함</font>
 					<%
 					}
 					%>
@@ -174,7 +188,7 @@ ProductDao pdao = new ProductDao();
 			<table style="margin-left: 450px;">
 				<tr height="30">
 					<th width="100px;">소계</th>
-					<td align="right"><font id="totalCart">￦<%=totalC%></font></td>
+					<td align="right"><font id="totalCart">￦<%=df.format(totalC)%></font></td>
 				</tr>
 				<tr height="30">
 					<th width="100px;">배송</th>
@@ -182,7 +196,7 @@ ProductDao pdao = new ProductDao();
 				</tr>
 				<tr height="30">
 					<th width="100px;">총계</th>
-					<td align="right"><font id="totalCart">￦<%=totalC%></font></td>
+					<td align="right"><font id="totalCart">￦<%=df.format(totalC)%></font></td>
 				</tr>
 				<tr height="30">
 					<td colspan="2" align="right"><button type="submit">결제</button>
@@ -196,4 +210,3 @@ ProductDao pdao = new ProductDao();
 	%>
 </body>
 </html>
-
