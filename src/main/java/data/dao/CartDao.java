@@ -12,7 +12,7 @@ import data.dto.CartDto;
 import mysql.db.DbConnect;
 
 public class CartDao {
-//(아린 메모) 11/04 12:43
+//(아린 메모) 11/04 14:57
 	DbConnect db = new DbConnect();
 	
 	// 장바구니 담을 때 사용자아이디&제품&제품색상&보험유무가 같은 제품이 장바구니에 이미 있는지 확인
@@ -141,9 +141,9 @@ public class CartDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, user_id);
-			pstmt.setInt(1, product_id);
-			pstmt.setString(1, color);
-			pstmt.setString(1, insurance);
+			pstmt.setInt(2, product_id);
+			pstmt.setString(3, color);
+			pstmt.setString(4, insurance);
 			System.out.println(sql);
 			pstmt.execute();
 		} catch (SQLException e) {
@@ -155,17 +155,20 @@ public class CartDao {
 	}
 
 	// 장바구니 제품의 수량 수정
-	public void updateCart(int product_id, int cnt) {
+	public void updateCart(int cnt, String user_id, int product_id, String color, String insurance) {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 
-		String sql = "update cart set cnt=? where product_id=?";
+		String sql = "update cart set cnt=? where user_id=? and product_id=? and color=? and insurance=?";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setInt(1, cnt);
-			pstmt.setInt(2, product_id);
+			pstmt.setString(2, user_id);
+			pstmt.setInt(3, product_id);
+			pstmt.setString(4, color);
+			pstmt.setString(5, insurance);
 
 			pstmt.execute();
 		} catch (SQLException e) {

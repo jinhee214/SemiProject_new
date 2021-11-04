@@ -14,6 +14,7 @@
 </head>
 <body>
 <%
+//(아린 메모) 11/04 14:57
 String user_id = request.getParameter("user_id");
 int product_id = Integer.parseInt(request.getParameter("product_id"));
 String color = request.getParameter("color");
