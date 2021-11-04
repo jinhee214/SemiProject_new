@@ -38,17 +38,9 @@ font-size: 20pt;
 text-align: center;
 top:100px;
 }
-.info{
-width:200px;
-height: 100%;
-left:30px;
-top:200px;
-padding:20px 10px;
-background-color: lightgray;
 
-}
 .main{
-width:1200px;
+width:1300px;
 height: 700px;
 font-size: 12pt;
 left:300px;
@@ -82,9 +74,6 @@ if(request.getParameter("main")!=null){
 <jsp:include page="layout/menu.jsp"></jsp:include>
 </div>
 
-<div class="layout info">
-<jsp:include page="layout/info.jsp"></jsp:include>
-</div>
 
 <div class="layout login"> <!-- 로그인메뉴 -->
 <jsp:include page="layout/loginmenu.jsp"></jsp:include>

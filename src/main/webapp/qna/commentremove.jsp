@@ -16,13 +16,9 @@
 
 //댓글 id를 받아서 삭제
 String commentId = request.getParameter("commentId");
-String boardId = request.getParameter("boardId");
 
 CommentDao dao = new CommentDao();
 dao.deleteComment(commentId);
-
-//해당 게시글을 다시 보여주기
-response.sendRedirect("../index.jsp?main=qna/boarddetail.jsp?boardId="+boardId);
 
 %>
 </body>
