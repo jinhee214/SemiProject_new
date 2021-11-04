@@ -26,9 +26,10 @@ if(key==null){
 	  <table class="table table-bordered">
 	    <tr height="100">
 	        <td>        
-	          <b>아이디를 입력해 주세요</b><br>
+	          <b>아이디를 입력해 주세요(영문,숫자)</b><br>
 	          <input type="text" name="id" class="form-control" style="width: 100px;"
 	          autofocus="autofocus" required="required" maxlength="8"><br>
+	         
 	          <button type="submit" class="btn btn-info btn-sm">중복체크</button>
 	        </td>
 	    </tr>
@@ -66,6 +67,8 @@ if(key==null){
 
 %>
 <script type="text/javascript">
+
+	
   $("#btnuse").click(function(){
 	  
 	  //아이디 얻기

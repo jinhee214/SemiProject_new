@@ -38,7 +38,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 <table class="maintb">
 	<tr>
 		  <td>
-		     <a href="index.jsp?main=product/macdetail.jsp">
+		     <a href="index.jsp?main=product/iMaclist.jsp">
 		     <img alt="" src="AppleProduct_img/iMac.PNG" class="mainimg">
 		   	 </a>
 		    <a href="index.jsp?main=product/macbookprodetail.jsp">
