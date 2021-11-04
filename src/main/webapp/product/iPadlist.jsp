@@ -39,14 +39,17 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 
 <table class="maintb">
 	<tr>
+		<td align="center" style="font-size: 1.3em;">iPad</td>
+	</tr>
+	<tr>
 		  <td>
-		     <a href="index.jsp?main=product/iPaddetail.jsp">
+		     <a href="index.jsp?main=product/iPad_De.jsp">
 		     <img alt="" src="AppleProduct_img/iPad.PNG" class="mainimg">
 		   	 </a>
-		    <a href="index.jsp?main=product/iPadminidetail.jsp">
+		    <a href="index.jsp?main=product/iPad_miniDe.jsp">
 		    <img alt="" src="AppleProduct_img/iPad_mini.PNG" class="mainimg">
 		    </a>
-		     <a href="index.jsp?main=product/iPadProdetail.jsp">
+		     <a href="index.jsp?main=product/iPadPro_De.jsp">
 		    <img alt="" src="AppleProduct_img/iPadPro.PNG" class="mainimg">
 		    </a>
 		  </td>

@@ -38,19 +38,17 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 <table class="maintb">
 	<tr>
 		  <td>
-		     <a href="index.jsp?main=product/iPhone12de.jsp">
+		     <a href="index.jsp?main=product/iPhone12_De.jsp">
 		     <img alt="" src="AppleProduct_img/iPhone12.PNG" class="mainimg">
 		   	 </a>
-		    <a href="index.jsp?main=product/iPhone13de.jsp">
+		    <a href="index.jsp?main=product/iPhone13_De.jsp">
 		    <img alt="" src="AppleProduct_img/iPhone13.PNG" class="mainimg">
 		    </a>
-		     <a href="index.jsp?main=product/iPhone13Prode.jsp">
+		     <a href="index.jsp?main=product/iPhone13_ProDe.jsp">
 		    <img alt="" src="AppleProduct_img/iPhone13_Pro.PNG" class="mainimg">
 		    </a>
 		  </td>
 	</tr>
 </table>
- <button type="button" class="btn btn-info btn-sm" onclick="#"
-    style="margin-left: 800px;">버튼1</button>
 </body>
 </html>
