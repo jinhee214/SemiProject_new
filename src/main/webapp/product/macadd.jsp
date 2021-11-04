@@ -1,5 +1,7 @@
-<%@page import="data.dao.ProductDao"%>
-<%@page import="data.dto.ProductDto"%>
+<%@page import="data.dao.CartDao"%>
+<%@page import="data.dto.CartDto"%>
+<%@page import="java.util.List"%>
+
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -15,31 +17,27 @@
 </head>
 <body>
 <%
-//한글엔코딩
 request.setCharacterEncoding("utf-8");
 
-//데이터 읽어서 dto담기
-ProductDto dto=new ProductDto();
-int product_id=Integer.parseInt(request.getParameter("product_id"));
-int category_id=Integer.parseInt(request.getParameter("category_id"));
-String product_name=request.getParameter("product_name");
-int product_price=Integer.parseInt(request.getParameter("product_price"));
+//데이터 읽어서 dto에 넣기
+CartDto dto = new CartDto();
+dto.setProduct_id(Integer.parseInt(request.getParameter("product_id")));
+dto.setUser_id(request.getParameter("user_id"));
+dto.setPrice(Integer.parseInt(request.getParameter("price")));
+dto.setCnt(Integer.parseInt(request.getParameter("cnt")));
+dto.setColor(request.getParameter("color"));
+dto.setInsurance(request.getParameter("insurance"));
 
-
-dto.setProduct_id(product_id);
-dto.setCategory_id(category_id);
-dto.setProduct_name(product_name);
-dto.setProduct_price(product_price);
-
-
-//dao선언후에 insert호출
-ProductDao dao=new ProductDao();
-dao.getProductName(product_id);
-
+//장바구니에 있는지 확인후 update 또는 insert
+CartDao dao = new CartDao();
+if(dao.checkCart(dto)){
+	dao.updateCntCart(dto);
+}else{
+	dao.insertCart(dto);
+}
 
 //gaipsuccess로 이동
-response.sendRedirect("../index.jsp?main=productsuccess.jsp");
-
+response.sendRedirect("../index.jsp?main=product/productsuccess.jsp");
 %>
 </body>
 </html>
