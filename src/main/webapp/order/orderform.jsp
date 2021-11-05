@@ -33,6 +33,7 @@ request.setCharacterEncoding("utf-8");
 String root=request.getContextPath();
 
 String paysel=request.getParameter("paysel");
+//System.out.println(paysel);
 
 String myid=(String)session.getAttribute("myid");
 
@@ -107,13 +108,12 @@ Calendar cal2 = Calendar.getInstance();
 </h2>
 <br><br>
 
-<!-- 구매날짜 받아오기 -->
+<!-- 구매날짜 -->
 <b style="margin-left: 400px;"><%=delday1 %> - <%=delday2 %></b>
 <p style="margin-left: 400px;">표준 배송</p>
 <br><br><br>
 
 <!-- 제품이미지 제품 정보받아오기  -->
-<!-- 반복문사용  -->
 <div>
 <%
 	for(CartDto cdto:clist)
@@ -145,12 +145,11 @@ Calendar cal2 = Calendar.getInstance();
 }	
 %>
 
-
 </span></b>
 <b style="margin-left: 100px; float: left;">결제방법
 <br>
 <span>
-<%=paysel%>
+<%=paysel %>
 </span></b>
 
 <b style="margin-left: 200px; float: left;">연락처 정보

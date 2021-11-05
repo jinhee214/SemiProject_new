@@ -55,7 +55,7 @@ String []tokens=User_addr.split(" ");
 <div style="margin-left: 400px; border: 2px solid #0080ff; border-radius: 15px; width: 600px; height: 90px;">
 
 <div class="form-group"> 
-  <select  class="form-control" name="paysel" style="width:593.9px; height: 84.2px; border:0px; border-radius:10px; 
+  <select  class="form-control" name="paysel" style="width:593.84px; height: 84.13px; border:0px; border-radius:10px; 
   margin-left: 0.7px; margin-top:0.4px; font-size: 1.3em;">
     <option selected="selected" value="결제 포인트" >결제 포인트</option>
     <option value="신용 카드 또는 직불 카드">신용 카드 또는 직불 카드</option>
