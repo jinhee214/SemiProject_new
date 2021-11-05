@@ -37,7 +37,10 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 <body>
 <table class="maintb">
 	<tr>
-		  <td>
+		<td align="center" style="font-size: 1.3em;">iPhone</td>
+	</tr>
+	<tr>
+		  <td><br>
 		     <a href="index.jsp?main=product/iPhone12_De.jsp">
 		     <img alt="" src="AppleProduct_img/iPhone12.PNG" class="mainimg">
 		   	 </a>
