@@ -12,10 +12,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<!-- Site CSS -->
-<link rel="stylesheet" href="style/css/style.css"> 
-<!-- Custom CSS -->
-<link rel="stylesheet" href="style/css/custom.css">
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
@@ -188,8 +184,9 @@ DecimalFormat df = new DecimalFormat("###,###");
 			<h1>
 				장바구니에 들어있는 제품입니다. <font id="totalCart"></font>
 			</h1>
-			<font style="font-size: 10pt;">모든 주문에 무료 배송 서비스가 제공됩니다.</font>
 			<br>
+			<font style="font-size: 10pt;">모든 주문에 무료 배송 서비스가 제공됩니다.</font>
+			<br><br>
 			<button type="submit" class="submit2">결제</button>
 		</div>
 		<div class="table-main cartContent">
