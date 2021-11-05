@@ -137,7 +137,6 @@ if(loginok==null)
 		</table>
 	</form>
 </td>
-			
 			<td><img alt="" src="AppleProduct_img/<%=dto.getDetail_img()%>"></td>
 		</tr>
 	<%}
