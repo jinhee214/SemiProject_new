@@ -55,6 +55,7 @@ text-decoration: none;
 </head>
 <body>
 <%
+request.setCharacterEncoding("utf-8");
 String root=request.getContextPath();
 
 String mainPage="layout/main.jsp";
