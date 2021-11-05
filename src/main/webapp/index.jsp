@@ -47,8 +47,17 @@
 	width: 1300px;
 	height: 700px;
 	font-size: 12pt;
-	left: 300px;
+	
+	
+}
+
+.setCenter{
+
 	top: 200px;
+	width:100%;
+	display: flex;
+	justify-content: center;
+
 }
 
 a:hover {
@@ -83,11 +92,11 @@ if(request.getParameter("main")!=null){
 		<!-- 로그인메뉴 -->
 		<jsp:include page="layout/loginmenu.jsp"></jsp:include>
 	</div>
-
-	<div class="layout main">
+<div class="layout setCenter">
+	<div class="main">
 		<jsp:include page="<%=mainPage %>"></jsp:include>
 	</div>
-
+</div>
 	
 </body>
 </html>
