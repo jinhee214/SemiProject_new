@@ -12,6 +12,17 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style type="text/css">
+caption{
+	color: black;
+	font-weight: bold;
+	font-size:2em;
+}
+td{
+	text-align: left;
+	font-size: 0.9em;
+	color:gray;
+}
+
 </style>
 <title>Insert title here</title>
 </head>
@@ -31,47 +42,63 @@
 	
 	%>
 	<br><br>
-	<table class="table table-bordered" style="width: 800px;">
-	<caption><b><%=dto.getUser_name() %>님 회원 정보</b></caption>
+	<table style="width:800px;">
+	<caption><b><%=dto.getUser_name() %>님. 안녕하세요.</b>
+	<br><br><br><br>
+	<b>계정 설정<br><br></b>
+	</caption>
+	
 	<tr>
-		<th width="100"  bgcolor="skyblue">아이디</th>
+		<th>개인정보</th>
+			<td>아이디</td>
 			<td><%=dto.getUser_id()%></td>
 	</tr>
-
+	
 	<tr>
-		<th width="100"  bgcolor="skyblue">이름</th>
+		<th><br><br></th>
+			<td>이름</td>
 			<td><%=dto.getUser_name()%></td>
 	</tr>
 	
 	<tr>
-		<th width="100"  bgcolor="skyblue">전화번호</th>
+		<th><br><br></th>
+		<td>전화번호</td>
 			<td><%=dto.getUser_hp()%></td>
 	</tr>
 	
 	<tr>
-		<th width="100"  bgcolor="skyblue">주소</th>
+		<th><br><br></th>
+		<td>주소</td>
 			<td><%=dto.getUser_addr()%></td>
 	</tr>
 	
 	<tr>
-		<th width="100"  bgcolor="skyblue">가입일자</th>
+		<th><br><br></th>
+		<td>가입일자</td>
 			<td><%=sdf.format(dto.getUser_joinday())%></td>
 	</tr>
 	
 	<tr>
-		<th width="100"  bgcolor="skyblue">포인트</th>
+		<th><br><br></th>
+		<td>포인트</td>
 			<td><%=dto.getUser_point()%> pt</td>
 	</tr>
-
+	
+	<tr>
+		<th><br><br></th>
+		<td><a href="index.jsp?main=user/updatecheckpass.jsp?id=<%=myid%>" class="update">정보 수정></a></td>
+	</tr>	
+	
+	<tr>
+		<th><br><br></th>
+		<td><button type="button" class="btn btn-danger btn-xs" style="width:50px;"
+		onclick="delfunc(<%=myid%>)">탈퇴</button></td>
+	</tr>		
+	
 </table>
 
-	
-	<button type="button" class="btn btn-info" style="width:100px;" 
-	onclick="location.href='index.jsp?main=user/updatecheckpass.jsp?id=<%=myid%>'">정보수정</button>
-	<br><br>
 
-	<button type="button" class="btn btn-danger btn-xs" style="width:50px;"
-	onclick="delfunc(<%=myid%>)">탈퇴</button>	
+
 	
 			
 
