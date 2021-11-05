@@ -10,6 +10,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	
 <style type="text/css">
 .menu-bar{
 	display: flex;
@@ -25,13 +26,7 @@ String root = request.getContextPath();
 %>
 </head>
 <body>
-	<%-- <a href="<%=root %>/">메인</a>&nbsp;&nbsp;&nbsp;
-<a href="<%=root %>/">로그인</a>&nbsp;&nbsp;&nbsp;
-<a href="<%=root %>/index.jsp?main=member/memberform.jsp">회원</a>&nbsp;&nbsp;&nbsp;
-<a href="<%=root %>/">방명록</a>&nbsp;&nbsp;&nbsp;
-<a href="<%=root %>/">Q&A</a>&nbsp;&nbsp;&nbsp;
-<a href="<%=root %>/">답변형게시판</a>&nbsp;&nbsp;&nbsp;
-<a href="<%=root %>/">상품등록게시판</a>&nbsp;&nbsp;&nbsp; --%>
+
 
 <div class="wrap">
 <ul class="menu-bar">
@@ -43,7 +38,6 @@ String root = request.getContextPath();
 <li><a href="<%=root %>/index.jsp?main=login/loginmain.jsp">개인정보</a></li>
 </ul>
 </div>
-
 
 </body>
 </html>
