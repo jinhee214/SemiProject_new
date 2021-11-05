@@ -42,7 +42,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 		<td align="center" style="font-size: 1.3em;">iPad</td>
 	</tr>
 	<tr>
-		  <td>
+		  <td><br>
 		     <a href="index.jsp?main=product/iPad_De.jsp">
 		     <img alt="" src="AppleProduct_img/iPad.PNG" class="mainimg">
 		   	 </a>
