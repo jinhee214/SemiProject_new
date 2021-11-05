@@ -153,7 +153,7 @@ public class BoardDao {
 		public List<BoardDto> getList(int start, int perpage, String userId){
 
 			List<BoardDto> list = new Vector<>();
-
+			
 			Connection conn = db.getConnection();
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
@@ -196,7 +196,7 @@ public class BoardDao {
 	public List<BoardDto> getList(int start, int perpage){
 
 		List<BoardDto> list = new Vector<>();
-
+		
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

@@ -67,10 +67,10 @@ BoardDao bDao = new BoardDao();
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 String[] category = {"전체","Mac", "iPad", "iPhone", "Accessory", "기타문의"};
 
-UserDao uDao = new UserDao();
-
 //답변 상태 확인을 위한 객체 선언
 CommentDao cmDao = new CommentDao();
+
+UserDao uDao = new UserDao();
 
 //카테고리별 리스트를 받아 오기 때문에 선언만
 List<BoardDto> list;	
@@ -164,13 +164,13 @@ if(bp.no>0){
 // 리스트 뿌려주는 부분
 for(BoardDto dto : list){	
 	String apply = cmDao.getCommentsByBoardId(dto.getBoardId()).size()==0? "미답변":"답변";
-	//String name = 
+	String name = uDao.getName(dto.getUserId());
 	%>
 	<tr>
 	<%-- <td><%=bp.no-- %></td> --%>
 	<td><%=category[dto.getCategoryId()] %></td>
 	<td style="width: 700px;"><a href="index.jsp?main=qna/boarddetail.jsp?boardId=<%=dto.getBoardId()%>"><%=dto.getSubject() %></a></td>
-	<td><%=uDao.getName(dto.getUserId()) %></td>
+	<td><%=name %></td>
 	<td><%=sdf.format(dto.getWriteday())%></td>
 	<td><%=apply %></td>
 	</tr>
