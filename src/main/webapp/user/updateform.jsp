@@ -10,7 +10,31 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style type="text/css">
+caption{
+	color: black;
+	font-weight: bold;
+	font-size:2em;
+	text-align:center;
+}
 
+td{
+
+	text-align: center;
+}
+
+button.submit {
+	color: white;
+	background-color: #0077ed;
+	border: none;
+	border-radius: 5px;
+	height: 30px;
+	font-weight: bold;
+	font-size:0.9em;
+}
+
+
+</style>
 <title>Insert title here</title>
 <script type="text/javascript">
 
@@ -40,65 +64,63 @@ UserDto dto=dao.getUser(id);
 onsubmit="return check(this)">
 <!-- hidden  -->
 <input type="hidden" name="id" value="<%=id %>">
-	<table class="table table-bordered" style="width:500px;">
-		<caption><b>회원정보 수정</b></caption>
+	<table style="width:500px;">
+		<caption><b>Apple ID 수정</b></caption><br><br>
 		
 			<tr>
-				<th width="100" bgcolor="#aaa">아이디</th>
-				<td>
+				<td  colspan="2">
 					<input type="text" name="id" maxlength="8" class="form-control"
-					required="required" style="width: 120px;" readonly="readonly"
+					required="required" style="width: 300px;" readonly="readonly" placeholder="Apple ID"
 					value="<%=id%>">
-				
+					<br><br>
 				</td>
 			</tr>
 		
 			<tr>
-				<th width="100" bgcolor="#aaa">비밀번호</th>
-				<td>
+				<td colspan="2">
 					<input type="password" name="pass" class="form-control"
-					required="required" style="width: 120px;"
+					required="required" style="width: 150px;" placeholder="비밀번호"
 					value="<%=dto.getUser_pw()%>">
 					
 					<input type="password" name="pass2" class="form-control"
-					required="required" style="width: 120px;"
+					required="required" style="width: 150px;" placeholder="비밀번호확인"
 					value="<%=dto.getUser_pw()%>">
+					<br><br>
 				</td>
 			</tr>
 		
 			
 			<tr>
-				<th width="100" bgcolor="#aaa">이름</th>
-				<td>
+				<td colspan="2">
 					<input type="text" name="name" class="form-control"
-					required="required" style="width: 120px;"
+					required="required" style="width: 300px;" placeholder="이름"
 					value="<%=dto.getUser_name()%>">
-
+					<br><br>
 				</td>
 			</tr>
 			
 			<tr>
-				<th width="100" bgcolor="#aaa">핸드폰</th>
-				<td>
+				<td colspan="2">
 					<input type="text" name="hp" class="form-control"
-					required="required" style="width: 200px;" 
+					required="required" style="width: 300px;" placeholder="전화번호"
 					value="<%=dto.getUser_hp()%>">
+					<br><br>
 				</td>
 			</tr>
 			
 			<tr>
-				<th width="100" bgcolor="#aaa">주소</th>
-				<td>
+				<td colspan="2">
 					<input type="text" name="addr" class="form-control"
-					required="required" style="width: 400px;"
+					required="required" style="width: 300px;" placeholder="주소"
 					value="<%=dto.getUser_addr()%>">
+					<br><br>
 				</td>
 			</tr>
 			
 					
 			<tr>
-				<td colspan="2" align="center">
-					<button type="submit" class="btn btn-default" style="width:100px;">수정하기</button>
+				<td colspan="2">
+					<button type="submit" class="submit" style="width:60px;">수정</button>
 			</tr>
 			
 	</table>	
