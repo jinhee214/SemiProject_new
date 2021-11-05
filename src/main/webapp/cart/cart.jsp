@@ -28,6 +28,7 @@ a:hover {
 
 #name {
 	font-weight: bold;
+	color: black;
 }
 
 #name:hover {
@@ -78,6 +79,14 @@ button.logoutbtn {
 
 table tr.bottom-border {
 	border-bottom: 0.5px solid lightgray;
+}
+
+img.productPhoto {
+	height: 120px;
+	width: 120px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 25px;
 }
 
 </style>
@@ -198,14 +207,15 @@ DecimalFormat df = new DecimalFormat("###,###");
 			<tr class="no-bottom-border" style="margin-top: 300px;">
 				<!-- 제품사진 -->
 				<td class="thumbnail-img" rowspan="2">
-					<a href="index.jsp?main=product/#.jsp"><img src="AppleProduct_img/<%=pdao.getProductPhoto(dto.getProduct_id())%>"></a>
+					<a href="index.jsp?main=product/#.jsp"><img class="productPhoto" src="AppleProduct_img/<%=pdao.getProductPhoto(dto.getProduct_id())%>"></a>
 				</td>				
 				<!-- 제품명 -->
-				<td id="name" style="padding-left: 30px;"><a href="index.jsp?main=product/#.jsp"><%=pdao.getProductName(dto.getProduct_id())%>
+				<td id="name" style="padding-left: 15px; color: black; font-size: 1.2em; font-weight: bold;"><a href="index.jsp?main=product/#.jsp"><%=pdao.getProductName(dto.getProduct_id())%>
 				<span id="color">(색상: <%=dto.getColor()%>) <i style="font-size: 2pt;"></i></span></a>
 				</td>
 				<td><span><%=dto.getCnt()%></span>
-					<select name="cnt" user_id="<%=user_id%>" color="<%=dto.getColor()%>" insurance="<%=dto.getInsurance()%>">
+					<select name="cnt" user_id="<%=user_id%>" color="<%=dto.getColor()%>" insurance="<%=dto.getInsurance()%>"
+					style="font-size: 1.2em; font-weight: bold;">
 						<option value="" selected disabled hidden></option>
 						<option value="1">1</option>
 						<option value="2">2</option>
@@ -221,10 +231,10 @@ DecimalFormat df = new DecimalFormat("###,###");
 					<input type="hidden" name="productId" id="productId" value="<%=dto.getProduct_id()%>">
 					<input type="hidden" name="productPrice" id="productPrice" value="<%=dto.getPrice()%>">
 				</td>
-				<td align="right"><span id="cntXprice">￦<%=df.format(dto.getCnt()*dto.getPrice())%></span></td>
+				<td align="right"><span id="cntXprice" style="font-size: 1.2em; font-weight: bold;">￦<%=df.format(dto.getCnt()*dto.getPrice())%></span></td>
 			</tr>
 			<tr class="bottom-border" style="vertical-align: top; padding-top: 1px;">
-				<td style="padding-left: 30px;">
+				<td style="padding-left: 15px;">
 					<%
 					if (dto.getInsurance().equals("Y")) {
 					%>
