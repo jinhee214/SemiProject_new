@@ -68,7 +68,13 @@ if(key==null){
 %>
 <script type="text/javascript">
 
-	
+//인풋 태그의 한글 입력 막기 (아이디 검색할때만 한글 안되게)
+$( function(){
+	$( 'input' ).on("blur keyup", function() {
+		$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '' ) );
+	});
+})
+
   $("#btnuse").click(function(){
 	  
 	  //아이디 얻기
