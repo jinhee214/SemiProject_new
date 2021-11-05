@@ -111,12 +111,10 @@ else{
 <!-- 메인 화면 부분 -->
 
 <!-- 알림 부분 -->
-<h3>Q&A</h3>
-<div class="alert alert-default" style="background-color: #dfe6e9">
-구매하시려는 상품에 대해 궁금하신 점이 있으신 경우 문의해주세요.<br>
-- 평일 9:00 ~ 18:00(점심 12:00 ~ 13:00)<br>
-- 토, 일, 공휴일 휴무<br>
+<div>
+<img alt="" src="image/boardimg/boardmainimg.PNG" style="width:1300px; margin-bottom:40px;">
 </div>
+
 
 <!-- 카테고리 선택 부분 -->
 <select id="selCategory" onchange="sendCategory()">
@@ -229,7 +227,11 @@ if(bp.endPage < bp.totalPage){
 
 </ul>
 </div>
-
+<div class="alert alert-default" style="background-color: #dfe6e9;">
+구매하시려는 상품에 대해 궁금하신 점이 있으신 경우 문의해주세요.<br>
+- 평일 9:00 ~ 18:00(점심 12:00 ~ 13:00)<br>
+- 토, 일, 공휴일 휴무<br>
+</div>
 
 
 </body>

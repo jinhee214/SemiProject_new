@@ -8,7 +8,7 @@ public class BoardPage {
 	public int startPage;		//각 블럭의 시작페이지
 	public int endPage;		//각 블럭의 끝페이지
 	public int start; 			//각 페이지의 시작번호
-	public int perPage=7;		//한 페이지에 보여질 글의 개수
+	public int perPage=6;		//한 페이지에 보여질 글의 개수
 	public int perBlock=5;		//한 페이지에 보여지는 페이지 개수
 	public int currentPage;	//현재 페이지
 	public int no;				//게시글 번호
