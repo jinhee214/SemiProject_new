@@ -35,7 +35,7 @@
  body {
      color: #666666;
      font-size: 15px;
-     font-family: 'Quattrocento Sans', sans-serif;
+     font-family: 'Quattrocento Sans', sans-serif ;
      line-height: 1.80857;
 }
  a {
@@ -354,9 +354,11 @@
          margin-top: 0;
          position: relative;
          top: -2px;
+         margin-left:100px;
     }
      nav.navbar .navbar-brand img.logo{
-         width: 160px;
+         width: 70px;
+         margin-right:100px;
     }
      .attr-nav > ul > li > a{
          padding: 16px 15px 15px;
@@ -1996,7 +1998,7 @@
 }
  .new-account-login h5 {
      font-size: 18px;
-     color: #1111111;
+     color: #111111;
      font-weight: 600;
 }
  .new-account-login h5 a:hover{

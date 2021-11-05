@@ -25,6 +25,23 @@ justify-content: center;
 margin-top : 50px;
 }
 
+.pagination>li.active>a {
+  background: #d33b33;
+  color: white;
+  border: 1px solid #d33b33;
+}
+
+.pagination>li.active>a:hover {
+  background: #e99a96;
+  color: black;
+  border: 1px solid #d33b33;
+  
+}
+
+.pagination>li>a{
+	color:black;
+}
+
 </style>
 
 <script type="text/javascript">

@@ -11,6 +11,7 @@
 
 (function ($) {
 	"use strict";
+	console.log("됨?");
     
     var bootsnav = {
         initialize: function() {
