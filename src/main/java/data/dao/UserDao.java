@@ -261,9 +261,32 @@ public class UserDao {
 			e.printStackTrace();
 		}finally {
 			db.dbClose(pstmt, conn);
-		}
+		}		
+	}
+	
+	//포인트만 업데이트
+	public void updatePont(UserDto dto)
+	{
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		//이름,핸드폰,주소,이메일
+		String sql="update user set user_point=? where user_id=?";
 		
-		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			//바인딩
+			pstmt.setInt(1, dto.getUser_point());
+			pstmt.setString(2, dto.getUser_id());			
+			//실행
+			pstmt.execute();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}		
 	}
 	
 	//admin의 삭제 or 회원탈퇴 (id로 조회)
