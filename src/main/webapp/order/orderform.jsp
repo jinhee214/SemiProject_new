@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.util.Calendar"%>
@@ -19,11 +20,8 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
- <style type="text/css"> 
- .tot b{
- 	color: #a9adb5; 	 	
- } 
- </style>
+
+
  
 <title>Insert title here</title>
 </head>
@@ -61,7 +59,7 @@ for(CartDto cdto:clist)
 	int price=cdto.getPrice();
 	total+=cnt*price;
 	
-	vat=total*0.11;	
+	vat=(Math.round(total*0.11)) ;	
 }
 //System.out.println(total);
 
@@ -90,12 +88,16 @@ Calendar cal2 = Calendar.getInstance();
 	
 	String []tokens=addr.split(" ");	
 	
+	DecimalFormat dfm=new DecimalFormat("###,###");
+	
+	
 %>
 
-<h4 style="margin-left: 400px;">결제</h4>
-<hr style="border:1px solid #e6eaee; width:1120px;">
-<br><br>
+<b style="margin-left: 200px; font-size: 1.1em;">결제</b>
+<hr style="border:1px solid #e6eaee; width:800px; margin-left: 200px;">
+
 <!-- form -->
+
 <form action="order/orderaction.jsp" method="post" id="frm">
 
 <input type="hidden" name="total"  value="<%=total%>">
@@ -103,105 +105,119 @@ Calendar cal2 = Calendar.getInstance();
 <input type="hidden" name=delday1  value="<%=delday1%>">
 <input type="hidden" name="delday2"  value="<%=delday2%>">
 
-<h2 style="margin-left: 400px; font-weight: bold;">주문하시겠습니까?<br>
+<h2 style="margin-left: 200px; font-weight: bold;">주문하시겠습니까?<br>
 입력하신 사항이 모두 정확한지 확인해주십시오.
 </h2>
 <br><br>
 
 <!-- 구매날짜 -->
-<b style="margin-left: 400px;"><%=delday1 %> - <%=delday2 %></b>
-<p style="margin-left: 400px;">표준 배송</p>
-<br><br><br>
+<h3 style="margin-left: 200px; font-weight: bold;"><%=delday1 %> - <%=delday2 %></h3>
+<p style="margin-left: 200px;">표준 배송</p>
+
 
 <!-- 제품이미지 제품 정보받아오기  -->
-<div>
+<table class="table" style="width: 800px; margin-left: 200px;">
 <%
 	for(CartDto cdto:clist)
 	{%>
-		<img style="margin-left: 400px;" src="../AppleProduct_img/<%=pdao.getProductPhoto(cdto.getProduct_id())%>">
-		<b style="margin-left: 200px;"><%=pdao.getProductName(cdto.getProduct_id()) %></b>
-		<b style="margin-left: 200px;"><%=cdto.getCnt() %></b>
-		<b style="margin-left: 300px;">₩<%=cdto.getPrice() %></b>
-		<br><br>
-		<hr style="border:1px solid #e6eaee; width:1120px;">
+		<tr>
+			<td style="width: 300px;">
+			<div style="margin: 15px 0 15px 0;">
+			<img style="max-height: 200px; max-width: 350px;" 
+			src="<%=root %>/AppleProduct_img/<%=pdao.getProductDetailPhoto(cdto.getProduct_id())%>">
+			</div>
+			</td>
+			<td><div style="margin-top: 80px; font-weight: bold;"><%=pdao.getProductName(cdto.getProduct_id()) %></div></td>
+			<td><div style="margin-top: 80px; font-weight: bold;"><%=cdto.getCnt() %></div></td>
+			<td align="right" style="width: 300px;"><div style="margin-top: 80px; font-weight: bold;">₩<%=dfm.format(total)%></div></td>					
+		</tr>
+			
 	<%}
 
 %>
-</div>
-<br>
+</table>
 
 <!--결제 상세정보 결제수단 주소 받기 -->
-<div style="margin-left: 400px; margin-bottom: 150px;">
-<b style="float: left;">배송 상세 정보</b>
+<table class="table" style="width: 800px; margin-left: 200px;">
+	<tr>
+		<td><div style="margin: 15px 0 15px 0;"><b style="font-size: 1.2em;">배송 상세 정보</b></div></td>
 
-<b style="margin-left: 100px; float: left;">배송지
-<br>
-<span><%=udto.getUser_name() %><br>
-<%
-{	
-	for(int i=0;i<tokens.length;i++){%>
-		<%=tokens[i] %><br>
-	<%}	
-}	
-%>
+		<td><div style="margin: 15px 0 15px 0;"><b>배송지:</b><br>
 
-</span></b>
-<b style="margin-left: 100px; float: left;">결제방법
-<br>
-<span>
-<%=paysel %>
-</span></b>
+			<span><%=udto.getUser_name() %><br>
+			<%
+			{	
+				for(int i=0;i<tokens.length;i++){%>
+					<%=tokens[i] %><br>
+			<%}	
+			}	
+			%>
+			</span></div>
+			</td>
+		
+		<td align="center">
+			<div style="margin: 15px 0 15px 0;"><b>결제방법:</b>
+			<br>
+			<span>
+			<%=paysel %>
+			</span>
+			</div>
+		</td>
+		
+		<td>
+			<div style="margin: 15px 0 15px 0;" align="right"><b>연락처 정보:</b>
+			<div><%=udto.getUser_hp()%></div>
+			</div>
+		</td>
+	</tr>	
+	
+	<!-- 이용약관  체크박스 -->
+	<tr>
+		<td colspan="4">
+			<div style="margin: 15px 0 15px 0;"><b style="font-size: 1.2em;">이용약관</b><br>
+				<span>		
+				<input type="checkbox" id="useckb" style="margin: 10px 5px 0 0;">
+				<b style="color: #0080ff; margin-left: 6px; font-weight: normal; font-size: 0.9em;">Apple 개인정보 취급방침</b><b style="font-weight: normal; font-size: 0.9em;">에 따라 개인정보를 수집하고, 사용하고, 제3자에 제공하고, 처리한다는 점에 동의합니다.</b>
+				</span>
+			</div>
+		</td>		
+	</tr>
+	
+	<tr>
+		<td><div style="margin-top: 15px;"><b style="font-size: 1.2em;">총계</b></div></td>
+		<td colspan="3"></td>		
+	</tr>	
+	
+</table>
 
-<b style="margin-left: 200px; float: left;">연락처 정보
+<table style="width:500px; margin-left: 500px; ">
+	
+	<tr style="border-bottom: 1px solid lightgray;">
+		<td style="font-size: 0.9em;"><div style="margin: 15px 0 15px 0;"> 소계
+		<div style="margin: 10px 0 15px 0;">배송</div>
+		</div></td>
+		
+		<td style="font-size: 0.9em;" align="right"><div style="margin: 15px 0 15px 0;">￦<%=dfm.format(total) %>
+		<div style="margin: 10px 0 15px 0;">무료</div>
+		</div></td>
+	</tr>
+	
+	<tr>
+		<td>
+		<div style="font-size: 1.7em; font-weight: bold;">총계		
+		</div></td>
+		
+		<td align="right"><div style="margin-top: 15px;"><b style="font-size: 1.7em;">￦<%=dfm.format(total)%></b>
+		<div style="font-size: 0.9em;">￦<%=dfm.format(vat)%>의 VAT 포함</div>
+		</div></td>
+	</tr>	
+	
+</table>
 
-<span><p><%=udto.getUser_hp() %></p></span>
-
-</b>
-</div>
-
-
-
-<hr style="border:1px solid #e6eaee; width:1120px;">
-
-<!-- 이용약관  체크박스 -->
-<br>
-<b style="margin-left: 400px;">이용약관</b>
-
-<br><br>
-
-<input type="checkbox" id="useckb" style="margin-left: 400px;">
-<b style="color: #0080ff; margin-left: 6px;">Apple 개인정보 취급방침</b><b>에 따라 개인정보를 수집하고, 사용하고, 제3자에 제공하고, 처리한다는 점에 동의합니다.</b>
-
-<br><br>
-<hr style="border:1px solid #e6eaee; width:1120px;">
-
-<!-- 총계 > span vat포함 계산 -->
-<div style="margin-left: 400px;" class="tot">
-<h3>총계</h3>
-
-<br><br>
-
-<b style="font-size: 0.9em; margin-left: 730px;">소계</b><b style="font-size: 0.9em;
- margin-left: 300px;">￦<%=total %></b>
- 
-<br>
-
-<b style="font-size: 0.9em; margin-left: 730px;">배송</b><b style="font-size: 0.9em; margin-left: 300px;">무료</b>
-
-<hr style="border:1px solid #e6eaee; width:400px; margin-right: 388px;">
-
-<b style="color:black; margin-left: 730px; font-weight: bold; font-size: 1.5em;">총계</b>
-<b style="color:black; margin-left: 240px; font-weight: bold; font-size: 1.5em;">￦<%=total %></b>
-<b style="font-size: 0.9em; margin-left: 1000px;">￦<%=Math.round(vat)/10%>의 VAT 포함</b>
-
-<br><br>
-
-<button type="button" id="subbtn" style="margin-left: 740px; width: 400px; height: 50px; border-radius: 15px; background-color: #0080ff;"
+<div style="margin:60px 0 15px 620px;">
+<button type="button" id="subbtn" style="width: 400px; height: 50px; border-radius: 15px; background-color: #0080ff;"
  class="btn btn-primary" >결제 하기</button>
- 
- <br><br>
- 
-<img  src="<%=root %>/AppleProduct_img/orderinfo.PNG" style="margin-left: 740px;">
+ <img  src="<%=root %>/AppleProduct_img/orderinfo.PNG" style="max-width: 800px; margin-top: 10px;">
 </div>
 
 </form>

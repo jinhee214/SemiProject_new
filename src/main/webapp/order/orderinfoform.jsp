@@ -1,4 +1,5 @@
 
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="data.dto.UserDto"%>
 <%@page import="data.dao.UserDao"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
@@ -37,26 +38,26 @@ String User_addr=udto.getUser_addr();
 
 String []tokens=User_addr.split(" ");
 
-
+DecimalFormat df=new DecimalFormat("###,###");
 
 %>
 
 <!-- 결제 방법  -->
-<h3 style="margin-left: 400px;">결제</h3>
-<hr style="border:1px solid #e6eaee; width:1120px;">
+<h3 style="margin-left: 150px;">결제</h3>
+<hr style="border:1px solid #e6eaee; width:1000px;">
 <br><br>
 
 
 <!-- 결제 종류  -->
-<h1 style="margin-left: 400px;"><b>어떻게 결제하시겠습니까?</b></h1>
+<h1 style="margin-left: 150px;"><b>어떻게 결제하시겠습니까?</b></h1>
 <br><br>
 
 <form action="<%=root %>/index.jsp?main=order/orderform.jsp" method="post">
-<div style="margin-left: 400px; border: 2px solid #0080ff; border-radius: 15px; width: 600px; height: 90px;">
+<div style="margin-left: 150px; border: 2px solid #0080ff; border-radius: 15px; width: 600px; height: 90px;">
 
 <div class="form-group"> 
-  <select  class="form-control" name="paysel" style="width:593.84px; height: 84.13px; border:0px; border-radius:10px; 
-  margin-left: 0.7px; margin-top:0.4px; font-size: 1.3em;">
+  <select  class="form-control" id="paysel" name="paysel" style="width:595px; height: 84.8px; border:0px; border-radius:10px; 
+  margin-left: 0.7px; margin-top:0.45px; font-size: 1.3em;">
     <option selected="selected" value="결제 포인트" >결제 포인트</option>
     <option value="신용 카드 또는 직불 카드">신용 카드 또는 직불 카드</option>
     <option value="카카오 페이" >카카오 페이</option>
@@ -64,32 +65,32 @@ String []tokens=User_addr.split(" ");
   </select>
 </div>
 
-<img src="<%=root %>/AppleProduct_img/order.PNG" style="position:absolute; top:250px; left: 1050px; max-width:400px;">
+<img src="<%=root %>/AppleProduct_img/order.PNG" style="position:absolute; top:250px; left: 1100px; max-width:400px;">
 </div>
 
 <!-- 포인트선택>포인트 표시 -->
-<div name="point" style="margin:30px 0 0 400px;">
-<b style="font-size: 1.3em;"><%=udto.getUser_point() %>포인트 사용 가능</b>
+<div name="point" style="margin:30px 0 0 150px;">
+<b style="font-size: 1.3em;"><%=df.format(udto.getUser_point()) %>포인트 사용 가능</b>
 </div>
 
 
-<hr style="border:1px solid #e6eaee; width:600px; margin-left: 400px;">
+<hr style="border:1px solid #e6eaee; width:600px; margin-left: 150px;">
 <br><br>
 
 <!-- 주소출력 -->
-<input type="checkbox" name="delckb" id="delckb" checked="checked" style="margin-left: 400px; margin-right: 5px;">내 배송 주소를 사용합니다
+<input type="checkbox" name="delckb" id="delckb" checked="checked" style="margin-left: 150px; margin-right: 5px;">내 배송 주소를 사용합니다
  
-<div id="uaddr_div" style="margin: 20px 0 0 400px; height: 50px;">
+<div id="uaddr_div" style="margin: 20px 0 0 170px; height: 50px;">
 <%
 for(int i=0;i<tokens.length;i++)
 {%>
-	<p><%=tokens[i] %></p>
+	<%=tokens[i] %><br>
 <%}
 %>
 </div>
 
 
-<div id="addr_div" style="margin: 50px 0 0 400px;">
+<div id="addr_div" style="margin: 50px 0 0 150px;">
 <input type="text" name="addr1" class="form-control" placeholder="시/도" style="width: 400px;">
 <input type="text" name="addr2" class="form-control" placeholder="상세주소" 
 style="width: 400px; margin-top: 10px;">
@@ -98,14 +99,14 @@ style="width: 400px; margin-top: 10px;">
 <br><br><br>
 <hr style="border:1px solid #e6eaee; width:1120px;">
 <br>
-<button type="submit" style="margin-left: 400px; width: 600px; height: 70px; border-radius: 15px; background-color: #0080ff;"
+<button type="submit" style="margin-left: 350px; width: 600px; height: 70px; border-radius: 15px; background-color: #0080ff;"
  class="btn btn-primary" >주문 검토</button>
  
  <br><br><br><br>
   
 <hr style="border:1px solid #e6eaee; width:1800px;">
-<b style="margin-left: 400px; font-size: 1.1em;">도움이 더 필요하신가요?</b> <b style="font-size: 1.1em; color: #0080ff;">지금 채팅하기
-</b> <b style="font-size: 1.1em;">또는 080-330-8877 번호로 문의하세요.</b>
+<b style="margin-left: 380px;">도움이 더 필요하신가요?</b> <b style="color: #0080ff;">지금 채팅하기
+</b> <b>또는 080-330-8877 번호로 문의하세요.</b>
 <br>
 <hr style="border:1px solid #e6eaee; width:1800px;">
 

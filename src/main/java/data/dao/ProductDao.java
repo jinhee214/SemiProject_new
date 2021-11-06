@@ -73,7 +73,7 @@ public class ProductDao {
 			}				
 
 			return list;
-		}
+		}		
 			
 		// product_id로 제품사진 가져오기
 		public String getProductPhoto(int product_id) {
@@ -100,6 +100,32 @@ public class ProductDao {
 			}
 			return main_img;
 		}
+		
+		// product_id로 디테일 제품사진 가져오기
+				public String getProductDetailPhoto(int product_id) {
+					String detail_img = "";
+
+					Connection conn = db.getConnection();
+					PreparedStatement pstmt = null;
+					ResultSet rs = null;
+
+					String sql = "select detail_img from product where product_id=?";
+
+					try {
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setInt(1, product_id);
+						rs = pstmt.executeQuery();
+
+						if (rs.next()) {
+							detail_img = rs.getString("detail_img");
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						db.dbClose(rs, pstmt, conn);
+					}
+					return detail_img;
+				}
 		
 		// product_id로 제품명 가져오기
 		public String getProductName(int product_id) {
