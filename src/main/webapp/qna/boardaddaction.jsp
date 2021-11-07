@@ -28,7 +28,7 @@ BoardDto dto = new BoardDto(id, category,subject,content);
 BoardDao dao = new BoardDao();
 dao.insertBoard(dto);
 
-response.sendRedirect("../index.jsp?main=qna/boardUser.jsp");
+response.sendRedirect("../index.jsp?main=qna/boardMenu.jsp");
 
 
 %>

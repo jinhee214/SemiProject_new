@@ -1,12 +1,10 @@
-<%@page import="data.dao.UserDao"%>
-<%@page import="data.dto.BoardPage"%>
-<%@page import="data.dao.CommentDao"%>
-<%@page import="data.dto.CommentDto"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="data.dao.CategoryDao"%>
-<%@page import="data.dto.BoardDto"%>
-<%@page import="java.util.List"%>
 <%@page import="data.dao.BoardDao"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="data.dao.CommentDao"%>
+<%@page import="data.dao.UserDao"%>
+<%@page import="java.util.List"%>
+<%@page import="data.dto.BoardPage"%>
+<%@page import="data.dto.BoardDto"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -46,8 +44,9 @@ margin-top : 50px;
 
 <%
 
-//카테고리를 따로 안 정해주면 전체로 보여짐
-int categoryIndex = Integer.parseInt(request.getParameter("categoryIndex"));
+//현재 로그인 한 id
+String id = (String)session.getAttribute("myid");
+
 
 //게시판 리스트 뿌려주기 위한 객체 선언
 BoardDao bDao = new BoardDao();
@@ -59,11 +58,13 @@ CommentDao cmDao = new CommentDao();
 
 UserDao uDao = new UserDao();
 
+//카테고리별 리스트를 받아 오기 때문에 선언만
+
 
 //페이징 처리가 너무 길어서 data.dto.BoardPage class로 만듬
-BoardPage bp = new BoardPage(bDao.getTotalCount(categoryIndex),request.getParameter("currentPage"));
+BoardPage bp = new BoardPage(bDao.getTotalCount(id),request.getParameter("currentPage"));
 
-List<BoardDto> list = bDao.getList(bp.start, bp.perPage, categoryIndex);
+List<BoardDto> list = bDao.getList(bp.start, bp.perPage, id);
 
 %>
 
@@ -71,14 +72,22 @@ List<BoardDto> list = bDao.getList(bp.start, bp.perPage, categoryIndex);
 <body>
 <!-- 메인 화면 부분 -->
 
-<!-- 알림 부분 -->
+<!-- 상단 그림 부분 -->
 <div>
-<img alt="" src="image/boardimg/boardtop<%=categoryIndex %>.PNG" style="width:1300px; margin-bottom:40px;">
+<img alt="" src="image/boardimg/boardtop6.PNG" style="width:1300px; margin-bottom:40px;">
 </div>
 
 
+
 <!-- 게시글 추가 -->
+
+<div align="right" style="margin: 0 30px 10px 0; font-weight: 700; font-size: 13pt;">
+<a href="index.jsp?main=qna/boardaddform.jsp">질문하기 <span class="glyphicon glyphicon-chevron-right"></span></a>
+</div>
+
 <%
+
+
 //게시글이 1개 이상일 경우
 if(bp.no>0){
 	%>
@@ -132,7 +141,7 @@ else{
 if(bp.startPage > 1){
 	%>
 	<li>
-	<a href="index.jsp?main=qna/board.jsp?currentPage=<%=bp.startPage-1%>">이전</a>
+	<a href="index.jsp?main=qna/boardmy.jsp?currentPage=<%=bp.startPage-1%>">이전</a>
 	</li>
 	<%
 }
@@ -140,14 +149,14 @@ for(int p = bp.startPage; p <= bp.endPage; p++){
 	if(p == bp.currentPage){
 		%>
 		<li class="active">
-		<a href="index.jsp?main=qna/board.jsp?currentPage=<%=p %>"><%=p %></a>
+		<a href="index.jsp?main=qna/boardmy.jsp?currentPage=<%=p %>"><%=p %></a>
 		</li>
 		<%
 	}
 	else{
 		%>
 		<li>
-		<a href="index.jsp?main=qna/board.jsp?currentPage=<%=p %>"><%=p %></a>
+		<a href="index.jsp?main=qna/boardmy.jsp?currentPage=<%=p %>"><%=p %></a>
 		</li>
 		<%
 	}
@@ -157,7 +166,7 @@ for(int p = bp.startPage; p <= bp.endPage; p++){
 if(bp.endPage < bp.totalPage){
 	%>
 	<li>
-	<a href="index.jsp?main=qna/board.jsp?currentPage=<%=bp.endPage+1%>">다음</a>
+	<a href="index.jsp?main=qna/boardmy.jsp?currentPage=<%=bp.endPage+1%>">다음</a>
 	</li>
 	<%
 }
@@ -166,7 +175,8 @@ if(bp.endPage < bp.totalPage){
 
 </ul>
 </div>
-<div class="alert alert-default" style="background-color: #dfe6e9;">
+
+<div class="alert alert-default" style="background-color: #dfe6e9">
 구매하시려는 상품에 대해 궁금하신 점이 있으신 경우 문의해주세요.<br>
 - 평일 9:00 ~ 18:00(점심 12:00 ~ 13:00)<br>
 - 토, 일, 공휴일 휴무<br>

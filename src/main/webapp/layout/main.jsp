@@ -30,7 +30,6 @@
 
 #slider {
 	height: 100%;
-	background-color: yellow;
 	position: absolute;
 }
 
