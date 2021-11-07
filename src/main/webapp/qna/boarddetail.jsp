@@ -79,12 +79,17 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 if(loginok != null){
 	if(isAdmin || dto.getUserId().equals(id)){							//수정 필요
 		%>
-		<button type="button" class="btn btn-danger" onclick="location.href='qna/boardremove.jsp?boardId=<%=boardId%>'">삭제하기</button>
+		<%-- <button type="button" class="btn btn-danger" onclick="location.href='qna/boardremove.jsp?boardId=<%=boardId%>'">삭제하기</button> --%>
+		<div align="right" style="margin: 0 30px 10px 0; font-weight: 700; font-size: 13pt;">
+		<a href="qna/boardremove.jsp?boardId=<%=boardId%>">삭제하기 <span class="glyphicon glyphicon-chevron-right"></span></a>
+		</div>
 		<%
 	}
 }
 %>
-<button type="button" class="btn btn-default" onclick="history.back()">뒤로가기</button>
+<div align="right" style="margin: 0 30px 10px 0; font-weight: 700; font-size: 13pt;">
+<a href="#" onclick="history.back()">뒤로가기 <span class="glyphicon glyphicon-chevron-right"></span></a>
+</div>
 </div>
 
 <!-- 문의 상세 내용 보이는 폼 -->

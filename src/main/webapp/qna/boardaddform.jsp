@@ -21,9 +21,10 @@ padding: 20px 20px;
 </style>
 </head>
 <body>
-
 <!-- 게시글 추가 폼 -->
-<div class="alert alert-info" align="center"><h3><b>상품 Q&A</b></h3></div>
+<div class="alert alert-default" align="center"><h2 style="margin-bottom: 30px;"><b>어떤 문제가 있나요?<br>
+</b></h2>
+<h4>문제에 해당하는 카테고리를 선택하시고 문제를 자세히 작성해주세요. 최선의 방법으로 도움을 드립니다.</h4></div>
 <form action="qna/boardaddaction.jsp" method="post">
 <table class="table">
 <tr>
@@ -57,7 +58,7 @@ padding: 20px 20px;
 </form>
 
 <!-- 안내사항 구역 -->
-<p><span class="glyphicon glyphicon-alert"></span> 문의하신 내용에 대한 답변은 <a href="index.jsp?main=qna/board.jsp" style="text-decoration: underline;">'메뉴 > 고객지원'</a>에서 확인하실 수 있습니다.</p>
+<p><span class="glyphicon glyphicon-alert"></span> 문의하신 내용에 대한 답변은 <a href="index.jsp?main=qna/boardMenu.jsp" style="text-decoration: underline;">'메뉴 > 고객지원'</a>에서 확인하실 수 있습니다.</p>
 <div class="notice">
 상품 Q&A는 상품 및 상품 구매 과정에 대해 판매자에게 문의하는 게시판 입니다.<br><br>
 상품 및 상품 구매 과정과 관련 없는 비방/욕설/명예훼손성 게시글 및 상품과 관련 없는 광고글 등 부적절한 게시글 등록 시 <br>글쓰기 제한 및 게시글이 삭제 조치될 수 있습니다.<br><br>
