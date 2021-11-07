@@ -87,17 +87,21 @@ if(loginok==null)
 			uudao.getUser(user_id);
 			%>
 			<form action="product/addProAction.jsp" method="post">
-				<table class="table table-hover" style="width: 500px; height: 500px;">
+				<table style="width: 500px;">
 				<tr>
-						<th width="100">제품이름</th>
-							<td>
-								<select name="product_id">
-								<option value="12321" selected="selected">iMacM1</option>
-								</select>
-							</td>
+						<th width="100" height="100" colspan="2" style="font-size: 25pt;">iMacM1</th>
 					</tr>
+					
 					<tr>
-						<th width="100">수량</th>
+					<th width="100" colspan="2" style="font-size: 1.3em;">￦1,690,000</th>
+					</tr>
+					
+					<tr>
+					<th width="100" colspan="2" style="font-size: 0.8em; color: #0077ed;" >최대 12개월 신용 카드 할부</th>
+					</tr>
+					
+					<tr>
+						<th width="100" height="100">수량</th>
 							<td>
 							<select name="cnt">
 									<option value="1">1</option>
@@ -114,28 +118,27 @@ if(loginok==null)
 							</td>
 				</tr>
 				<tr>
-					<th width="100">색상</th>
+					<th width="100" height="100">색상</th>
 					<td>
-					<select name="color">
-						<option value="실버" selected="selected">실버</option>
-						<option value="골드">골드</option>
-						<option value="그레이">그레이</option>
-					</select>
-			
-			</td>
-		</tr>
+					<label><input type="radio" name="color" value="실버" checked="checked"> 실버</label>
+      				<label><input type="radio" name="color" value="골드"> 골드</label>
+      				<label><input type="radio" name="color" value="그레이">그레이</label>
+					</td>
+			</tr>
 		<tr>
-			<th width="100">보험</th>
+			<th width="100" height="100">AppleCare</th>
 				<td>
-					<input type="radio" name="insurance" value="Y">Y 
-					<input type="radio" name="insurance" value="N" checked="checked">N
+					<input type="radio" name="insurance" value="Y">Yes
+					<input type="radio" name="insurance" value="N" checked="checked">No
 				</tr>
 		<tr>
-			<td align="center" colspan="2">
+			<td align="center" colspan="2" height="100">
 				<!-- hidden -->	
+				<input type="hidden" value="<%=dto.getProduct_id() %>" name="product_id">
 				<input type="hidden" value="<%=user_id %>" name="user_id">
 				<input type="hidden" value="1690000" name="price">
-				<button type="submit" class="btn btn-primary btn-block">장바구니담기</button>
+				<button type="submit" class="btn btn-primary btn-block"
+				style="background-color: #0077ed; border-radius: 10px;">장바구니담기</button>
 			</td>
 		</tr>
 		</table>
