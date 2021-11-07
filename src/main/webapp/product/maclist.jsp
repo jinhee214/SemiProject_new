@@ -13,7 +13,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 	 img.mainimg{
 		width: 250px;
 		height: 200px;	
-		border: 1px solid #aaa;	
+		border: 1px solid white;	
 		margin: 10px 10px 10px 10px;
 	}
 	
@@ -26,6 +26,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 	
 	/* table.maintb{
 		width: 700px;
+		
 	}
 	table.maintb tr{
 		height: 180px;
@@ -36,9 +37,9 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 </head>
 <body>
 <div>
-<table class="maintb">
+<table class="maintb" style="margin-left: auto; margin-right: auto;">
 	<tr>
-		<td align="center" style="font-size: 1.3em;">MAC</td>
+		<td align="center" style="font-size: 1.3em;"><b>MAC</b></td>
 	</tr>
 	<tr>
 		  <td><br>

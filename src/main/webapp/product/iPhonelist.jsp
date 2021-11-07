@@ -11,16 +11,16 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style type="text/css">
 	 img.mainimg{
-		width: 250px;
-		height: 200px;	
-		border: 1px solid #aaa;	
+		width: 200px;
+		height: 250px;	
+		border: 1px solid white;	
 		margin: 10px 10px 10px 10px;
 	}
 	
 	 img.mainimg:hover{
 		cursor: pointer;
-		width: 300px;
-		height:250px;
+		width: 250px;
+		height:300px;
 		border: 3px solid lightgray; 		
 	} 
 	
@@ -35,9 +35,9 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 <title>Insert title here</title>
 </head>
 <body>
-<table class="maintb">
+<table class="maintb" style="margin-left: auto; margin-right: auto;">
 	<tr>
-		<td align="center" style="font-size: 1.3em;">iPhone</td>
+		<td align="center" style="font-size: 1.3em;"><b>iPhone</b></td>
 	</tr>
 	<tr>
 		  <td><br>

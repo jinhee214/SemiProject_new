@@ -13,7 +13,7 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 	 img.mainimg{
 		width: 250px;
 		height: 200px;	
-		border: 1px solid #aaa;	
+		border: 1px solid white;	
 		margin: 10px 10px 10px 10px;
 	}
 	
@@ -35,9 +35,9 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 <title>Insert title here</title>
 </head>
 <body>
-<table class="maintb">
+<table class="maintb" style="margin-left: auto; margin-right: auto;">
 	<tr>
-		<td align="center" style="font-size: 1.3em;">Accessory</td>
+		<td align="center" style="font-size: 1.3em;"><b>Accessory</b></td>
 	</tr>
 	<tr>
 		  <td><br>	<a href="index.jsp?main=product/AirPods_2De.jsp">
