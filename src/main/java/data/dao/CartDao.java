@@ -201,4 +201,23 @@ public class CartDao {
 		return total;
 	}
 
+	// 결제할 때 장바구니 리셋
+	public void deleteCart(String user_id) {
+		
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
+		String sql = "delete from cart where user_id=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			pstmt.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.dbClose(pstmt, conn);
+		}
+		
+	}
 }
