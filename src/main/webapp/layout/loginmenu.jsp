@@ -29,13 +29,13 @@ UserDto dto=dao.getUser(myid);
 //title 표시
 if(loginok==null){
 %>
-	<button type="button" class="btn btn-default btn-sm" 
+	<!-- <button type="button" class="btn btn-default btn-sm" 
 	style="width:100px;"
-	onclick="location.href='index.jsp?main=login/loginform.jsp'">로그인</button>
+	onclick="location.href='index.jsp?main=login/loginform.jsp'">로그인</button> -->
 <%}
 
 else{%>
-	<b style="font-size:10pt;"><%=dto.getUser_name() %>님 환영합니다. / Point:<%=dto.getUser_point() %>pt </b>
+	<%-- <b style="font-size:10pt;"><%=dto.getUser_name() %>님 환영합니다. / Point:<%=dto.getUser_point() %>pt </b>
 	
 	<button type="button" class="btn btn-danger btn-xs"
 	style="width:100px;" 
@@ -43,7 +43,7 @@ else{%>
 	
 	<button type="button" class="btn btn-default btn-xs"
 	style="width:100px;" 
-	onclick="location.href='index.jsp?main=cart/cart.jsp'">장바구니</button>
+	onclick="location.href='index.jsp?main=cart/cart.jsp'">장바구니</button> --%>
 <%}
 
 %>

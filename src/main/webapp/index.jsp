@@ -53,7 +53,7 @@
 
 .setCenter{
 
-	top: 200px;
+	top: 150px;
 	width:100%;
 	display: flex;
 	justify-content: center;
@@ -83,19 +83,19 @@ if(request.getParameter("main")!=null){
 }
 %>
 
-	<div class="layout title">
+	<%-- <div class="layout title">
 		<jsp:include page="layout/title.jsp"></jsp:include>
-	</div>
+	</div> --%>
 
 	<div class="layout menu">
 		<jsp:include page="layout/menu.jsp"></jsp:include>
 	</div>
 
 
-	<div class="layout login">
+	<%-- <div class="layout login">
 		<!-- 로그인메뉴 -->
 		<jsp:include page="layout/loginmenu.jsp"></jsp:include>
-	</div>
+	</div> --%>
 	
 <div class="layout setCenter">
 	<div class="main">

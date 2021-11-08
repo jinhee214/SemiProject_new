@@ -90,15 +90,15 @@ position: absolute;
 <body>
 	<div id="slideWrap">
 		<ul id="slider">
-			<li><a href="#"><img src="image/mainimg/mainimg1.PNG" alt="슬라이드1"></a>
-			<a class="main-comment-img1" href="#">더 알아보기 <span class="glyphicon glyphicon-chevron-right"></span></a>
+			<li><a href="#"><img src="image/mainimg/mainimg1.PNG" alt="iphone"></a>
+			<a class="main-comment-img1" href="index.jsp?main=product/iPhone13_ProDe.jsp">더 알아보기 <span class="glyphicon glyphicon-chevron-right"></span></a>
 			</li>
-			<li><a href="#"><img src="image/mainimg/mainimg2.PNG" alt="슬라이드2"></a>
-			<a class="main-comment-img2" href="#">더 알아보기 <span class="glyphicon glyphicon-chevron-right"></span></a>
-			<a class="main-comment-img23" href="#">구매하기 <span class="glyphicon glyphicon-chevron-right"></span></a>
+			<li><a href="#"><img src="image/mainimg/mainimg2.PNG" alt="mac"></a>
+			<a class="main-comment-img2" href="index.jsp?main=product/maclist.jsp">더 알아보기 <span class="glyphicon glyphicon-chevron-right"></span></a>
+			<a class="main-comment-img23" href="index.jsp?main=product/MacBook_ProM1.jsp">구매하기 <span class="glyphicon glyphicon-chevron-right"></span></a>
 			</li>
-			<li><a href="#"><img src="image/mainimg/mainimg3.PNG" alt="슬라이드3"></a>
-			<a class="main-comment-img3" href="#">더 알아보기 <span class="glyphicon glyphicon-chevron-right"></span></a>
+			<li><a href="#"><img src="image/mainimg/mainimg3.PNG" alt="airpods"></a>
+			<a class="main-comment-img3" href="index.jsp?main=product/AirPods_ProDe.jsp">더 알아보기 <span class="glyphicon glyphicon-chevron-right"></span></a>
 			</li>
 		</ul>
 	</div>
