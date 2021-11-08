@@ -11,6 +11,16 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <title>Insert title here</title>
+<style type="text/css">
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-item: center;	
+}
+
+</style>
+
 </head>
 <body>
 <%
@@ -20,7 +30,7 @@ String key=request.getParameter("key");
 if(key==null){ //form만 표시
 %>
 	
-	<div style="margin-left: 200px;">
+	<div class="container">
 		<form action="user/updatecheckpass.jsp" method="post">
 			<input type="hidden" name="id" value="<%=id%>">
 			<input type="hidden" name="key" value="yes">
@@ -29,7 +39,7 @@ if(key==null){ //form만 표시
 				<div class="form-inline">
 					<input type="password" name="pass" class="form-control" style="width:120px;"
 					required="required" autofocus="autofocus">
-						<button type="submit" class="btn btn-info">확인</button>
+						<button type="submit" class="btn btn-default">확인</button>
 				
 				</div>
 		</form>

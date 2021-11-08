@@ -11,6 +11,16 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <title>Insert title here</title>
+<style type="text/css">
+.container,
+.button  {
+	display: flex;
+	justify-content: center;
+	align-item: center;	
+}
+
+
+</style>
 </head>
 <body>
 <%
@@ -24,14 +34,15 @@ UserDao dao=new UserDao();
 String name=dao.getName(id);
 %>
 
-<div style="margin:0 auto; width:100%">
-	<img alt="" src="image/3.png">
+<div style="width:100%" class="container">
 		<b><%=name %>님의 회원가입을 축하합니다.</b>
 		<br><br>
+</div>
+<div class="button">
 		<button type="button" class="btn btn-info" onclick="location.href='index.jsp?main=login/loginmain.jsp'">로그인</button>
+		&nbsp
 		<button type="button" class="btn btn-info" onclick="location.href='index.jsp'">Home</button>
 </div>
-<div></div>
 </body>
 </html>
 

@@ -24,6 +24,13 @@ button.submit {
 	font-weight: bold;
 }
 
+.container {
+	display: flex;
+	justify-content: center;
+	align-item: center;	
+}
+
+
 </style>
 <title>Insert title here</title>
 </head>
@@ -36,7 +43,7 @@ if(saveok!=null)
 	myid=(String)session.getAttribute("myid");
 %>
 <body>
-<div style="margin-left: 130px;">
+<div class="container">
   <form action="login/loginaction.jsp" method="post" class="form-inline">
     <table style="width: 410px;">
        <caption><b>로그인.</b><br><br></caption>

@@ -23,14 +23,20 @@ td{
 	color:gray;
 }
 
+.container {
+	display: flex;
+	justify-content: center;
+	align-item: center;	
+}
+
 </style>
 <title>Insert title here</title>
 </head>
 
 <body>
-<div style="margin-left:100px; margin-top:50px;">
-	<img alt="" src="image/mainImg.png" width="200" align="left" hspace="20">
-	
+<div class="container">
+<!-- 	<img alt="" src="image/mainImg.png" width="200" align="left" hspace="20">
+	 -->
 	<%
 		//세션으로 아이디를 얻는다
 			String myid=(String)session.getAttribute("myid");

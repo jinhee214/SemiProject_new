@@ -33,6 +33,11 @@ button.submit {
 	font-size:0.9em;
 }
 
+.form-inline {
+	display: flex;
+	justify-content: center;
+	align-item: center;	
+}
 
 </style>
 <title>Insert title here</title>
