@@ -1,3 +1,5 @@
+<%@page import="data.dao.orderDetailDao"%>
+<%@page import="data.dto.orders_detailDto"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="data.dto.UserDto"%>
 <%@page import="data.dao.UserDao"%>
@@ -27,10 +29,12 @@ String root=request.getContextPath();
 
 String delday=request.getParameter("delday");
 String myid=(String)session.getAttribute("myid");
+
 //연락처 
 UserDao udao=new UserDao();
 UserDto udto=new UserDto();
 udto=udao.getUser(myid);
+
 //주문번호
 orderDao odao=new orderDao();
 int num=odao.getNowOrder(myid);
@@ -38,7 +42,6 @@ int num=odao.getNowOrder(myid);
 //카트 리스트받기
 CartDao cdao=new CartDao();
 List<CartDto>clist=cdao.readCart(myid);
-
 
 //제품 정보 받기
 ProductDao pdao=new ProductDao();
@@ -51,6 +54,22 @@ udto.setUser_point(rem);
 udao.updatePont(udto);
 
 DecimalFormat dfm=new DecimalFormat("###,###");
+
+//orderdetail db입력
+orders_detailDto ddto=new orders_detailDto();
+orderDetailDao ddao=new orderDetailDao();
+
+for(CartDto cdto:clist)
+{
+	ddto.setOrder_id(num);
+	ddto.setProduct_id(cdto.getProduct_id());
+	ddto.setPrice(cdto.getPrice());
+	ddto.setCnt(cdto.getCnt());	
+	ddto.setColor(cdto.getColor());
+	ddto.setInsurance(cdto.getInsurance());	
+	
+	ddao.insertorderDeatil(ddto);
+}
 
 %>
 
@@ -83,7 +102,7 @@ DecimalFormat dfm=new DecimalFormat("###,###");
 		<div style="margin: -190px 50px 0 750px;">
 		<!--  상품이미지 > 이미지 클릭시 제품 상세설명 창-->
 		<a href="<%=root%>/index.jsp?main=product/<%=pdao.getProductName(cdto.getProduct_id())%>.jsp">
-		<img  src="<%=root %>/AppleProduct_img/<%=pdao.getProductPhoto(cdto.getProduct_id())%>"
+		<img  src="<%=root %>/image/AppleProduct_img/<%=pdao.getProductPhoto(cdto.getProduct_id())%>"
 		 style="max-width: 350px; max-height: 250px;" ></a>
 		</div>
 	
