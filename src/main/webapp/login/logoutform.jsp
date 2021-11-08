@@ -87,7 +87,7 @@ td{
 	<tr>
 		<th><br><br></th>
 		<td>포인트</td>
-			<td><%=dto.getUser_point()%> pt</td>
+			<td><%=dto.getUser_point()%> pt &nbsp&nbsp <a href="index.jsp?main=user/pointcheckpass.jsp?id=<%=myid%>" class="pointupdate">충전></a></td>
 	</tr>
 	
 	<tr>

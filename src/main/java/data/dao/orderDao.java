@@ -45,9 +45,7 @@ public class orderDao {
 				db.dbClose(rs, pstmt, conn);
 			}				
 			return dto;
-		}
-	
-	
+		}	
 	
 	
 	//유저 아이디로 결제목록 가져오기
@@ -141,27 +139,6 @@ public class orderDao {
 		}				
 		return num;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 

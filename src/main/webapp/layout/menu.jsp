@@ -116,6 +116,7 @@ if(loginok == null){
 					<li><%=info%></li>
 					<li><a href="<%=loginhref %>"><span class="glyphicon glyphicon-user"></span> <%=loginBtn%></a></li>
 					<li><a href="index.jsp?main=cart/cart.jsp"><span class="glyphicon glyphicon-shopping-cart"></span> 장바구니</a></li>
+					<li><a href="index.jsp?main=user/pointmain.jsp"><span class="glyphicon glyphicon-credit-card"></span> 포인트충전</a></li>
 					<li><a href="index.jsp?main=login/loginmain.jsp"><span class="glyphicon glyphicon-info-sign"></span> 개인정보</a></li>
 				</ul>
 			</li>

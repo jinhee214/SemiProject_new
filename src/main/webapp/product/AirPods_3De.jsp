@@ -37,8 +37,9 @@ ProductDao dao=new ProductDao();
 List<ProductDto> list=dao.getAllMembers();
 if(loginok==null)
 {%>
-	<table class="table" style="width: 1200px;">
-	<caption><b>AirPods</b></caption>
+	<div>
+	<table class="table" style="width: 1200px; margin-left: auto; margin-right: auto;">
+	<caption><b>AirPods 3</b></caption>
 	<tr align="center">
 		<th width="400px;">제품주문</th>
 		<th width="400px;">제품소개</th>
@@ -49,32 +50,8 @@ if(loginok==null)
 		if(dto.getProduct_id()==99998)
 		{%>
 		<tr align="center">
-			<td>
-			<button type="button" class="btn btn-default btn-sm" style="width:100px;"
-			onclick="location.href='index.jsp?main=login/loginform.jsp'">로그인</button>
-			</td>
-			<td><img alt="" src="AppleProduct_img/<%=dto.getDetail_img()%>"></td>
 			
-		</tr>
-	<%}
-%>
-</table>
-<%}else{
-
-%>
-<table class="table" style="width: 1200px;">
-	<caption><b>AirPods</b></caption>
-	<tr>
-		<th width="400">제품주문</th>
-		<th width="400">제품소개</th>
-
-	</tr>
-	<%
-	for(ProductDto dto:list)
-		//iMac=1인경우만 출력
-		if(dto.getProduct_id()==99998)
-	{%>
-		<tr>
+			<tr>
 			<td>
 			<%
 			String user_id = (String) session.getAttribute("myid");
@@ -83,17 +60,21 @@ if(loginok==null)
 			uudao.getUser(user_id);
 			%>
 			<form action="product/addProAction.jsp" method="post">
-				<table class="table table-hover" style="width: 500px; height: 500px;">
+				<table style="width: 500px;">
 				<tr>
-						<th width="100">제품이름</th>
-							<td>
-								<select name="product_id">
-								<option value="99998" selected="selected">AirPods_3De</option>
-								</select>
-							</td>
+						<th width="100" height="100" colspan="2" style="font-size: 25pt;">AirPods 3</th>
 					</tr>
+					
 					<tr>
-						<th width="100">수량</th>
+					<th width="100" colspan="2" style="font-size: 1.3em;">￦249,000</th>
+					</tr>
+					
+					<tr>
+					<th width="100" colspan="2" style="font-size: 0.8em; color: #0077ed;" >최대 12개월 신용 카드 할부</th>
+					</tr>
+					
+					<tr>
+						<th width="100" height="100">수량</th>
 							<td>
 							<select name="cnt">
 									<option value="1">1</option>
@@ -109,41 +90,125 @@ if(loginok==null)
 							</select> 
 							</td>
 				</tr>
-				<tr>
-					<th width="100">색상</th>
-					<td>
-					<select name="color">
-						<option value="실버" selected="selected">실버</option>
-						<option value="골드">골드</option>
-						<option value="그레이">그레이</option>
-					</select>
-			
-			</td>
-		</tr>
+
 		<tr>
-			<th width="100">보험</th>
+			<th width="100" height="100">AppleCare</th>
 				<td>
-					<input type="radio" name="insurance" value="Y">Y 
-					<input type="radio" name="insurance" value="N" checked="checked">N
+					<input type="radio" name="insurance" value="Y">Yes
+					<input type="radio" name="insurance" value="N" checked="checked">No
 				</tr>
 		<tr>
-			<td align="center" colspan="2">
+			<td align="center" colspan="2" height="100">
 				<!-- hidden -->	
+				<input type="hidden" value="<%=dto.getProduct_id() %>" name="product_id">
 				<input type="hidden" value="<%=user_id %>" name="user_id">
 				<input type="hidden" value="249000" name="price">
-				<button type="submit" class="btn btn-primary btn-block">장바구니담기</button>
-				<!-- 구입하기 test 버튼 -->
-				<input type="submit" formaction="index.jsp?main=order/orderdirect/orderinfooneform.jsp" class="btn btn-primary btn-block" value="구입하기">			
+				<button type="button" class="btn btn-primary btn-block"
+				style="background-color: #0077ed; border-radius: 10px;"
+				onclick="location.href='index.jsp?main=login/loginform.jsp'">로그인이 필요한 서비스입니다</button>
 			</td>
 		</tr>
 		</table>
 	</form>
 </td>
-			<td><img alt="" src="AppleProduct_img/<%=dto.getDetail_img()%>"></td>
+
+			<td><img alt="" src="image/AppleProduct_img/<%=dto.getDetail_img()%>"></td>
+			
+		</tr>
+	<%}
+%>
+</table>
+</div>
+<%}else{
+
+%>
+
+<table class="table" style="width: 1200px; margin-left: auto; margin-right: auto;">
+	<caption><b>AirPods 3</b></caption>
+
+	<tr>
+		<th width="400">제품주문</th>
+		<th width="400">제품소개</th>
+	</tr>
+
+	<%
+	for(ProductDto dto:list)
+		//iMac=1인경우만 출력
+		if(dto.getProduct_id()==99998)
+	{%>
+		<tr>
+			<td>
+			<%
+			String user_id = (String) session.getAttribute("myid");
+			UserDto uudto=new UserDto();
+			UserDao uudao=new UserDao();
+			uudao.getUser(user_id);
+			%>
+			<form action="product/addAccessoryAction.jsp" method="post">
+				<table style="width: 500px;">
+				<tr>
+						<th width="100" height="100" colspan="2" style="font-size: 25pt;">AirPods 3</th>
+					</tr>
+					
+					<tr>
+					<th width="100" colspan="2" style="font-size: 1.3em;">￦249,000</th>
+					</tr>
+					
+					<tr>
+					<th width="100" colspan="2" style="font-size: 0.8em; color: #0077ed;" >최대 12개월 신용 카드 할부</th>
+					</tr>
+					
+					<tr>
+						<th width="100" height="100">수량</th>
+							<td>
+							<select name="cnt">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+							</select> 
+							</td>
+				</tr>
+
+		<tr>
+			<th width="100" height="100">AppleCare</th>
+				<td>
+					<input type="radio" name="insurance" value="Y">Yes
+					<input type="radio" name="insurance" value="N" checked="checked">No
+				</tr>
+		<tr>
+			<td align="center" colspan="2" height="100">
+				<!-- hidden -->	
+				<input type="hidden" value="화이트" name="color">
+				<input type="hidden" value="<%=dto.getProduct_id() %>" name="product_id">
+				<input type="hidden" value="<%=user_id %>" name="user_id">
+				<input type="hidden" value="249000" name="price">
+<<<<<<< HEAD
+				<button type="submit" class="btn btn-primary btn-block">장바구니담기</button>
+				<!-- 구입하기 test 버튼 -->
+				<input type="submit" formaction="index.jsp?main=order/orderdirect/orderinfooneform.jsp" class="btn btn-primary btn-block" value="구입하기">			
+=======
+				<button type="submit" class="btn btn-primary btn-block"
+				style="background-color: #0077ed; border-radius: 10px;">장바구니담기</button>
+>>>>>>> 2b557dcba022f12dd41053c81bf951ff3d77c942
+			</td>
+		</tr>
+		</table>
+	</form>
+</td>
+			
+			<td><img alt="" src="image/AppleProduct_img/<%=dto.getDetail_img()%>"></td>
 		</tr>
 	<%}
 }
 %>
 </table>
+
 </body>
 </html>
