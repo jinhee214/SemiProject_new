@@ -41,13 +41,13 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 	</tr>
 	<tr>
 		  <td><br>	<a href="index.jsp?main=product/AirPods_2De.jsp">
-		     <img alt="" src="AppleProduct_img/AirPods_2.PNG" class="mainimg">
+		     <img alt="" src="image/AppleProduct_img/AirPods_2.PNG" class="mainimg">
 		   	 </a>
 		    <a href="index.jsp?main=product/AirPods_3De.jsp">
-		    <img alt="" src="AppleProduct_img/AirPods_3.PNG" class="mainimg">
+		    <img alt="" src="image/AppleProduct_img/AirPods_3.PNG" class="mainimg">
 		    </a>
 		    <a href="index.jsp?main=product/AirPods_ProDe.jsp">
-		    <img alt="" src="AppleProduct_img/AirPods_Pro.PNG" class="mainimg">
+		    <img alt="" src="image/AppleProduct_img/AirPods_Pro.PNG" class="mainimg">
 		    </a>
 		  </td>
 	</tr>
