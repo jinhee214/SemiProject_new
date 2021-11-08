@@ -202,7 +202,7 @@ public class CartDao {
 	}
 
 	// 결제할 때 장바구니 리셋
-	public void deleteCart(String user_id) {
+	public void resetCart(String user_id) {
 		
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
