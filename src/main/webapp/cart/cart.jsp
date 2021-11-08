@@ -16,7 +16,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <title>Insert title here</title>
-<!-- 11/05 02:46pm -->
+
 <style type="text/css">
 .container {
 	display: flex;
@@ -132,7 +132,7 @@ $(function() {
 				cntXprice.text("￦"+numberFormat(productPrice*cnt));
 				location.reload();
 				
-				console.log("cnt:"+cnt+", user_id:"+user_id+", product_id"+product_id+", color:"+color+", insurance:"+insurance); //콘솔에 출력해서 확인
+				//alert("cnt:"+cnt+", user_id:"+user_id+", product_id:"+product_id+", color:"+color+", insurance:"+insurance); //콘솔에 출력해서 확인
 			}
 		});
 	});
@@ -142,8 +142,8 @@ $(function() {
 		
 		var user_id = $(this).attr("user_id");
 		var product_id = $(this).attr("product_id");
-		var color = $("#hiddencolor").val();
-		var insurance = $("#hiddeninsurance").val();
+		var color = $(this).attr("color");
+		var insurance = $(this).attr("insurance");
 		
 		$.ajax({
 			type : "get",
@@ -152,7 +152,7 @@ $(function() {
 			data : {"user_id" : user_id, "product_id" : product_id,
 				"color" : color, "insurance" : insurance},
 			success : function() {
-				console.log("user_id:"+user_id+", product_id"+product_id+", color:"+color+", insurance:"+insurance); //콘솔에 출력해서 확인
+				//alert("user_id:"+user_id+", product_id:"+product_id+", color:"+color+", insurance:"+insurance); //콘솔에 출력해서 확인
 				//새로고침
 				location.reload();
 			}
@@ -225,7 +225,7 @@ DecimalFormat df = new DecimalFormat("###,###");
 				<%
 				} else {
 				%><a href="index.jsp?main=product/#.jsp"><%=pdao.getProductName(dto.getProduct_id())%>
-				<span id="color">(색상: <%=dto.getColor()%>)</span></a>
+				<span id="color"> <%=dto.getColor()%></span></a>
 				<%
 				}
 				%>
@@ -266,7 +266,7 @@ DecimalFormat df = new DecimalFormat("###,###");
 				</td>
 				<td colspan="2" align="right">
 					<%-- <button type="button" class="deleteCart" product_id="<%=dto.getProduct_id()%>" user_id="<%=user_id%>">삭제</button> --%>
-					<a class="deleteCart" product_id="<%=dto.getProduct_id()%>"
+					<a class="deleteCart" product_id="<%=dto.getProduct_id()%>" color="<%=dto.getColor()%>" insurance="<%=dto.getInsurance()%>" 
 					user_id="<%=user_id%>" style="color: #0077ed; pointer: cursor;">삭제</a>
 					<!-- hidden -->
 					<input type="hidden" name="productName" value="<%=pdao.getProductName(dto.getProduct_id())%>">
