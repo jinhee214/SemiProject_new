@@ -38,14 +38,6 @@ String myid=(String)session.getAttribute("myid");
 UserDao dao=new UserDao();
 UserDto dto=dao.getUser(myid);
 
-
-//로그인 or 로그아웃 후에 나올 메시지
-String info = dto.getUser_name()+" 님 환영합니다.<br>POINT : "+ dto.getUser_point()+ "pt";
-
-if(loginok == null){
-	info = "로그인 바랍니다.";	
-}
-
 %>
 <%
 //loginok 는 로그인 성공시 저장하고 로그아웃시 제거
