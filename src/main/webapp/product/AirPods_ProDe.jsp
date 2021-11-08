@@ -38,7 +38,7 @@ List<ProductDto> list=dao.getAllMembers();
 if(loginok==null)
 {%>
 	<div>
-	<table class="table" style="width: 1200px;">
+	<table class="table" style="width: 1200px; margin-left: auto; margin-right: auto;">
 	<caption><b>AirPods Pro</b></caption>
 	<tr align="center">
 		<th width="400px;">제품주문</th>
@@ -123,7 +123,7 @@ if(loginok==null)
 
 %>
 
-<table class="table" style="width: 1200px;">
+<table class="table" style="width: 1200px; margin-left: auto; margin-right: auto;">
 	<caption><b>AirPods Pro</b></caption>
 
 	<tr>
