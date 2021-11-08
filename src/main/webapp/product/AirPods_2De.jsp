@@ -132,6 +132,7 @@ if(loginok==null)
 				<input type="hidden" value="<%=user_id %>" name="user_id">
 				<input type="hidden" value="179000" name="price">
 				<button type="submit" class="btn btn-primary btn-block">장바구니담기</button>
+				<input type="submit" formaction="index.jsp?main=order/orderdirect/orderinfooneform.jsp" class="btn btn-primary btn-block" value="구입하기">			<!-- test 버튼 -->
 			</td>
 		</tr>
 		</table>

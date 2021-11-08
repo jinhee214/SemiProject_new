@@ -107,6 +107,7 @@ public class orderDao {
 		}finally {
 			db.dbClose(pstmt, conn);
 		}
+		
 	}
 	
 	//방금구매한 주문번호
