@@ -129,7 +129,7 @@ Calendar cal2 = Calendar.getInstance();
 			</td>
 			<td><div style="margin-top: 80px; font-weight: bold;"><%=pdao.getProductName(cdto.getProduct_id()) %></div></td>
 			<td><div style="margin-top: 80px; font-weight: bold;"><%=cdto.getCnt() %></div></td>
-			<td align="right" style="width: 300px;"><div style="margin-top: 80px; font-weight: bold;">₩<%=dfm.format(total)%></div></td>					
+			<td align="right" style="width: 300px;"><div style="margin-top: 80px; font-weight: bold;">₩<%=dfm.format(cdto.getPrice())%></div></td>					
 		</tr>
 			
 	<%}
@@ -214,10 +214,10 @@ Calendar cal2 = Calendar.getInstance();
 	
 </table>
 
-<div style="margin:60px 0 15px 620px;">
+<div style="margin:50px 0 15px 620px;">
 <button type="button" id="subbtn" style="width: 400px; height: 50px; border-radius: 15px; background-color: #0080ff;"
  class="btn btn-primary" >결제 하기</button>
- <img  src="<%=root %>/AppleProduct_img/orderinfo.PNG" style="max-width: 800px; margin-top: 10px;">
+ <img  src="<%=root %>/AppleProduct_img/orderinfo.PNG" style="width:380px; margin-top: 10px;">
 </div>
 
 </form>
