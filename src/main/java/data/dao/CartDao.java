@@ -210,9 +210,11 @@ public class CartDao {
 		String sql = "delete from cart where user_id=?";
 		
 		try {
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, user_id);
 			pstmt.execute();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
