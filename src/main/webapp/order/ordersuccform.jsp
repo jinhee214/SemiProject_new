@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<%@page import="data.dao.OrderDetailDao"%>
-=======
 <%@page import="data.dao.orderDetailDao"%>
->>>>>>> 2b557dcba022f12dd41053c81bf951ff3d77c942
 <%@page import="data.dto.orders_detailDto"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="data.dto.UserDto"%>
@@ -43,14 +39,9 @@ udto=udao.getUser(myid);
 orderDao odao=new orderDao();
 int num=odao.getNowOrder(myid);
 
-<<<<<<< HEAD
-OrderDetailDao odDao = new OrderDetailDao();
-orders_detailDto odDto = odDao.getOneOrder(num);
-=======
 //카트 리스트받기
 CartDao cdao=new CartDao();
 List<CartDto>clist=cdao.readCart(myid);
->>>>>>> 2b557dcba022f12dd41053c81bf951ff3d77c942
 
 //제품 정보 받기
 ProductDao pdao=new ProductDao();
@@ -99,25 +90,24 @@ for(CartDto cdto:clist)
 <!-- 주문 상품 상세 설명  -->
 
 <div style="margin: 50px 0 15px 0;">
-
+<%
+	for(CartDto cdto:clist)
+	{%>
 	
 		<div style="margin: 200px 50px 0 350px; width:400px;">
 		<h1 style="font-weight: bold;">출고 <%=delday %></h1>
-		<b style="font-size: 1.3em;"><%=pdao.getProductName(odDto.getProduct_id()) %>, <%=odDto.getColor() %></b>	
+		<b style="font-size: 1.3em;"><%=pdao.getProductName(cdto.getProduct_id()) %>, <%=cdto.getColor() %></b>	
 		</div>	
 			
 		<div style="margin: -190px 50px 0 750px;">
 		<!--  상품이미지 > 이미지 클릭시 제품 상세설명 창-->
-<<<<<<< HEAD
-		<a href="<%=root%>/index.jsp?main=product/<%=pdao.getProductName(odDto.getProduct_id())%>.jsp">
-		<img  src="<%=root %>/image/AppleProduct_img/<%=pdao.getProductPhoto(odDto.getProduct_id())%>"
-=======
 		<a href="<%=root%>/index.jsp?main=product/<%=pdao.getProductName(cdto.getProduct_id())%>.jsp">
 		<img  src="<%=root %>/image/AppleProduct_img/<%=pdao.getProductPhoto(cdto.getProduct_id())%>"
->>>>>>> 2b557dcba022f12dd41053c81bf951ff3d77c942
 		 style="max-width: 350px; max-height: 250px;" ></a>
 		</div>
-
+	
+	<%}
+%>
 </div>
 
 <hr style="border:1px solid #e6eaee; width:1120px;">
@@ -128,6 +118,17 @@ for(CartDto cdto:clist)
 <button type="button"  id="home" style=" background-color: #0080ff; margin:0 0 100px 450px; width: 400px; height: 50px;
 border-radius: 15px;" class="btn btn-primary" onclick="location.href='index.jsp'" >메인으로</button>
 
+ <script type="text/javascript">
+$(function(){	 
+ 
+window.onload=function(){
+	<%
+	cdao.resetCart(myid);	
+	%>	 
+ 	}
+ 
+});
+ </script>
 
 </body>
 </html>

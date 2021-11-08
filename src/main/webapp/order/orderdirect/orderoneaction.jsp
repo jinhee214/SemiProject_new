@@ -1,4 +1,4 @@
-<%@page import="data.dao.OrderDetailDao"%>
+<%@page import="data.dao.orderDetailDao"%>
 <%@page import="data.dto.UserDto"%>
 <%@page import="data.dao.UserDao"%>
 <%@page import="data.dto.orders_detailDto"%>
@@ -43,7 +43,7 @@ odao.insertOrder(odto);
 int orderId = odao.getNowOrder(myid);
 
 orders_detailDto odDto = new orders_detailDto();
-OrderDetailDao odDao = new OrderDetailDao();
+orderDetailDao odDao = new orderDetailDao();
 
 odDto.setOrder_id(orderId);
 odDto.setProduct_id(productId);
@@ -52,7 +52,7 @@ odDto.setCnt(cnt);
 odDto.setColor(color);
 odDto.setInsurance(insurance);
 
-odDao.insertOrderDetail(odDto);
+odDao.insertorderDeatil(odDto);
 
 
 
@@ -64,8 +64,7 @@ int point=udto.getUser_point();
 
 int rem=point-total;
 
-
-response.sendRedirect("../../index.jsp?main=order/ordersuccform.jsp?rem="+rem+"&delday="+delday);
+response.sendRedirect("../../index.jsp?main=order/orderdirect/orderonesuccform.jsp?rem="+rem+"&delday="+delday);
 %>
 
 

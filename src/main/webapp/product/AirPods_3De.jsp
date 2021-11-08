@@ -189,14 +189,11 @@ if(loginok==null)
 				<input type="hidden" value="<%=dto.getProduct_id() %>" name="product_id">
 				<input type="hidden" value="<%=user_id %>" name="user_id">
 				<input type="hidden" value="249000" name="price">
-<<<<<<< HEAD
-				<button type="submit" class="btn btn-primary btn-block">장바구니담기</button>
+
 				<!-- 구입하기 test 버튼 -->
 				<input type="submit" formaction="index.jsp?main=order/orderdirect/orderinfooneform.jsp" class="btn btn-primary btn-block" value="구입하기">			
-=======
 				<button type="submit" class="btn btn-primary btn-block"
 				style="background-color: #0077ed; border-radius: 10px;">장바구니담기</button>
->>>>>>> 2b557dcba022f12dd41053c81bf951ff3d77c942
 			</td>
 		</tr>
 		</table>
