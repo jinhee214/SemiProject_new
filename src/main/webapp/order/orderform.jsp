@@ -129,7 +129,7 @@ Calendar cal2 = Calendar.getInstance();
 			</td>
 			<td><div style="margin-top: 80px; font-weight: bold;"><%=pdao.getProductName(cdto.getProduct_id()) %></div></td>
 			<td><div style="margin-top: 80px; font-weight: bold;"><%=cdto.getCnt() %></div></td>
-			<td align="right" style="width: 300px;"><div style="margin-top: 80px; font-weight: bold;">₩<%=dfm.format(cdto.getPrice())%></div></td>					
+			<td align="right" style="width: 300px;"><div style="margin-top: 80px; font-weight: bold;">₩<%=dfm.format(cdto.getPrice()) %></div></td>					
 		</tr>
 			
 	<%}
