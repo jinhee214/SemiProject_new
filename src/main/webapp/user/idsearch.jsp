@@ -23,14 +23,14 @@ if(key==null){
 	%>
 	<form action="idsearch.jsp" method="post" class="form-inline">
 	   <input type="hidden" name="key" value="result">
-	  <table class="table table-bordered">
+	  <table class="table table-borderless">
 	    <tr height="100">
 	        <td>        
 	          <b>아이디를 입력해 주세요(영문,숫자)</b><br>
 	          <input type="text" name="id" class="form-control" style="width: 100px;"
 	          autofocus="autofocus" required="required" maxlength="8"><br>
 	         
-	          <button type="submit" class="btn btn-info btn-sm">중복체크</button>
+	          <button type="submit" class="btn btn-default btn-sm">중복체크</button>
 	        </td>
 	    </tr>
 	  </table>
@@ -58,7 +58,7 @@ if(key==null){
 		<h3 class="alert alert-success"><%=id %>는  사용가능한 아이디 입니다.
 		</h3>
 		
-		<button type="button" class="btn btn-warning btn-sm" id="btnuse"
+		<button type="button" class="btn btn-info btn-sm" id="btnuse"
 		style="margin-left: 200px;" myid="<%=id%>">사용하기</button>
 		
 		<button type="button" class="btn btn-danger btn-sm" onclick="location.href='idsearch.jsp'">재입력</button>
