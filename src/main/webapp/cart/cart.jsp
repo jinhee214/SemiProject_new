@@ -207,7 +207,7 @@ DecimalFormat df = new DecimalFormat("###,###");
 			<tr class="no-bottom-border" style="margin-top: 300px;">
 				<!-- 제품사진 -->
 				<td class="thumbnail-img" rowspan="2">
-					<a href="index.jsp?main=product/#.jsp"><img class="productPhoto" src="AppleProduct_img/<%=pdao.getProductPhoto(dto.getProduct_id())%>"></a>
+					<a href="index.jsp?main=product/#.jsp"><img class="productPhoto" src="image/AppleProduct_img/<%=pdao.getProductPhoto(dto.getProduct_id())%>"></a>
 				</td>				
 				<!-- 제품명 -->
 				<td id="name" style="padding-left: 15px; color: black; font-size: 1.2em; font-weight: bold;"><a href="index.jsp?main=product/#.jsp"><%=pdao.getProductName(dto.getProduct_id())%>

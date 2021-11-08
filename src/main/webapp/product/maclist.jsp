@@ -44,13 +44,13 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 	<tr>
 		  <td><br>
 		     <a href="index.jsp?main=product/iMac_M1De.jsp">
-		     <img alt="" src="AppleProduct_img/iMac.PNG" class="mainimg">
+		     <img alt="" src="image/AppleProduct_img/iMac.PNG" class="mainimg">
 		   	 </a>
 		    <a href="index.jsp?main=product/MacBook_ProM1.jsp">
-		    <img alt="" src="AppleProduct_img/MacBook_Pro.PNG" class="mainimg">
+		    <img alt="" src="image/AppleProduct_img/MacBook_Pro.PNG" class="mainimg">
 		    </a>
 		     <a href="index.jsp?main=product/MacBook_AirDeM1.jsp">
-		    <img alt="" src="AppleProduct_img/MacBook_Air.PNG" class="mainimg">
+		    <img alt="" src="image/AppleProduct_img/MacBook_Air.PNG" class="mainimg">
 		    </a>
 		  </td>
 	</tr>
