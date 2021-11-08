@@ -217,8 +217,18 @@ DecimalFormat df = new DecimalFormat("###,###");
 					<a href="index.jsp?main=product/#.jsp"><img class="productPhoto" src="image/AppleProduct_img/<%=pdao.getProductPhoto(dto.getProduct_id())%>"></a>
 				</td>				
 				<!-- 제품명 -->
-				<td id="name" style="padding-left: 15px; color: black; font-size: 1.2em; font-weight: bold;"><a href="index.jsp?main=product/#.jsp"><%=pdao.getProductName(dto.getProduct_id())%>
-				<span id="color">(색상: <%=dto.getColor()%>) <i style="font-size: 2pt;"></i></span></a>
+				<td id="name" style="padding-left: 15px; color: black; font-size: 1.2em; font-weight: bold;">
+				<%
+				if (dto.getColor().equals("화이트")) {
+				%>
+				<a href="index.jsp?main=product/#.jsp"><%=pdao.getProductName(dto.getProduct_id())%></a>
+				<%
+				} else {
+				%><a href="index.jsp?main=product/#.jsp"><%=pdao.getProductName(dto.getProduct_id())%>
+				<span id="color">(색상: <%=dto.getColor()%>)</span></a>
+				<%
+				}
+				%>
 				</td>
 				<td><span><%=dto.getCnt()%></span>
 					<select name="cnt" user_id="<%=user_id%>" color="<%=dto.getColor()%>" insurance="<%=dto.getInsurance()%>"
