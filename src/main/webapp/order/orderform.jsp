@@ -124,7 +124,7 @@ Calendar cal2 = Calendar.getInstance();
 			<td style="width: 300px;">
 			<div style="margin: 15px 0 15px 0;">
 			<img style="max-height: 200px; max-width: 350px;" 
-			src="<%=root %>/AppleProduct_img/<%=pdao.getProductDetailPhoto(cdto.getProduct_id())%>">
+			src="<%=root %>/AppleProduct_img/<%=pdao.getProductPhoto(cdto.getProduct_id())%>">
 			</div>
 			</td>
 			<td><div style="margin-top: 80px; font-weight: bold;"><%=pdao.getProductName(cdto.getProduct_id()) %></div></td>
@@ -227,8 +227,9 @@ Calendar cal2 = Calendar.getInstance();
 $(document).ready(function(){		
 	 
    $("#subbtn").click(function(){
-       if($("#useckb").is(":checked") && <%=udto.getUser_point()%> > <%=total%>	){        	
+       if($("#useckb").is(":checked") && <%=udto.getUser_point()%> > <%=total%>	){       	
        	
+    	   
         $("#frm").submit();
         
        }else if($("#useckb").is(":checked")==false){
@@ -241,6 +242,7 @@ $(document).ready(function(){
    
    });
 });
+
 
 
 
