@@ -42,13 +42,13 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 	<tr>
 		  <td><br>
 		     <a href="index.jsp?main=product/iPhone12_De.jsp">
-		     <img alt="" src="AppleProduct_img/iPhone12.PNG" class="mainimg">
+		     <img alt="" src="image/AppleProduct_img/iPhone12.PNG" class="mainimg">
 		   	 </a>
 		    <a href="index.jsp?main=product/iPhone13_De.jsp">
-		    <img alt="" src="AppleProduct_img/iPhone13.PNG" class="mainimg">
+		    <img alt="" src="image/AppleProduct_img/iPhone13.PNG" class="mainimg">
 		    </a>
 		     <a href="index.jsp?main=product/iPhone13_ProDe.jsp">
-		    <img alt="" src="AppleProduct_img/iPhone13_Pro.PNG" class="mainimg">
+		    <img alt="" src="image/AppleProduct_img/iPhone13_Pro.PNG" class="mainimg">
 		    </a>
 		  </td>
 	</tr>

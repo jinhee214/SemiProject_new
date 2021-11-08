@@ -50,11 +50,76 @@ if(loginok==null)
 		if(dto.getProduct_id()==12321)
 		{%>
 		<tr align="center">
+			
+			<tr>
 			<td>
-			<button type="button" class="btn btn-default btn-sm" style="width:100px;"
-			onclick="location.href='index.jsp?main=login/loginform.jsp'">로그인</button>
+			<%
+			String user_id = (String) session.getAttribute("myid");
+			UserDto uudto=new UserDto();
+			UserDao uudao=new UserDao();
+			uudao.getUser(user_id);
+			%>
+			<form action="product/addProAction.jsp" method="post">
+				<table style="width: 500px;">
+				<tr>
+						<th width="100" height="100" colspan="2" style="font-size: 25pt;">iMacM1</th>
+					</tr>
+					
+					<tr>
+					<th width="100" colspan="2" style="font-size: 1.3em;">￦1,690,000</th>
+					</tr>
+					
+					<tr>
+					<th width="100" colspan="2" style="font-size: 0.8em; color: #0077ed;" >최대 12개월 신용 카드 할부</th>
+					</tr>
+					
+					<tr>
+						<th width="100" height="100">수량</th>
+							<td>
+							<select name="cnt">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+							</select> 
+							</td>
+				</tr>
+				<tr>
+					<th width="100" height="100">색상</th>
+					<td>
+					<label><input type="radio" name="color" value="실버" checked="checked"> 실버</label>
+      				<label><input type="radio" name="color" value="골드"> 골드</label>
+      				<label><input type="radio" name="color" value="그레이">그레이</label>
+					</td>
+			</tr>
+		<tr>
+			<th width="100" height="100">AppleCare</th>
+				<td>
+					<input type="radio" name="insurance" value="Y">Yes
+					<input type="radio" name="insurance" value="N" checked="checked">No
+				</tr>
+		<tr>
+			<td align="center" colspan="2" height="100">
+				<!-- hidden -->	
+				<input type="hidden" value="<%=dto.getProduct_id() %>" name="product_id">
+				<input type="hidden" value="<%=user_id %>" name="user_id">
+				<input type="hidden" value="1690000" name="price">
+				<button type="button" class="btn btn-primary btn-block"
+				style="background-color: #0077ed; border-radius: 10px;"
+				onclick="location.href='index.jsp?main=login/loginform.jsp'">로그인이 필요한 서비스입니다</button>
 			</td>
-			<td><img alt="" src="AppleProduct_img/<%=dto.getDetail_img()%>"></td>
+		</tr>
+		</table>
+	</form>
+</td>
+
+			<td><img alt="" src="image/AppleProduct_img/<%=dto.getDetail_img()%>"></td>
 			
 		</tr>
 	<%}
@@ -145,7 +210,7 @@ if(loginok==null)
 	</form>
 </td>
 			
-			<td><img alt="" src="AppleProduct_img/<%=dto.getDetail_img()%>"></td>
+			<td><img alt="" src="image/AppleProduct_img/<%=dto.getDetail_img()%>"></td>
 		</tr>
 	<%}
 }
