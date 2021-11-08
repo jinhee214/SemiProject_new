@@ -23,7 +23,7 @@ dto.setUser_id(request.getParameter("user_id")); */
 dao.insert(dto); */
 
 //주문 페이지로 이동
-response.sendRedirect("../index.jsp?main=order/orderinfoform.jsp");
+response.sendRedirect("../index.jsp?main=order/ordermain.jsp");
 
 %>
 </body>
