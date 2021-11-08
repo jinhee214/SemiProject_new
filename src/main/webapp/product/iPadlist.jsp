@@ -44,13 +44,13 @@ family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap" rel=
 	<tr>
 		  <td><br>
 		     <a href="index.jsp?main=product/iPad_De.jsp">
-		     <img alt="" src="AppleProduct_img/iPad.PNG" class="mainimg">
+		     <img alt="" src="image/AppleProduct_img/iPad.PNG" class="mainimg">
 		   	 </a>
 		    <a href="index.jsp?main=product/iPad_miniDe.jsp">
-		    <img alt="" src="AppleProduct_img/iPad_mini.PNG" class="mainimg">
+		    <img alt="" src="image/AppleProduct_img/iPad_mini.PNG" class="mainimg">
 		    </a>
 		     <a href="index.jsp?main=product/iPadPro_De.jsp">
-		    <img alt="" src="AppleProduct_img/iPadPro.PNG" class="mainimg">
+		    <img alt="" src="image/AppleProduct_img/iPadPro.PNG" class="mainimg">
 		    </a>
 		  </td>
 	</tr>
