@@ -18,6 +18,13 @@
 <title>Insert title here</title>
 <!-- 11/05 02:46pm -->
 <style type="text/css">
+.container {
+	display: flex;
+	justify-content: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 ol li {
 	display: block;
 }
@@ -88,7 +95,6 @@ img.productPhoto {
 	padding-bottom: 15px;
 	padding-left: 25px;
 }
-
 </style>
 
 <script type="text/javascript">
@@ -174,11 +180,12 @@ DecimalFormat df = new DecimalFormat("###,###");
 %>
 
 <body>
+<div class="container">
 	<%
 	//로그인 안되어 있을 경우 '로그인','홈으로 돌아가기' 버튼만 보임
 	if (loginok == null) {
 	%>
-	<div style="padding-right: 450px; padding-bottom: 45px; padding-top: 70px; align-content: center; text-align: center;">
+	<div style="margin-top: 70px; align-content: center; text-align: center;">
 		로그인이 필요한 서비스입니다. <br> <br>
 		<button onclick="location.href='index.jsp?main=login/loginform.jsp'" class="logoutbtn">로그인</button>
 		<button onclick="location.href='index.jsp'" class="logoutbtn">홈으로 돌아가기</button>
@@ -189,7 +196,7 @@ DecimalFormat df = new DecimalFormat("###,###");
 	} else {
 	%>
 	<form action="cart/cartToOrderAction.jsp" method="post" class="">
-		<div class="table-main cartContent" style="padding-right: 300px; padding-bottom: 45px; align-content: center; text-align: center;">
+		<div class="table-main cartContent" style="align-content: center; text-align: center; margin-bottom: 45px;">
 			<h1>
 				장바구니에 들어있는 제품입니다. <font id="totalCart"></font>
 			</h1>
@@ -199,7 +206,7 @@ DecimalFormat df = new DecimalFormat("###,###");
 			<button type="submit" class="submit2">결제</button>
 		</div>
 		<div class="table-main cartContent">
-		<table class="" style="width: 830px; float:right; margin-right: 400px;">
+		<table class="" style="width: 830px; margin: auto;">
 			<%
 			int totalC = 0;
 			for (CartDto dto : list) {
@@ -207,7 +214,7 @@ DecimalFormat df = new DecimalFormat("###,###");
 			<tr class="no-bottom-border" style="margin-top: 300px;">
 				<!-- 제품사진 -->
 				<td class="thumbnail-img" rowspan="2">
-					<a href="index.jsp?main=product/#.jsp"><img class="productPhoto" src="AppleProduct_img/<%=pdao.getProductPhoto(dto.getProduct_id())%>"></a>
+					<a href="index.jsp?main=product/#.jsp"><img class="productPhoto" src="image/AppleProduct_img/<%=pdao.getProductPhoto(dto.getProduct_id())%>"></a>
 				</td>				
 				<!-- 제품명 -->
 				<td id="name" style="padding-left: 15px; color: black; font-size: 1.2em; font-weight: bold;"><a href="index.jsp?main=product/#.jsp"><%=pdao.getProductName(dto.getProduct_id())%>
@@ -266,7 +273,7 @@ DecimalFormat df = new DecimalFormat("###,###");
 		<div>
 			<input type="hidden" name="totalPrice" id="totalPrice" value="<%=totalC%>">
 			<!-- 소계, 배송, 총계, 결제버튼 -->
-			<table style="float:right; margin-right: 400px; margin-top: 50px;">
+			<table style="margin: auto; margin-left: 360px; margin-top: 50px;">
 				<tr height="30">
 					<th width="350px;">소계</th>
 					<td align="right"><font id="totalCart">￦<%=df.format(totalC)%></font></td>
@@ -295,5 +302,6 @@ DecimalFormat df = new DecimalFormat("###,###");
 	<%
 	}
 	%>
+	</div>
 </body>
 </html>

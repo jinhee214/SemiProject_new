@@ -1,3 +1,4 @@
+<%@page import="data.dao.CartDao"%>
 <%@page import="data.dto.UserDto"%>
 <%@page import="com.sun.security.auth.UnixNumericUserPrincipal"%>
 <%@page import="data.dao.UserDao"%>
