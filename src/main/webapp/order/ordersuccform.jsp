@@ -16,7 +16,7 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
  
 <title>Insert title here</title>
 
@@ -38,6 +38,7 @@ int num=odao.getNowOrder(myid);
 //카트 리스트받기
 CartDao cdao=new CartDao();
 List<CartDto>clist=cdao.readCart(myid);
+
 
 //제품 정보 받기
 ProductDao pdao=new ProductDao();
@@ -82,7 +83,7 @@ DecimalFormat dfm=new DecimalFormat("###,###");
 		<div style="margin: -190px 50px 0 750px;">
 		<!--  상품이미지 > 이미지 클릭시 제품 상세설명 창-->
 		<a href="<%=root%>/index.jsp?main=product/<%=pdao.getProductName(cdto.getProduct_id())%>.jsp">
-		<img  src="<%=root %>/AppleProduct_img/<%=pdao.getProductDetailPhoto(cdto.getProduct_id())%>"
+		<img  src="<%=root %>/AppleProduct_img/<%=pdao.getProductPhoto(cdto.getProduct_id())%>"
 		 style="max-width: 350px; max-height: 250px;" ></a>
 		</div>
 	
@@ -97,6 +98,18 @@ DecimalFormat dfm=new DecimalFormat("###,###");
 <!-- 홈버튼 -->
 <button type="button"  id="home" style=" background-color: #0080ff; margin:0 0 100px 450px; width: 400px; height: 50px;
 border-radius: 15px;" class="btn btn-primary" onclick="location.href='index.jsp'" >메인으로</button>
+
+ <script type="text/javascript">
+$(function(){	 
+ 
+window.onload=function(){
+	<%
+	cdao.resetCart(myid);	
+	%>	 
+ 	}
+ 
+});
+ </script>
 
 </body>
 </html>

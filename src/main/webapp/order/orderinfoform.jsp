@@ -52,12 +52,12 @@ DecimalFormat df=new DecimalFormat("###,###");
 <h1 style="margin-left: 150px;"><b>어떻게 결제하시겠습니까?</b></h1>
 <br><br>
 
-<form action="<%=root %>/index.jsp?main=order/orderform.jsp" method="post">
+<form action="<%=root %>/index.jsp?main=order/orderform.jsp" method="post" id="frm">
 <div style="margin-left: 150px; border: 2px solid #0080ff; border-radius: 15px; width: 600px; height: 90px;">
 
-<div class="form-group"> 
-  <select  class="form-control" id="paysel" name="paysel" style="width:595px; height: 84.8px; border:0px; border-radius:10px; 
-  margin-left: 0.7px; margin-top:0.45px; font-size: 1.3em;">
+<div class="form-group" >   
+  <select  class="form-control" id="paysel" name="paysel" style="width:594.3px; height: 84.2px; border:0px; border-radius:13px; 
+  margin-left: 0.9px; margin-top:0.45px; font-size: 1.3em;">
     <option selected="selected" value="결제 포인트" >결제 포인트</option>
     <option value="신용 카드 또는 직불 카드">신용 카드 또는 직불 카드</option>
     <option value="카카오 페이" >카카오 페이</option>
@@ -69,8 +69,8 @@ DecimalFormat df=new DecimalFormat("###,###");
 </div>
 
 <!-- 포인트선택>포인트 표시 -->
-<div name="point" style="margin:30px 0 0 150px;">
-<b style="font-size: 1.3em;"><%=df.format(udto.getUser_point()) %>포인트 사용 가능</b>
+<div name="point" id="point"  style="margin:30px 0 0 150px;">
+<b style="font-size: 1.3em;"><%=df.format(udto.getUser_point()) %> 포인트 사용 가능</b>
 </div>
 
 
@@ -90,16 +90,16 @@ for(int i=0;i<tokens.length;i++)
 </div>
 
 
-<div id="addr_div" style="margin: 50px 0 0 150px;">
-<input type="text" name="addr1" class="form-control" placeholder="시/도" style="width: 400px;">
-<input type="text" name="addr2" class="form-control" placeholder="상세주소" 
+<div id="addr_div" style="margin: -40px 0 0 150px;">
+<input type="text" name="addr1" id="addr1" class="form-control" required="required" placeholder="시/도" style="width: 400px;">
+<input type="text" name="addr2" id="addr2" class="form-control" required="required" placeholder="상세주소" 
 style="width: 400px; margin-top: 10px;">
  </div>
 
 <br><br><br>
 <hr style="border:1px solid #e6eaee; width:1120px;">
 <br>
-<button type="submit" style="margin-left: 350px; width: 600px; height: 70px; border-radius: 15px; background-color: #0080ff;"
+<button type="button"  id="subbtn" style="margin-left: 350px; width: 600px; height: 70px; border-radius: 15px; background-color: #0080ff;"
  class="btn btn-primary" >주문 검토</button>
  
  <br><br><br><br>
@@ -117,21 +117,57 @@ style="width: 400px; margin-top: 10px;">
 /* 체크박스 이용 주소 등록 */
 $(document).ready(function(){
 	
-	 $("#addr_div").hide();
-	 $("#uaddr_div").show();
+	 $("#addr_div").css("margin-left","-9999px"); 	
 	 
     $("#delckb").change(function(){
         if($("#delckb").is(":checked")){        	
         	
-            $("#uaddr_div").show();
-            $("#addr_div").hide();
+            $("#uaddr_div").css("margin-left","170px");
+            $("#addr_div").css("margin-left","-9999px");  
+            
+            $("#addr1").val(" ");   
+            $("#addr2").val(" "); 
+            
             
         }else{
-        	  $("#uaddr_div").hide();
-              $("#addr_div").show();
+        	  $("#uaddr_div").css("margin-left","-9999px"); 
+              $("#addr_div").css("margin-left","170px");
+              
+              $("#addr1").val("");   
+              $("#addr2").val(""); 
         }
-    });
+    });  
+    
 });
+	
+	/* 보유 포인트 보여주기 */
+$("#paysel").change(function(){	
+	var s=$("#paysel option:selected").val();
+	if(s=="결제 포인트")
+		{
+		$("#point").show();
+		}else 
+			{			
+			$("#point").hide();
+			}	
+});
+	
+	
+/* 포인트로만 결제 가능 */
+$("#subbtn").click(function(){
+	
+	var s=$("#paysel option:selected").val();
+	if(s!="결제 포인트")
+		{
+		alert("포인트로만 결제 가능합니다");
+		
+		}else
+			{
+			$("#frm").submit();
+			}	
+	
+});
+
 
 </script>
 
