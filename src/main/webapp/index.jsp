@@ -36,11 +36,11 @@
 
 .menu {
 	width: 100%;
-	height: 80px;
-	line-height: 80px;
-	font-size: 20pt;
+	height: 40px;
+	line-height: 40px;
+	font-size: 10pt;
 	text-align: center;
-	top: 100px;
+	background-color: #404040;
 }
 
 .main {
@@ -64,6 +64,8 @@ a:hover {
 	color: black;
 	text-decoration: none;
 }
+
+
 </style>
 </head>
 <body>
@@ -94,6 +96,7 @@ if(request.getParameter("main")!=null){
 		<!-- 로그인메뉴 -->
 		<jsp:include page="layout/loginmenu.jsp"></jsp:include>
 	</div>
+	
 <div class="layout setCenter">
 	<div class="main">
 		<jsp:include page="<%=mainPage %>"></jsp:include>

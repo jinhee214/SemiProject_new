@@ -18,6 +18,14 @@
 	margin-right: 70px;
 	list-style: none;
 }
+.menu-bar a{color:white;}
+.menu-bar a:link { color: white; }
+.menu-bar a:visited { color: white; }
+
+img{
+	width:75%
+}
+
 </style>
 
 
@@ -30,12 +38,14 @@ String root = request.getContextPath();
 
 <div class="wrap">
 <ul class="menu-bar">
+<li><a href="<%=root%>/index.jsp"><img src="<%=root%>/image/logo3.png" alt="apple"></a></li>
 <li><a href="<%=root %>/index.jsp?main=product/maclist.jsp">Mac</a>
 <li><a href="<%=root %>/index.jsp?main=product/iPadlist.jsp">iPad</a></li>
 <li><a href="<%=root %>/index.jsp?main=product/iPhonelist.jsp">iPhone</a></li>
 <li><a href="<%=root %>/index.jsp?main=product/accessorylist.jsp">액세서리</a></li>
 <li><a href="<%=root %>/index.jsp?main=qna/boardMenu.jsp">고객지원</a></li>
 <li><a href="<%=root %>/index.jsp?main=login/loginmain.jsp">개인정보</a></li>
+
 </ul>
 </div>
 

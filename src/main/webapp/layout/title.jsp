@@ -11,14 +11,15 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+
 </head>
 <%
 String root = request.getContextPath();
 %>
 <body>
-
+<%-- 
 <a href="<%=root%>/index.jsp">
-<h2>Apple Store</h2></a>
+<h2>Apple Store</h2></a> --%>
 
 </body>
 </html>
