@@ -1,3 +1,7 @@
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="data.dto.CartDto"%>
+<%@page import="data.dao.CartDao"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -13,15 +17,23 @@
 </head>
 <body>
 <%
-String loginok=(String)session.getAttribute("loginok");
+String myid=(String)session.getAttribute("myid");
+String root=request.getContextPath();
 
-if(loginok!=null)
+/* 장바구니가 비어있을 때 */
+CartDao cdao=new CartDao();
+List<CartDto>list=cdao.readCart(myid);
+
+if(list.size()!=0)
 {%>
  <jsp:include page="orderinfoform.jsp"/>
 <%}else
-{
-	response.sendRedirect("로그인화면");
-}
+{%>
+	<script type="text/javascript">
+	alert("장바구니가 비었습니다");
+	history.back();
+	</script>		
+<%}
 %>
 
 </body>
