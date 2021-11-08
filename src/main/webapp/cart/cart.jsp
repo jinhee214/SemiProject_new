@@ -93,7 +93,7 @@ img.productPhoto {
 	max-width: 140px;
 	padding-top: 7px;
 	padding-bottom: 7px;
-	padding-left: 15px;
+	padding-left: 25px;
 }
 </style>
 
@@ -198,7 +198,7 @@ DecimalFormat df = new DecimalFormat("###,###");
 	<form action="cart/cartToOrderAction.jsp" method="post" class="">
 		<div class="table-main cartContent" style="align-content: center; text-align: center; margin-bottom: 45px;">
 			<h1>
-				장바구니에 들어있는 제품입니다. <font id="totalCart"></font>
+				장바구니에 들어있는 제품입니다 <font id="totalCart"></font>.
 			</h1>
 			<br>
 			<font style="font-size: 10pt;">모든 주문에 무료 배송 서비스가 제공됩니다.</font>
@@ -213,11 +213,11 @@ DecimalFormat df = new DecimalFormat("###,###");
 			%>
 			<tr class="no-bottom-border" style="margin-top: 300px;">
 				<!-- 제품사진 -->
-				<td class="thumbnail-img" rowspan="2" align="center">
+				<td class="thumbnail-img" rowspan="2" align="center" width="100">
 					<a href="index.jsp?main=product/#.jsp"><img class="productPhoto" src="image/AppleProduct_img/<%=pdao.getProductPhoto(dto.getProduct_id())%>"></a>
 				</td>				
 				<!-- 제품명 -->
-				<td id="name" style="padding-left: 15px; color: black; font-size: 1.2em; font-weight: bold;">
+				<td id="name" style="padding-left: 50px; color: black; font-size: 1.2em; font-weight: bold;">
 				<%
 				if (dto.getColor().equals("화이트")) {
 				%>
@@ -248,10 +248,11 @@ DecimalFormat df = new DecimalFormat("###,###");
 					<input type="hidden" name="productId" id="productId" value="<%=dto.getProduct_id()%>">
 					<input type="hidden" name="productPrice" id="productPrice" value="<%=dto.getPrice()%>">
 				</td>
-				<td align="right"><span id="cntXprice" style="font-size: 1.2em; font-weight: bold;">￦<%=df.format(dto.getCnt()*dto.getPrice())%></span></td>
+				<td align="right" style="padding-right: 25px;"><span id="cntXprice" style="font-size: 1.2em; font-weight: bold;">
+				￦<%=df.format(dto.getCnt()*dto.getPrice())%></span></td>
 			</tr>
 			<tr class="bottom-border" style="vertical-align: top; padding-top: 1px;">
-				<td style="padding-left: 15px;">
+				<td style="padding-left: 50px;">
 					<%
 					if (dto.getInsurance().equals("Y")) {
 					%>
@@ -267,7 +268,7 @@ DecimalFormat df = new DecimalFormat("###,###");
 				<td colspan="2" align="right">
 					<%-- <button type="button" class="deleteCart" product_id="<%=dto.getProduct_id()%>" user_id="<%=user_id%>">삭제</button> --%>
 					<a class="deleteCart" product_id="<%=dto.getProduct_id()%>" color="<%=dto.getColor()%>" insurance="<%=dto.getInsurance()%>" 
-					user_id="<%=user_id%>" style="color: #0077ed; pointer: cursor;">삭제</a>
+					user_id="<%=user_id%>" style="color: #0077ed; pointer: cursor; padding-right: 25px;">삭제</a>
 					<!-- hidden -->
 					<input type="hidden" name="productName" value="<%=pdao.getProductName(dto.getProduct_id())%>">
 					<input type="hidden" id="hiddencolor" value="<%=dto.getColor()%>">
