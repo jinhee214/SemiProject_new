@@ -89,11 +89,11 @@ table tr.bottom-border {
 }
 
 img.productPhoto {
-	height: 120px;
-	width: 120px;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	padding-left: 25px;
+	max-height: 140px;
+	max-width: 140px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	padding-left: 15px;
 }
 </style>
 
@@ -213,7 +213,7 @@ DecimalFormat df = new DecimalFormat("###,###");
 			%>
 			<tr class="no-bottom-border" style="margin-top: 300px;">
 				<!-- 제품사진 -->
-				<td class="thumbnail-img" rowspan="2">
+				<td class="thumbnail-img" rowspan="2" align="center">
 					<a href="index.jsp?main=product/#.jsp"><img class="productPhoto" src="image/AppleProduct_img/<%=pdao.getProductPhoto(dto.getProduct_id())%>"></a>
 				</td>				
 				<!-- 제품명 -->
