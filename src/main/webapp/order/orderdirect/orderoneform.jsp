@@ -32,7 +32,7 @@ String myid=(String)session.getAttribute("myid");
 String delckb=request.getParameter("delckb");
 //System.out.println(delckb);
 
-System.out.println(request.getAttribute("productId"));
+//System.out.println(request.getAttribute("productId"));
 
 int productId = Integer.parseInt(request.getParameter("productId"));
 String userId = request.getParameter("userId");
