@@ -248,7 +248,7 @@ DecimalFormat df = new DecimalFormat("###,###");
 					<input type="hidden" name="productId" id="productId" value="<%=dto.getProduct_id()%>">
 					<input type="hidden" name="productPrice" id="productPrice" value="<%=dto.getPrice()%>">
 				</td>
-				<td align="right" style="padding-right: 25px;"><span id="cntXprice" style="font-size: 1.2em; font-weight: bold;">
+				<td align="right"><span id="cntXprice" style="font-size: 1.2em; font-weight: bold;">
 				￦<%=df.format(dto.getCnt()*dto.getPrice())%></span></td>
 			</tr>
 			<tr class="bottom-border" style="vertical-align: top; padding-top: 1px;">
@@ -268,7 +268,7 @@ DecimalFormat df = new DecimalFormat("###,###");
 				<td colspan="2" align="right">
 					<%-- <button type="button" class="deleteCart" product_id="<%=dto.getProduct_id()%>" user_id="<%=user_id%>">삭제</button> --%>
 					<a class="deleteCart" product_id="<%=dto.getProduct_id()%>" color="<%=dto.getColor()%>" insurance="<%=dto.getInsurance()%>" 
-					user_id="<%=user_id%>" style="color: #0077ed; pointer: cursor; padding-right: 25px;">삭제</a>
+					user_id="<%=user_id%>" style="color: #0077ed; pointer: cursor;">삭제</a>
 					<!-- hidden -->
 					<input type="hidden" name="productName" value="<%=pdao.getProductName(dto.getProduct_id())%>">
 					<input type="hidden" id="hiddencolor" value="<%=dto.getColor()%>">
@@ -284,7 +284,7 @@ DecimalFormat df = new DecimalFormat("###,###");
 		<div>
 			<input type="hidden" name="totalPrice" id="totalPrice" value="<%=totalC%>">
 			<!-- 소계, 배송, 총계, 결제버튼 -->
-			<table style="margin: auto; margin-left: 360px; margin-top: 50px;">
+			<table style="margin: auto; margin-left: 355px; margin-top: 50px;">
 				<tr height="30">
 					<th width="350px;">소계</th>
 					<td align="right"><font id="totalCart">￦<%=df.format(totalC)%></font></td>
