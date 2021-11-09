@@ -17,6 +17,14 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+<style type="text/css">
+.notice{
+background-color: #dfe6e9; 
+color: gray; 
+padding: 20px 20px;
+}
+</style>
+
 <script type="text/javascript">
 
 /* 댓글 삭제 이벤트 */
@@ -71,7 +79,10 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 %>
 </head>
 <body>
-<div class="alert alert-info" align="center"><h3><b>상품 Q&A</b></h3></div>
+<!-- 게시글 추가 폼 -->
+<div class="alert alert-default" align="center"><h2 style="margin-bottom: 30px;"><b>어떤 문제가 있나요?<br>
+</b></h2>
+<h4>문제에 대한 답변을 드릴 예정입니다. 질문에 대한 답변은 2~3일 소요될 예정이니 조금만 기다려 주세요.</h4></div>
 
 <div align="right">
 <!-- 관리자 이거나 해당 게시글 회원이면 삭제하기 버튼 보이게 하기 -->
@@ -79,7 +90,6 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 if(loginok != null){
 	if(isAdmin || dto.getUserId().equals(id)){							//수정 필요
 		%>
-		<%-- <button type="button" class="btn btn-danger" onclick="location.href='qna/boardremove.jsp?boardId=<%=boardId%>'">삭제하기</button> --%>
 		<div align="right" style="margin: 0 30px 10px 0; font-weight: 700; font-size: 13pt;">
 		<a href="qna/boardremove.jsp?boardId=<%=boardId%>">삭제하기 <span class="glyphicon glyphicon-chevron-right"></span></a>
 		</div>
@@ -162,6 +172,14 @@ if(list != null){
 }
 %>
 
+<!-- 안내사항 구역 -->
+<p style="margin-top:50px;"><span class="glyphicon glyphicon-alert"></span> 문의하신 내용에 대한 답변은 <a href="index.jsp?main=qna/boardMenu.jsp" style="text-decoration: underline;">'메뉴 > 고객지원'</a>에서 확인하실 수 있습니다.</p>
+<div class="notice">
+상품 Q&A는 상품 및 상품 구매 과정에 대해 판매자에게 문의하는 게시판 입니다.<br><br>
+상품 및 상품 구매 과정과 관련 없는 비방/욕설/명예훼손성 게시글 및 상품과 관련 없는 광고글 등 부적절한 게시글 등록 시 <br>글쓰기 제한 및 게시글이 삭제 조치될 수 있습니다.<br><br>
+전화번호, 이메일 등 개인 정보가 포함된 글로 문의 하지 않도록 유의하여 주시기 바랍니다.<br><br>
+
+</div>
 
 
 </body>

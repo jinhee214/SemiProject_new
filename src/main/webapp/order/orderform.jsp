@@ -218,6 +218,9 @@ Calendar cal2 = Calendar.getInstance();
 <button type="button" id="subbtn" style="width: 400px; height: 50px; border-radius: 15px; background-color: #0080ff;"
  class="btn btn-primary" ><b>결제 하기</b></button>
  <img  src="<%=root %>/image/AppleProduct_img/orderinfo.PNG" style="max-width:380px; margin-top: 10px;">
+
+ <img  src="<%=root %>/image/AppleProduct_img/orderinfo.PNG" style="width:380px; margin-top: 10px;">
+
 </div>
 
 </form>

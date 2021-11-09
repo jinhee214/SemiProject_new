@@ -39,7 +39,7 @@ String name=dao.getName(id);
 		<br><br>
 </div>
 <div class="button">
-		<button type="button" class="btn btn-info" onclick="location.href='index.jsp?main=login/loginmain.jsp'">로그인</button>
+		<button type="button" class="btn btn-info" onclick="location.href='index.jsp?main=login/loginform.jsp'">로그인</button>
 		&nbsp
 		<button type="button" class="btn btn-default" onclick="location.href='index.jsp'">Home</button>
 </div>

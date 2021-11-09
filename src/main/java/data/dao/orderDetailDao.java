@@ -113,16 +113,5 @@ public class orderDetailDao {
 		return list;		
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }
