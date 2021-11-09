@@ -56,7 +56,6 @@ DecimalFormat dfm=new DecimalFormat("###,###");
 ProductDao pdao=new ProductDao();
 String productName = pdao.getProductName(odDto.getProduct_id());
 String productPhoto = pdao.getProductPhoto(odDto.getProduct_id());
-
 %>
 
 <!-- 주문성공 메세지 밑에 주문 번호  -->
@@ -79,7 +78,7 @@ String productPhoto = pdao.getProductPhoto(odDto.getProduct_id());
 
 	
 		<div style="margin: 200px 50px 0 350px; width:400px;">
-		<h1 style="font-weight: bold;">출고 <%=delday %></h1>
+		<h1 style="font-weight: bold;">출고<br><%=delday %></h1>
 		<b style="font-size: 1.3em;"><%=productName %>, <%=odDto.getColor() %></b>	
 		</div>	
 			
