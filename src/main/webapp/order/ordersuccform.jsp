@@ -110,12 +110,9 @@ for(CartDto cdto:clist)
 </div>
 
 <hr style="border:1px solid #e6eaee; width:1120px;">
-<!--프로그래스 바 -->
-
-
 <!-- 홈버튼 -->
 <button type="button"  id="home" style=" background-color: #0080ff; margin:0 0 100px 450px; width: 400px; height: 50px;
-border-radius: 15px;" class="btn btn-primary" onclick="location.href='index.jsp'" >메인으로</button>
+border-radius: 15px;" class="btn btn-primary" onclick="location.href='index.jsp'"><b>메인으로</b></button>
 
  <script type="text/javascript">
 $(function(){	 

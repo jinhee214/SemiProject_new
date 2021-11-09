@@ -216,8 +216,11 @@ Calendar cal2 = Calendar.getInstance();
 
 <div style="margin:50px 0 15px 620px;">
 <button type="button" id="subbtn" style="width: 400px; height: 50px; border-radius: 15px; background-color: #0080ff;"
- class="btn btn-primary" >결제 하기</button>
+ class="btn btn-primary" ><b>결제 하기</b></button>
+ <img  src="<%=root %>/image/AppleProduct_img/orderinfo.PNG" style="max-width:380px; margin-top: 10px;">
+
  <img  src="<%=root %>/image/AppleProduct_img/orderinfo.PNG" style="width:380px; margin-top: 10px;">
+
 </div>
 
 </form>
@@ -238,14 +241,12 @@ $(document).ready(function(){
        }else if(<%=udto.getUser_point()%> < <%=total%>)
     	   {
     	   alert("포인트가 부족합니다");
+    	   window.location.href="<%=root%>/index.jsp?main=cart/cart.jsp";
     	   }   
    
    });
+   
 });
-
-
-
-
 
 </script>
 </body>
