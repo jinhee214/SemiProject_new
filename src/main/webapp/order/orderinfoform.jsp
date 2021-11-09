@@ -65,7 +65,7 @@ DecimalFormat df=new DecimalFormat("###,###");
   </select>
 </div>
 
-<img src="<%=root %>/AppleProduct_img/order.PNG" style="position:absolute; top:250px; left: 1100px; max-width:400px;">
+<img src="<%=root %>/image/AppleProduct_img/order.PNG" style="position:absolute; top:250px; left: 1100px; max-width:400px;">
 </div>
 
 <!-- 포인트선택>포인트 표시 -->
@@ -91,6 +91,7 @@ for(int i=0;i<tokens.length;i++)
 
 
 <div id="addr_div" style="margin: -40px 0 0 150px;">
+<b>배송받을 주소를 작성해 주세요</b>
 <input type="text" name="addr1" id="addr1" class="form-control" required="required" placeholder="시/도" style="width: 400px;">
 <input type="text" name="addr2" id="addr2" class="form-control" required="required" placeholder="상세주소" 
 style="width: 400px; margin-top: 10px;">
@@ -99,8 +100,8 @@ style="width: 400px; margin-top: 10px;">
 <br><br><br>
 <hr style="border:1px solid #e6eaee; width:1120px;">
 <br>
-<button type="button"  id="subbtn" style="margin-left: 350px; width: 600px; height: 70px; border-radius: 15px; background-color: #0080ff;"
- class="btn btn-primary" >주문 검토</button>
+<button type="button"  id="subbtn" style="margin-left: 350px; width: 600px; height: 60px; border-radius: 15px; background-color: #0080ff;"
+ class="btn btn-primary"><b>주문 검토</b></button>
  
  <br><br><br><br>
   

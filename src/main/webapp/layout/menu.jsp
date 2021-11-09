@@ -118,6 +118,7 @@ if(loginok == null){
 					<li><a href="index.jsp?main=cart/cart.jsp"><span class="glyphicon glyphicon-shopping-cart"></span> 장바구니</a></li>
 					<li><a href="index.jsp?main=user/pointmain.jsp"><span class="glyphicon glyphicon-credit-card"></span> 포인트충전</a></li>
 					<li><a href="index.jsp?main=login/loginmain.jsp"><span class="glyphicon glyphicon-info-sign"></span> 개인정보</a></li>
+					<li><a href="index.jsp?main=order/ordershowform.jsp"><span class="glyphicon glyphicon-plane"></span> 배송조회</a></li>
 				</ul>
 			</li>
 

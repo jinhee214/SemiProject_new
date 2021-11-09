@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import data.dto.BoardDto;
 import data.dto.orders_detailDto;
@@ -72,10 +73,44 @@ public class orderDetailDao {
 		}finally {
 			db.dbClose(rs, pstmt, conn);
 		}
+		return dto;		
+	}
+	
+	//전체목록
+	public ArrayList<orders_detailDto> getAllOrder(int orderId) {
+		ArrayList<orders_detailDto> list = new ArrayList<orders_detailDto>();
 
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
-		return dto;
-		
+		String sql = "select * from orders_detail where order_id=?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, orderId);
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+				
+				orders_detailDto dto=new orders_detailDto();
+				
+				dto.setProduct_id(rs.getInt("product_id"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setCnt(rs.getInt("cnt"));
+				dto.setColor(rs.getString("color"));
+				dto.setInsurance(rs.getString("insurance"));
+				
+				list.add(dto);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return list;		
 	}
 	
 	

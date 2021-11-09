@@ -13,7 +13,7 @@ public class orderDao {
 	DbConnect db=new DbConnect();
 	
 	//결제번호 결제목록 가져오기
-		public OrderDto getOder(String order_id)
+		public OrderDto getOder(int order_id)
 		{
 			OrderDto dto=new OrderDto();
 			
@@ -26,7 +26,7 @@ public class orderDao {
 			try {
 				pstmt=conn.prepareStatement(sql);
 				
-				pstmt.setString(1, order_id);
+				pstmt.setInt(1, order_id);
 				
 				rs=pstmt.executeQuery();
 				
