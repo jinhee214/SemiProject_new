@@ -37,8 +37,8 @@ String myid=(String)session.getAttribute("myid");
 //db로부터 가입한 이름 얻기
 UserDao dao=new UserDao();
 UserDto dto=dao.getUser(myid);
-
 %>
+
 <%
 //loginok 는 로그인 성공시 저장하고 로그아웃시 제거
 if(loginok==null)
