@@ -202,6 +202,9 @@ if(loginok==null)
 				<input type="hidden" value="<%=dto.getProduct_id() %>" name="product_id">
 				<input type="hidden" value="<%=user_id %>" name="user_id">
 				<input type="hidden" value="1350000" name="price">
+				
+				<input type="submit" formaction="index.jsp?main=order/orderdirect/orderinfooneform.jsp"
+				class="btn btn-primary btn-block" value="구입하기" style="background-color: #0077ed; border-radius: 10px;">
 				<button type="submit" class="btn btn-primary btn-block"
 				style="background-color: #0077ed; border-radius: 10px;">장바구니담기</button>
 			</td>

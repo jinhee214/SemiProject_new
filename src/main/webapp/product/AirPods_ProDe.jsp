@@ -191,7 +191,8 @@ if(loginok==null)
 				<input type="hidden" value="329000" name="price">
 
 				<!-- 구입하기 test 버튼 -->
-				<input type="submit" formaction="index.jsp?main=order/orderdirect/orderinfooneform.jsp" class="btn btn-primary btn-block" value="구입하기">			
+				<input type="submit" formaction="index.jsp?main=order/orderdirect/orderinfooneform.jsp"
+				class="btn btn-primary btn-block" value="구입하기" style="background-color: #0077ed; border-radius: 10px;">			
 				<button type="submit" class="btn btn-primary btn-block"
 				style="background-color: #0077ed; border-radius: 10px;">장바구니담기</button>
 
