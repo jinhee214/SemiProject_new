@@ -70,14 +70,13 @@ for(CartDto cdto:clist)
 	
 	ddao.insertorderDeatil(ddto);
 }
-
 %>
 
 <!-- 주문성공 메세지 밑에 주문 번호  -->
 <div align="center" style="position: relative; top: 50px;">
 <h1 style="font-weight: bold;">모든 준비가 완료되었습니다.</h1>
 <br>
-<p><b>확인 내역 및 배송 관련 업데이트를 다음 역락처로 보내드리겠습니다.</b></p>
+<p><b>확인 내역 및 배송 관련 업데이트를 다음 연락처로 보내드리겠습니다.</b></p>
 <b><%=udto.getUser_hp() %></b>
 <!-- 연락처  -->
 <br>
@@ -95,7 +94,7 @@ for(CartDto cdto:clist)
 	{%>
 	
 		<div style="margin: 200px 50px 0 350px; width:400px;">
-		<h1 style="font-weight: bold;">출고 <%=delday %></h1>
+		<h1 style="font-weight: bold;">출고 <br><%=delday %></h1>
 		<b style="font-size: 1.3em;"><%=pdao.getProductName(cdto.getProduct_id()) %>, <%=cdto.getColor() %></b>	
 		</div>	
 			
