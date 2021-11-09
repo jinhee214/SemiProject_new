@@ -29,7 +29,7 @@ int orderid=Integer.parseInt(request.getParameter("oid"));
 /* 이미지 가져오기 */
 ProductDao pdao=new ProductDao();
 
-/* 주문내역 가쟈오기 */
+/* 주문내역 가져오기 */
 orderDetailDao ddao=new orderDetailDao();
 ArrayList<orders_detailDto>list1=ddao.getAllOrder(orderid);
 
@@ -62,7 +62,7 @@ if(list1.size()==0)
  <table style="margin-left: 250px; margin-top:15px; width: 800px; font-size: 0.9em;" >
   	<tr>
   		<td style="margin-left: 50px;">주문접수</td>
-  		<td style="margin-left: 50px;">배송 준비 중</td>
+  		<td style="margin-left: 50px; color:#0080ff; font-weight: bold; font-size: 1.1em;">배송 준비 중</td>
   		<td style="margin-left: 50px;">출고 준비 중</td>
   		<td style="margin-left: 50px;">출고됨</td>
   		<td align="right">배송 완료</td>
@@ -71,23 +71,24 @@ if(list1.size()==0)
  
  <div style="margin-left: 250px; margin-top:15px; width: 800px; font-weight: bold;">
  <p>제품을 배송 준비 중입니다. 24시간 이내에 배송 정보를 확인하실 수 있습니다. 운송업체에서 배송 시 서명을 요청할 수 있습니다.</p>
- <a href="<%=root%>/index.jsp?main=qna/boardMenu.jsp" style="margin-left: 733px; font-size: 0.9em;">고객센터</a>
+ <a href="<%=root%>/index.jsp?main=qna/boardMenu.jsp" style="margin-left: 733px; font-size: 0.9em; color:#0080ff;">고객센터</a>
  </div>
 
-<table class="table" style="width: 800px; margin:0 auto; margin-top: 50px; border-bottom: 1px solid lightgray;">
+<table class="table" style="width: 1000px; margin:0 auto; margin-top: 50px; border-bottom: 1px solid lightgray;">
 <%
 	for(orders_detailDto ddto:list1)
 	{%>
 		<tr>
 			<td style="width: 300px;">
-			<div style="margin: 5px 0 15px 0;">
+			<div style="margin: 0 -100px 15px 0;">
 			<a href="<%=root%>/index.jsp?main=product/<%=pdao.getProductName(ddto.getProduct_id())%>.jsp">
-			<img style="max-height: 200px; max-width: 350px;" 
+			<img style="max-height: 200px; max-width: 200px;" 
 			src="<%=root %>/image/AppleProduct_img/<%=pdao.getProductPhoto(ddto.getProduct_id())%>">
 			</a>
 			</div>
 			</td>
-			<td align="center"><div  style="margin-top: 80px; font-weight: bold;"><%=pdao.getProductName(ddto.getProduct_id()) %></div></td>
+			<td align="left"><div style="margin-top: 80px; font-weight: bold;"><%=pdao.getProductName(ddto.getProduct_id()) %></div></td>
+			<td align="left"><div style="margin-top: 80px; font-weight: bold;">색상: <%=ddto.getColor()%></div></td>
 			<td align="center"><div style="margin-top: 80px; font-weight: bold;">수량: <%=ddto.getCnt() %></div></td>
 			<td align="right"><div style="margin-top: 80px; font-weight: bold;">AppleCare: <%=ddto.getInsurance()%></div></td>
 		</tr>
