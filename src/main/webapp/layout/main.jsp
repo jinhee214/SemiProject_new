@@ -95,7 +95,7 @@ position: absolute;
 			</li>
 			<li><a href="#"><img src="image/mainimg/mainimg2.PNG" alt="mac"></a>
 			<a class="main-comment-img2" href="index.jsp?main=product/maclist.jsp">더 알아보기 <span class="glyphicon glyphicon-chevron-right"></span></a>
-			<a class="main-comment-img23" href="index.jsp?main=product/MacBook_ProM1.jsp">구매하기 <span class="glyphicon glyphicon-chevron-right"></span></a>
+			<a class="main-comment-img23" href="index.jsp?main=product/Macbook_ProM1.jsp">구매하기 <span class="glyphicon glyphicon-chevron-right"></span></a>
 			</li>
 			<li><a href="#"><img src="image/mainimg/mainimg3.PNG" alt="airpods"></a>
 			<a class="main-comment-img3" href="index.jsp?main=product/AirPods_ProDe.jsp">더 알아보기 <span class="glyphicon glyphicon-chevron-right"></span></a>
