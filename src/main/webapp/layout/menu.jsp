@@ -50,6 +50,7 @@
 	width:200px;
 	position:absolute;
 	z-index: 1;
+	list-style: none;
 }
 
 #list-detail-item > li {

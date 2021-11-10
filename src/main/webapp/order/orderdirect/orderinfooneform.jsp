@@ -83,7 +83,7 @@ DecimalFormat df=new DecimalFormat("###,###");
  </select>
 </div>
 
-<img src="<%=root %>/image/AppleProduct_img/order.PNG" style="position:absolute; top:250px; left: 1100px; max-width:400px;">
+<img src="<%=root %>/image/AppleProduct_img/order.PNG" style="position:absolute; top:240px; left: 1400px; max-width:400px;">
 </div>
 
 <!-- 포인트선택>포인트 표시 -->
